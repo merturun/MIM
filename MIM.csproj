@@ -127,12 +127,23 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Config\MIMDBContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206180334116_MIMDB.cs" />
+    <Compile Include="Migrations\202206180334116_MIMDB.designer.cs">
+      <DependentUpon>202206180334116_MIMDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Grant.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\License.cs" />
+    <Compile Include="Models\Module.cs" />
     <Compile Include="Models\Organization.cs" />
+    <Compile Include="Models\Title.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2119,6 +2130,11 @@
     <Content Include="assets\plugins\global\summernote-bs4.js.map" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202206180334116_MIMDB.resx">
+      <DependentUpon>202206180334116_MIMDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

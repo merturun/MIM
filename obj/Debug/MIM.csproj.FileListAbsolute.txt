@@ -81,3 +81,5 @@ D:\Projects\C#\MIM\obj\Debug\MIM.csproj.CoreCompileInputs.cache
 D:\Projects\C#\MIM\obj\Debug\MIM.csproj.CopyComplete
 D:\Projects\C#\MIM\obj\Debug\MIM.dll
 D:\Projects\C#\MIM\obj\Debug\MIM.pdb
+D:\Projects\C#\MIM\obj\Debug\MIM.Migrations.MIMDB.resources
+D:\Projects\C#\MIM\obj\Debug\MIM.csproj.GenerateResource.cache
