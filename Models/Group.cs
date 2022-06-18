@@ -13,7 +13,8 @@ namespace MIM.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public Organization Organization { get; set; }
-        public ICollection<Grant> Grants { get; set; }     
+        public ICollection<Grant> Grants { get; set; }
+        public ICollection<User> Users { get; set; }
 
     }
 }
