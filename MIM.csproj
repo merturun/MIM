@@ -2130,6 +2130,7 @@
     <Content Include="assets\plugins\global\summernote-bs4.js.map" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Shared\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202206180334116_MIMDB.resx">
