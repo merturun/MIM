@@ -8,6 +8,11 @@ namespace MIM.Models
 {
     public class User
     {
+        public User()
+        {
+            this.Groups = new HashSet<Group>();
+        }
+
         [Key]
         public int Id { get; set; }
         public Organization Organization { get; set; }
@@ -22,5 +27,6 @@ namespace MIM.Models
         public bool IsActive { get; set; }
         public DateTime BornDate { get; set; }
         public bool SuperAdmin { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
     }
 }

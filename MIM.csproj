@@ -58,6 +58,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -124,17 +126,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\lang.en.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lang.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lang.tr.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lang.tr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\lang.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lang.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Config\Localization\Localization.cs" />
+    <Compile Include="Config\Localization\LocalizationWebFormView.cs" />
     <Compile Include="Config\MIMDBContext.cs" />
+    <Compile Include="Config\Localization\ResourceExtensions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206180334116_MIMDB.cs" />
-    <Compile Include="Migrations\202206180334116_MIMDB.designer.cs">
-      <DependentUpon>202206180334116_MIMDB.cs</DependentUpon>
+    <Compile Include="Migrations\202206191752211_MIMDB.cs" />
+    <Compile Include="Migrations\202206191752211_MIMDB.designer.cs">
+      <DependentUpon>202206191752211_MIMDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206191758454_MIMDB1.cs" />
+    <Compile Include="Migrations\202206191758454_MIMDB1.designer.cs">
+      <DependentUpon>202206191758454_MIMDB1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
@@ -2131,11 +2155,32 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Shared\Dashboard.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202206180334116_MIMDB.resx">
-      <DependentUpon>202206180334116_MIMDB.cs</DependentUpon>
+    <Content Include="App_GlobalResources\lang.en.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>lang.en.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lang.tr.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>lang.tr.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lang.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>lang.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202206191752211_MIMDB.resx">
+      <DependentUpon>202206191752211_MIMDB.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206191758454_MIMDB1.resx">
+      <DependentUpon>202206191758454_MIMDB1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2155,7 +2200,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60490</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44361/</IISUrl>
+          <IISUrl>https://localhost:44361/tr/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

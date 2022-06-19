@@ -8,9 +8,14 @@ namespace MIM.Models
 {
     public class Grant
     {
+        public Grant()
+        {
+            this.Groups = new HashSet<Group>();
+        }
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public ICollection<Group> Groups { get; set; }
     }
 }

@@ -8,6 +8,10 @@ namespace MIM.Models
 {
     public class Department
     {
+        public Department()
+        {
+            this.Users = new HashSet<User>();
+        }
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }

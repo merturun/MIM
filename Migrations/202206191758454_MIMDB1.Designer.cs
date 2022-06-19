@@ -7,13 +7,13 @@ namespace MIM.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class MIMDB : IMigrationMetadata
+    public sealed partial class MIMDB1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MIMDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MIMDB1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202206180334116_MIMDB"; }
+            get { return "202206191758454_MIMDB1"; }
         }
         
         string IMigrationMetadata.Source
