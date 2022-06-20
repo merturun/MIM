@@ -16,6 +16,6 @@ namespace MIM.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<Module> Modules  { get; set; }
+        public virtual ICollection<Module> Modules  { get; set; }
     }
 }

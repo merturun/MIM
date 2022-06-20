@@ -10,25 +10,26 @@ namespace MIM.Models
     {
         public Organization()
         {
-            this.Users = new HashSet<User>();
-            this.Licenses = new HashSet<License>();
-            this.Departments = new HashSet<Department>();
-            this.Childs = new HashSet<Organization>();
+            this.users = new HashSet<User>();
+            this.licenses = new HashSet<License>();
+            this.departments = new HashSet<Department>();
+            this.childs = new HashSet<Organization>();
         }
         [Key]
-        public int Id { get; set; }
-        public string Name { get; set; } // Organizasyon Adı
-        public string Description { get; set; } // Organizasyon hakkında Açıklama
-        public string ContactName { get; set; } // Organizasyonda İletişim kurulacak kişi
-        public string ContactEmail { get; set; } // Organizasyonda İletişim maili
-        public string ContactPhone { get; set; } // Organizasyonda İletişim numarası
+        public int organizationID { get; set; }
+        public string name { get; set; } // Organizasyon Adı
+        public string description { get; set; } // Organizasyon hakkında Açıklama
+        public string contactName { get; set; } // Organizasyonda İletişim kurulacak kişi
+        public string contactEmail { get; set; } // Organizasyonda İletişim maili
+        public string contactPhone { get; set; } // Organizasyonda İletişim numarası
         public string language { get; set; } // Organizasyon varsayılan dil
-        public string Adres { get; set; } // Organizasyon Adresi
+        public string adres { get; set; } // Organizasyon Adresi
         public bool isActive { get; set; } // Organizasyonun Lisansı var mı yok mu ?
-        public Organization Parent { get; set; } // Ana Organizasyon
-        public virtual ICollection<Organization> Childs { get; set; } // Alt Organizasyonlar
-        public virtual ICollection<User> Users { get; set; } // Kullanıcılar
-        public virtual ICollection<License> Licenses { get; set; } // Lisanslar
-        public virtual ICollection<Department> Departments { get; set; } // Lisanslar
+        public int parentID { get; set; } // Ana Organizasyon
+        public virtual Organization parent { get; set; } // Ana Organizasyon
+        public virtual ICollection<Organization> childs { get; set; } // Alt Organizasyonlar
+        public virtual ICollection<User> users { get; set; } // Kullanıcılar
+        public virtual ICollection<License> licenses { get; set; } // Lisanslar
+        public virtual ICollection<Department> departments { get; set; } // Departmanlar
     }
 }

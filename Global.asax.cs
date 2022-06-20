@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MIM.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,9 @@ namespace MIM
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static string language = "tr";
+        public static User current_user;
+        public static ApplicationHelper AppHelper = new ApplicationHelper();
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -17,5 +21,7 @@ namespace MIM
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+
     }
 }

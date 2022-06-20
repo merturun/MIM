@@ -16,6 +16,8 @@ namespace MIM.Controllers
 
         public ActionResult Index()
         {
+            User user = db.Users.FirstOrDefault();
+            if (MvcApplication.current_user == null) return RedirectToAction("Login", "Home");
             return View();
         }
 
@@ -34,14 +36,26 @@ namespace MIM.Controllers
         {
             return View();
         }
+
+        public void ChangeLanguage(string language)
+        {
+            MvcApplication.language = language;
+        }
+
+        [ChildActionOnly]
+        public ActionResult QuickUser()
+        {
+            if(MvcApplication.current_user != null) return PartialView("QuickUser",MvcApplication.current_user);
+            return PartialView("QuickUser");
+        }
         [HttpPost]
         public ActionResult Login(User user)
         {
-            var UserInDb = db.Users.FirstOrDefault(x => x.Username == user.Username && x.Password == user.Password);
+            var UserInDb = db.Users.FirstOrDefault(x => x.username == user.username && x.password == user.password);
             if (UserInDb != null)
             {
-                FormsAuthentication.SetAuthCookie(user.Username, false);
-                return RedirectToAction("About", "Home");
+                MvcApplication.current_user = UserInDb;
+                return RedirectToAction("Index", "Home");
             }
             else
             {

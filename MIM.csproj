@@ -126,6 +126,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\ApplicationHelper.cs" />
     <Compile Include="App_GlobalResources\lang.en.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,13 +153,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206191752211_MIMDB.cs" />
-    <Compile Include="Migrations\202206191752211_MIMDB.designer.cs">
-      <DependentUpon>202206191752211_MIMDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202206191758454_MIMDB1.cs" />
-    <Compile Include="Migrations\202206191758454_MIMDB1.designer.cs">
-      <DependentUpon>202206191758454_MIMDB1.cs</DependentUpon>
+    <Compile Include="Migrations\202206201419119_MIMDB.cs" />
+    <Compile Include="Migrations\202206201419119_MIMDB.designer.cs">
+      <DependentUpon>202206201419119_MIMDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
@@ -2156,6 +2153,7 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Shared\Dashboard.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\QuickUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\lang.en.resx">
@@ -2172,15 +2170,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202206191752211_MIMDB.resx">
-      <DependentUpon>202206191752211_MIMDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206191758454_MIMDB1.resx">
-      <DependentUpon>202206191758454_MIMDB1.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <EmbeddedResource Include="Migrations\202206201419119_MIMDB.resx">
+      <DependentUpon>202206201419119_MIMDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2200,7 +2195,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60490</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44361/tr/</IISUrl>
+          <IISUrl>https://localhost:44361/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

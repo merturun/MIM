@@ -17,7 +17,7 @@ namespace MIM.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
-        public ICollection<License> Licenses { get; set; }
+        public virtual ICollection<License> Licenses { get; set; }
 
     }
 }

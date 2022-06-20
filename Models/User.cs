@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -10,23 +11,26 @@ namespace MIM.Models
     {
         public User()
         {
-            this.Groups = new HashSet<Group>();
+            this.groups = new HashSet<Group>();
         }
 
         [Key]
-        public int Id { get; set; }
-        public Organization Organization { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public string Nickname { get; set; }
-        public string Username { get; set; }
-        public Title Title { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string ActivationCode { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime BornDate { get; set; }
-        public bool SuperAdmin { get; set; }
-        public virtual ICollection<Group> Groups { get; set; }
+        public int userID { get; set; }
+        public int organizationID { get; set; }   
+        public virtual Organization organization { get; set; }
+        public int titleID { get; set; }
+        public virtual Title title { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string nickname { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
+        public bool isActive { get; set; }
+        public DateTime bornDate { get; set; }
+        public bool superAdmin { get; set; }
+        public virtual ICollection<Group> groups { get; set; }
+
+        public string FullName { get { return firstname + " " + lastname; } }
     }
 }
