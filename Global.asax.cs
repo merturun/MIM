@@ -1,7 +1,12 @@
-﻿using MIM.Models;
+﻿using MIM.Helper;
+using MIM.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -11,11 +16,12 @@ namespace MIM
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        public static string language = "tr";
         public static User current_user;
-        public static ApplicationHelper AppHelper = new ApplicationHelper();
+        public static Organization current_organization;
+        public static string language = "en";
         protected void Application_Start()
         {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("tr");
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

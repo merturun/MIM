@@ -70,11 +70,65 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yönetim Sistemi.
+        ///   Looks up a localized string similar to İngilizce.
+        /// </summary>
+        internal static string en {
+            get {
+                return ResourceManager.GetString("en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giriş Yap.
+        /// </summary>
+        internal static string Login_Login {
+            get {
+                return ResourceManager.GetString("Login.Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parola.
+        /// </summary>
+        internal static string Login_Password {
+            get {
+                return ResourceManager.GetString("Login.Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Adı.
+        /// </summary>
+        internal static string Login_Username {
+            get {
+                return ResourceManager.GetString("Login.Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hoşgeldiniz.
+        /// </summary>
+        internal static string Login_Welcome {
+            get {
+                return ResourceManager.GetString("Login.Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MIM Yönetim Sistemine Hoşgeldiniz.
         /// </summary>
         internal static string Site_Title {
             get {
                 return ResourceManager.GetString("Site.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Türkçe.
+        /// </summary>
+        internal static string tr {
+            get {
+                return ResourceManager.GetString("tr", resourceCulture);
             }
         }
     }

@@ -46,7 +46,39 @@
                 title = title,
                 password = "test",
                 email = "urn.mert@gmail.com",
-                bornDate = DateTime.Now,
+                bornDate = new DateTime(1988, 9, 2),
+                isActive = true,
+                superAdmin = true
+            };
+            context.Users.Add(user);
+
+            user = new User()
+            {
+                organization = org,
+                firstname = "Mert Can",
+                lastname = "Yılmaz",
+                nickname = "Bilemedim",
+                username = "mertcan",
+                title = title,
+                password = "test",
+                email = "???",
+                bornDate = new DateTime(1998,6,2), // Hatırlayamadım, güncelle mertcan
+                isActive = true,
+                superAdmin = true
+            };
+            context.Users.Add(user);
+
+            user = new User()
+            {
+                organization = org,
+                firstname = "İsmail",
+                lastname = "Gülaç",
+                nickname = "VDemented",
+                username = "vdemented",
+                title = title,
+                password = "test",
+                email = "???",
+                bornDate = new DateTime(1992, 6, 2), // Hatırlayamadım, güncelle ismail
                 isActive = true,
                 superAdmin = true
             };

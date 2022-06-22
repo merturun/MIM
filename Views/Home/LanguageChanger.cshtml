@@ -1,0 +1,30 @@
+﻿@model string[]
+@{
+    string flag_path = string.Format("/assets/media/svg/flags/{0}.svg", MvcApplication.language);
+}
+<div class="dropdown">
+    <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+        <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+            <img id="lang_icon" class="h-20px w-20px rounded-sm" src="@flag_path" alt="" />
+        </div>
+    </div>
+    <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
+        <ul class="navi navi-hover py-4">
+            @{
+                for (int i = 0; i < Model.Length; i++)
+                {
+                    string flag = string.Format("/assets/media/svg/flags/{0}.svg", Model[i]);
+
+                    <li class="navi-item">
+                        <a href="#" class="navi-link">
+                            <span class="symbol symbol-20 mr-3">
+                                <img src="@flag" alt="" />
+                            </span>
+                            <span onclick="cl('@Model[i]')" class="navi-text">@LanguageHelper.GetString(Model[i])</span>
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>

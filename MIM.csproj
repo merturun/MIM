@@ -127,17 +127,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\ApplicationHelper.cs" />
-    <Compile Include="App_GlobalResources\lang.en.designer.cs">
+    <Compile Include="App_GlobalResources\language\lang.en.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>lang.en.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\lang.tr.designer.cs">
+    <Compile Include="App_GlobalResources\language\lang.tr.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>lang.tr.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\lang.designer.cs">
+    <Compile Include="App_GlobalResources\language\lang.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>lang.resx</DependentUpon>
@@ -145,14 +145,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Config\Localization\Localization.cs" />
-    <Compile Include="Config\Localization\LocalizationWebFormView.cs" />
     <Compile Include="Config\MIMDBContext.cs" />
-    <Compile Include="Config\Localization\ResourceExtensions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Migrations\202206201419119_MIMDB.cs" />
     <Compile Include="Migrations\202206201419119_MIMDB.designer.cs">
       <DependentUpon>202206201419119_MIMDB.cs</DependentUpon>
@@ -2154,17 +2152,18 @@
     <Content Include="Views\Shared\Dashboard.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\QuickUser.cshtml" />
+    <Content Include="Views\Home\LanguageChanger.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\lang.en.resx">
+    <Content Include="App_GlobalResources\language\lang.en.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>lang.en.designer.cs</LastGenOutput>
     </Content>
-    <Content Include="App_GlobalResources\lang.tr.resx">
+    <Content Include="App_GlobalResources\language\lang.tr.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>lang.tr.designer.cs</LastGenOutput>
     </Content>
-    <Content Include="App_GlobalResources\lang.resx">
+    <Content Include="App_GlobalResources\language\lang.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>lang.designer.cs</LastGenOutput>
     </Content>

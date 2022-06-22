@@ -6,7 +6,7 @@
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>MIM @Html.Language("", "Site.Title") - @ViewBag.Title</title>
+    <title>@LanguageHelper.GetString("Site.Title") - @ViewBag.Title</title>
     <meta name="description" content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -19,6 +19,17 @@
     <link href="~/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="~/~/assets/media/logos/favicon.ico" />
+    <script>
+        function cl(language) {
+            $.ajax({
+                url: "/Home/ChangeLanguage?language=" + language,
+                type: 'get',
+                success: function (data) {
+                    document.location.reload(); 
+                }
+            });
+        };
+    </script>
 </head>
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable aside-minimize page-loading">
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
@@ -4359,61 +4370,13 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="dropdown">
-                                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-                                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-                                        <img class="h-20px w-20px rounded-sm" src="~/assets/media/svg/flags/226-united-states.svg" alt="" />
-                                    </div>
-                                </div>
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
-                                    <ul class="navi navi-hover py-4">
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-                                                <span class="symbol symbol-20 mr-3">
-                                                    <img src="~/assets/media/svg/flags/226-united-states.svg" alt="" />
-                                                </span>
-                                                <span class="navi-text">English</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item active">
-                                            <a href="#" class="navi-link">
-                                                <span class="symbol symbol-20 mr-3">
-                                                    <img src="~/assets/media/svg/flags/128-spain.svg" alt="" />
-                                                </span>
-                                                <span class="navi-text">Spanish</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-                                                <span class="symbol symbol-20 mr-3">
-                                                    <img src="~/assets/media/svg/flags/162-germany.svg" alt="" />
-                                                </span>
-                                                <span class="navi-text">German</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-                                                <span class="symbol symbol-20 mr-3">
-                                                    <img src="~/assets/media/svg/flags/063-japan.svg" alt="" />
-                                                </span>
-                                                <span class="navi-text">Japanese</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-                                                <span class="symbol symbol-20 mr-3">
-                                                    <img src="~/assets/media/svg/flags/195-france.svg" alt="" />
-                                                </span>
-                                                <span class="navi-text">French</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @{
+                                Html.RenderAction("LanguageChanger","Home");
+                            }
                             <div class="topbar-item">
                                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
                                     <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Sean</span>
+                                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">@ApplicationHelper.GetUserName()</span>
                                     <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                         <span class="symbol-label font-size-h5 font-weight-bold">S</span>
                                     </span>

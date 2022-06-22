@@ -120,7 +120,25 @@
   <data name="About.Desc" xml:space="preserve">
     <value>Hakkımızda</value>
   </data>
+  <data name="en" xml:space="preserve">
+    <value>İngilizce</value>
+  </data>
+  <data name="Login.Login" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
+  <data name="Login.Password" xml:space="preserve">
+    <value>Parola</value>
+  </data>
+  <data name="Login.Username" xml:space="preserve">
+    <value>Kullanıcı Adı</value>
+  </data>
+  <data name="Login.Welcome" xml:space="preserve">
+    <value>MIM Yönetim Sistemine Hoşgeldiniz</value>
+  </data>
   <data name="Site.Title" xml:space="preserve">
-    <value>Yönetim Sistemi</value>
+    <value>MIM Yönetim Sistemi</value>
+  </data>
+  <data name="tr" xml:space="preserve">
+    <value>Türkçe</value>
   </data>
 </root>
