@@ -135,6 +135,42 @@
   <data name="Login.Welcome" xml:space="preserve">
     <value>Hoşgeldiniz</value>
   </data>
+  <data name="NavBar.Hi" xml:space="preserve">
+    <value>Merhaba</value>
+  </data>
+  <data name="QuickUser.MyActivity" xml:space="preserve">
+    <value>Aktivitelerim</value>
+  </data>
+  <data name="QuickUser.MyActivity.desc" xml:space="preserve">
+    <value>Loglar ve Bildirimler</value>
+  </data>
+  <data name="QuickUser.MyMessage" xml:space="preserve">
+    <value>Mesajlarım</value>
+  </data>
+  <data name="QuickUser.MyMessage.desc" xml:space="preserve">
+    <value>Gelen Kutusu ve Görevler</value>
+  </data>
+  <data name="QuickUser.MyProfile" xml:space="preserve">
+    <value>Profilim</value>
+  </data>
+  <data name="QuickUser.MyProfile.desc" xml:space="preserve">
+    <value>Hesap Ayarları ve fazlası</value>
+  </data>
+  <data name="QuickUser.MyTask" xml:space="preserve">
+    <value>Görevlerim</value>
+  </data>
+  <data name="QuickUser.MyTask.desc" xml:space="preserve">
+    <value>Son Görevlerim ve Projelerim</value>
+  </data>
+  <data name="QuickUser.SignOut" xml:space="preserve">
+    <value>Çıkış Yap</value>
+  </data>
+  <data name="QuickUser.Title" xml:space="preserve">
+    <value>Kullanıcı Profili</value>
+  </data>
+  <data name="QuickUser.UpdateProfile" xml:space="preserve">
+    <value>Güncelle</value>
+  </data>
   <data name="Site.Title" xml:space="preserve">
     <value>MIM Yönetim Sistemine Hoşgeldiniz</value>
   </data>

@@ -18,10 +18,9 @@ namespace MIM
     {
         public static User current_user;
         public static Organization current_organization;
-        public static string language = "en";
+        public static string language = "tr";
         protected void Application_Start()
         {
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("tr");
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

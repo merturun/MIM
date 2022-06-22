@@ -1,9 +1,9 @@
 ﻿@model MIM.Models.User
 
-<div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
+<div id="kt_quick_user" class="offcanvas offcanvas-right p-10" style="height: 500px;">
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
         <h3 class="font-weight-bold m-0">
-            User Profile <small class="text-muted font-size-sm ml-2">12 messages</small>
+            @LanguageHelper.GetString("QuickUser.Title") <small style="display: none;"class="text-muted font-size-sm ml-2">12 messages</small>
         </h3>
         <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
             <i class="ki ki-close icon-xs text-muted"></i>
@@ -35,7 +35,7 @@
                             <span class="navi-text text-muted text-hover-primary">@Model.email</span>
                         </span>
                     </a>
-                    <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+                    <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">@LanguageHelper.GetString("QuickUser.SignOut")</a>
                 </div>
             </div>
         </div>
@@ -57,9 +57,9 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Profile</div>
+                        <div class="font-weight-bold">@LanguageHelper.GetString("QuickUser.MyProfile")</div>
                         <div class="text-muted">
-                            Account settings and more <span class="label label-light-danger label-inline font-weight-bold">update</span>
+                            @LanguageHelper.GetString("QuickUser.MyProfile.desc") <span class="label label-light-danger label-inline font-weight-bold">@LanguageHelper.GetString("QuickUser.UpdateProfile")</span>
                         </div>
                     </div>
                 </div>
@@ -82,8 +82,8 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Messages</div>
-                        <div class="text-muted">Inbox and tasks</div>
+                        <div class="font-weight-bold">@LanguageHelper.GetString("QuickUser.MyMessage")</div>
+                        <div class="text-muted">@LanguageHelper.GetString("QuickUser.MyMessage.desc")</div>
                     </div>
                 </div>
             </a>
@@ -103,8 +103,8 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Activities</div>
-                        <div class="text-muted">Logs and notifications</div>
+                        <div class="font-weight-bold">@LanguageHelper.GetString("QuickUser.MyActivity")</div>
+                        <div class="text-muted">@LanguageHelper.GetString("QuickUser.MyActivity.desc")</div>
                     </div>
                 </div>
             </a>
@@ -124,14 +124,14 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Tasks</div>
-                        <div class="text-muted">latest tasks and projects</div>
+                        <div class="font-weight-bold">@LanguageHelper.GetString("QuickUser.MyTask")</div>
+                        <div class="text-muted">@LanguageHelper.GetString("QuickUser.MyTask.desc")</div>
                     </div>
                 </div>
             </a>
         </div>
         <div class="separator separator-dashed my-7"></div>
-        <div>
+        <div style="display: none;">
             <h5 class="mb-5">Recent Notifications</h5>
             <div class="d-flex align-items-center bg-light-warning rounded p-5 gutter-b">
                 <span class="svg-icon svg-icon-warning mr-5">

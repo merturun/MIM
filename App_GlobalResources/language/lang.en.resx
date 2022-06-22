@@ -135,6 +135,42 @@
   <data name="Login.Welcome" xml:space="preserve">
     <value>Welcome to MIM Management System</value>
   </data>
+  <data name="NavBar.Hi" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="QuickUser.MyActivity" xml:space="preserve">
+    <value>My Activity</value>
+  </data>
+  <data name="QuickUser.MyActivity.desc" xml:space="preserve">
+    <value>Logs and notifications</value>
+  </data>
+  <data name="QuickUser.MyMessage" xml:space="preserve">
+    <value>My Message</value>
+  </data>
+  <data name="QuickUser.MyMessage.desc" xml:space="preserve">
+    <value>Inbox and Tasks</value>
+  </data>
+  <data name="QuickUser.MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="QuickUser.MyProfile.desc" xml:space="preserve">
+    <value>Account settings and more</value>
+  </data>
+  <data name="QuickUser.MyTask" xml:space="preserve">
+    <value>My Task</value>
+  </data>
+  <data name="QuickUser.MyTask.desc" xml:space="preserve">
+    <value>Latest tasks and projects</value>
+  </data>
+  <data name="QuickUser.SignOut" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="QuickUser.Title" xml:space="preserve">
+    <value>User Profile</value>
+  </data>
+  <data name="QuickUser.UpdateProfile" xml:space="preserve">
+    <value>Update</value>
+  </data>
   <data name="Site.Title" xml:space="preserve">
     <value>MIM Management System</value>
   </data>

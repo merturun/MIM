@@ -115,6 +115,114 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merhaba.
+        /// </summary>
+        internal static string NavBar_Hi {
+            get {
+                return ResourceManager.GetString("NavBar.Hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aktivitelerim.
+        /// </summary>
+        internal static string QuickUser_MyActivity {
+            get {
+                return ResourceManager.GetString("QuickUser.MyActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loglar ve Bildirimler.
+        /// </summary>
+        internal static string QuickUser_MyActivity_desc {
+            get {
+                return ResourceManager.GetString("QuickUser.MyActivity.desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mesajlarım.
+        /// </summary>
+        internal static string QuickUser_MyMessage {
+            get {
+                return ResourceManager.GetString("QuickUser.MyMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gelen Kutusu ve Görevler.
+        /// </summary>
+        internal static string QuickUser_MyMessage_desc {
+            get {
+                return ResourceManager.GetString("QuickUser.MyMessage.desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profilim.
+        /// </summary>
+        internal static string QuickUser_MyProfile {
+            get {
+                return ResourceManager.GetString("QuickUser.MyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hesap Ayarları ve fazlası.
+        /// </summary>
+        internal static string QuickUser_MyProfile_desc {
+            get {
+                return ResourceManager.GetString("QuickUser.MyProfile.desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Görevlerim.
+        /// </summary>
+        internal static string QuickUser_MyTask {
+            get {
+                return ResourceManager.GetString("QuickUser.MyTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Son Görevlerim ve Projelerim.
+        /// </summary>
+        internal static string QuickUser_MyTask_desc {
+            get {
+                return ResourceManager.GetString("QuickUser.MyTask.desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Çıkış Yap.
+        /// </summary>
+        internal static string QuickUser_SignOut {
+            get {
+                return ResourceManager.GetString("QuickUser.SignOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Profili.
+        /// </summary>
+        internal static string QuickUser_Title {
+            get {
+                return ResourceManager.GetString("QuickUser.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Güncelle.
+        /// </summary>
+        internal static string QuickUser_UpdateProfile {
+            get {
+                return ResourceManager.GetString("QuickUser.UpdateProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MIM Yönetim Sistemine Hoşgeldiniz.
         /// </summary>
         internal static string Site_Title {
