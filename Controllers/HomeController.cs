@@ -60,6 +60,18 @@ namespace MIM.Controllers
             return PartialView("LanguageChanger",languages);
         }
 
+        public JavaScriptResult TestDeneme()
+        {
+            return JavaScript("window.alert('testdeneme')");
+        }
+
+        public JavaScriptResult ModalCreator(string size,string controller, string action,bool isSub)
+        {
+            string js;
+            js = "";
+            return null;
+        }
+
         [HttpPost]
         public ActionResult Login(User user)
         {
@@ -67,6 +79,7 @@ namespace MIM.Controllers
             if (UserInDb != null)
             {
                 MvcApplication.current_user = UserInDb;
+                MvcApplication.current_organization = UserInDb.organization;
                 return RedirectToAction("Index", "Home");
             }
             else

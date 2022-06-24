@@ -18,6 +18,7 @@
     <link href="~/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+    <script src="~/assets/js/jquery-3.6.0.js"></script>
     <link rel="shortcut icon" href="~/~/assets/media/logos/favicon.ico" />
     <script>
         function cl(language) {
@@ -25,10 +26,16 @@
                 url: "/Home/ChangeLanguage?language=" + language,
                 type: 'get',
                 success: function (data) {
-                    document.location.reload(); 
+                    document.location.reload();
                 }
             });
         };
+
+        //$(document).ready(function () {
+         //   $("button").click(function () {
+         //       $.getScript("/Home/TestDeneme");
+         //   });
+        //});
     </script>
 </head>
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable aside-minimize page-loading">
@@ -4372,7 +4379,7 @@
                                 </div>
                             </div>
                             @{
-                                Html.RenderAction("LanguageChanger","Home");
+                                Html.RenderAction("LanguageChanger", "Home");
                             }
                             <div class="topbar-item">
                                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
@@ -4485,15 +4492,53 @@
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modal title</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div><div class="container"></div>
+                                    <div class="modal-body">
+                                              <!--Modal content-->
+                                          </div>
+                                    <div class="modal-footer">
+                                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                                    <a href="#" class="btn btn-primary">Save changes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal" id="myModal2" data-backdrop="static">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content bg-gray-300">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modal title</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div><div class="container"></div>
+                                      <div class="modal-body">
+                                          <!--Modal content-->
+                                      </div>
+                                    <div class="modal-footer">
+                                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                                    <a href="#" class="btn btn-primary">Save changes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Launch demo modal
+                    </button>
+
                     @RenderBody()
-                </div>                
+                </div>
             </div>
         </div>
     </div>
     @{
         Html.RenderAction("QuickUser", "Home");
-}
+    }
     <div id="kt_quick_cart" class="offcanvas offcanvas-right p-10">
         <div class="offcanvas-header d-flex align-items-center justify-content-between pb-7">
             <h4 class="font-weight-bold m-0">Shopping Cart</h4>
@@ -5677,5 +5722,6 @@
     <script src="~/assets/js/scripts.bundle.js"></script>
     <script src="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
     <script src="~/assets/js/pages/widgets.js"></script>
+    <script src="~/assets/js/pages/crud/ktdatatable/advanced/modal.js"></script>
 </body>
 </html>

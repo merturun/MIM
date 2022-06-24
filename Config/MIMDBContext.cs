@@ -25,5 +25,7 @@ public class MIMDBContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
     }
-}
+
+        public System.Data.Entity.DbSet<MIM.Models.Grant> Grants { get; set; }
+    }
 }

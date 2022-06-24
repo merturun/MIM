@@ -120,6 +120,15 @@
   <data name="About.Desc" xml:space="preserve">
     <value>Hakkımızda</value>
   </data>
+  <data name="Crud.Create" xml:space="preserve">
+    <value>Oluştur</value>
+  </data>
+  <data name="Crud.Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="Crud.Edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
   <data name="en" xml:space="preserve">
     <value>İngilizce</value>
   </data>
