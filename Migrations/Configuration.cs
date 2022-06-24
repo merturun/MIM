@@ -11,7 +11,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(MIMDBContext context)
@@ -62,7 +62,7 @@
                 title = title,
                 password = "test",
                 email = "???",
-                bornDate = new DateTime(1998,6,2), // Hatırlayamadım, güncelle mertcan
+                bornDate = new DateTime(1998,6, 14),
                 isActive = true,
                 superAdmin = true
             };
@@ -77,8 +77,8 @@
                 username = "vdemented",
                 title = title,
                 password = "test",
-                email = "???",
-                bornDate = new DateTime(1992, 6, 2), // Hatırlayamadım, güncelle ismail
+                email = "ismailgulac@gmail.com",
+                bornDate = new DateTime(1992, 3, 24),
                 isActive = true,
                 superAdmin = true
             };

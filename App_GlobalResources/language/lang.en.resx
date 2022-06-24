@@ -177,4 +177,37 @@
   <data name="tr" xml:space="preserve">
     <value>Turkish</value>
   </data>
+  <data name="User.BornDate" xml:space="preserve">
+    <value>Born Date</value>
+  </data>
+  <data name="User.Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="User.Firstname" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="User.isActive" xml:space="preserve">
+    <value>Account is Active?</value>
+  </data>
+  <data name="User.Lastname" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="User.Nickname" xml:space="preserve">
+    <value>Nickname</value>
+  </data>
+  <data name="User.OrganizationID" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="User.Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="User.SuperAdmin" xml:space="preserve">
+    <value>Account is Super Admin?</value>
+  </data>
+  <data name="User.TitleID" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="User.Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
 </root>

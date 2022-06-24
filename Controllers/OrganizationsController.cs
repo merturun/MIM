@@ -114,7 +114,7 @@ namespace MIM.Controllers
             Organization organization = await db.Organizations.FindAsync(id);
             db.Organizations.Remove(organization);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         protected override void Dispose(bool disposing)

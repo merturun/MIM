@@ -186,4 +186,37 @@
   <data name="tr" xml:space="preserve">
     <value>Türkçe</value>
   </data>
+  <data name="User.BornDate" xml:space="preserve">
+    <value>Doğum Tarihi</value>
+  </data>
+  <data name="User.Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="User.Firstname" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="User.isActive" xml:space="preserve">
+    <value>Hesabı Aktifleştir?</value>
+  </data>
+  <data name="User.Lastname" xml:space="preserve">
+    <value>Soyad</value>
+  </data>
+  <data name="User.Nickname" xml:space="preserve">
+    <value>Takma Adı</value>
+  </data>
+  <data name="User.OrganizationID" xml:space="preserve">
+    <value>Kurum</value>
+  </data>
+  <data name="User.Password" xml:space="preserve">
+    <value>Parola</value>
+  </data>
+  <data name="User.SuperAdmin" xml:space="preserve">
+    <value>Sistem Yöneticisi?</value>
+  </data>
+  <data name="User.TitleID" xml:space="preserve">
+    <value>Ünvan</value>
+  </data>
+  <data name="User.Username" xml:space="preserve">
+    <value>Kullanıcı Adı</value>
+  </data>
 </root>

@@ -31,14 +31,16 @@
             });
         };
 
-        //$(document).ready(function () {
-         //   $("button").click(function () {
-         //       $.getScript("/Home/TestDeneme");
-         //   });
-        //});
+        function TestDeneme() {
+            $.getScript("/Home/TestDeneme")
+        }
+        $(document).ready(function () {
+            $("button").click(;
+            });
+        });
     </script>
 </head>
-<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable aside-minimize page-loading">
+<body id="kt_body" onload=""class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable aside-minimize page-loading">
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <a href="">
             <img alt="Logo" src="~/assets/media/logos/logo-light.png" />
@@ -4493,7 +4495,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal" id="myModal">
+                    <div class="modal" id="crud-modal">
                         <div class="modal-dialog modal-dialog-centered modal-xl">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -4510,7 +4512,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal" id="myModal2" data-backdrop="static">
+                    <div class="modal" id="sub-crud-modal" data-backdrop="static">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content bg-gray-300">
                                 <div class="modal-header">
@@ -4527,10 +4529,6 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                        Launch demo modal
-                    </button>
-
                     @RenderBody()
                 </div>
             </div>
