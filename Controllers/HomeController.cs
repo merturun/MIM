@@ -35,10 +35,7 @@ namespace MIM.Controllers
             return View();
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
+
 
         public void ChangeLanguage(string language)
         {
@@ -58,18 +55,19 @@ namespace MIM.Controllers
         {
             string[] languages = new string[2] { "tr", "en" };
             return PartialView("LanguageChanger",languages);
-        }
-
-        public JavaScriptResult TestDeneme()
-        {
-            return JavaScript("window.alert('testdeneme')");
-        }
+        }    
 
         public JavaScriptResult ModalCreator(string size,string controller, string action,bool isSub)
         {
             string js;
             js = "";
             return null;
+        }
+
+        #region "Login Methods"
+        public ActionResult Login()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -88,5 +86,7 @@ namespace MIM.Controllers
                 return View();
             }
         }
+
+        #endregion "Login Methods"
     }
 }

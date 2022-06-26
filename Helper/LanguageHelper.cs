@@ -16,5 +16,11 @@ namespace MIM.Helper
             Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(MvcApplication.language);
             return (Resources.lang.ResourceManager.GetString(key) == null) ? "String Key Not Found" : Resources.lang.ResourceManager.GetString(key);
         }
+
+        public static string GetStringForModal(string key)
+        {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(MvcApplication.language);
+            return (Resources.lang.ResourceManager.GetString(key) == null) ? "String Key Not Found:" : Resources.lang.ResourceManager.GetString(key) + ":";
+        }
     }
 }

@@ -30,17 +30,9 @@
                 }
             });
         };
-
-        function TestDeneme() {
-            $.getScript("/Home/TestDeneme")
-        }
-        $(document).ready(function () {
-            $("button").click(;
-            });
-        });
     </script>
 </head>
-<body id="kt_body" onload=""class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable aside-minimize page-loading">
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable aside-minimize page-loading">
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <a href="">
             <img alt="Logo" src="~/assets/media/logos/logo-light.png" />
@@ -4495,34 +4487,35 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal" id="crud-modal">
+                    <div id="modal-area"></div>
+                    <div class="modal" id="modal-window">
                         <div class="modal-dialog modal-dialog-centered modal-xl">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Modal title</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div><div class="container"></div>
-                                    <div class="modal-body">
-                                              <!--Modal content-->
-                                          </div>
-                                    <div class="modal-footer">
+                                </div><div class="container"></div>
+                                <div class="modal-body">
+                                    <!--Modal content-->
+                                </div>
+                                <div class="modal-footer">
                                     <a href="#" data-dismiss="modal" class="btn">Close</a>
                                     <a href="#" class="btn btn-primary">Save changes</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal" id="sub-crud-modal" data-backdrop="static">
+                    <div class="modal" id="modal-window-sub" data-backdrop="static">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content bg-gray-300">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Modal title</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div><div class="container"></div>
-                                      <div class="modal-body">
-                                          <!--Modal content-->
-                                      </div>
-                                    <div class="modal-footer">
+                                </div><div class="container"></div>
+                                <div class="modal-body">
+                                    <!--Modal content-->
+                                </div>
+                                <div class="modal-footer">
                                     <a href="#" data-dismiss="modal" class="btn">Close</a>
                                     <a href="#" class="btn btn-primary">Save changes</a>
                                 </div>
@@ -5721,5 +5714,6 @@
     <script src="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
     <script src="~/assets/js/pages/widgets.js"></script>
     <script src="~/assets/js/pages/crud/ktdatatable/advanced/modal.js"></script>
+    <script src="~/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js"></script>
 </body>
 </html>

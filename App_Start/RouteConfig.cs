@@ -13,11 +13,23 @@ namespace MIM
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "UserModal",
+            //    url: "Users/{action}/{type}/{id}",
+            //    defaults: new { controller = "Users", action = "Modal", type = UrlParameter.Optional, id = UrlParameter.Optional }
+            //    );
+
+            //routes.MapRoute(
+            //    name: "User",
+            //    url: "users",
+            //    defaults: new { controller = "Users", action = "Index" }
+            //    );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                );            
         }
     }
 }

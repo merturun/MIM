@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Seçiniz.
+        /// </summary>
+        internal static string Dropdown_First {
+            get {
+                return ResourceManager.GetString("Dropdown.First", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İngilizce.
         /// </summary>
         internal static string en {
@@ -111,6 +120,24 @@ namespace Resources {
         internal static string Login_Welcome {
             get {
                 return ResourceManager.GetString("Login.Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı.
+        /// </summary>
+        internal static string Model_User {
+            get {
+                return ResourceManager.GetString("Model.User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcılar.
+        /// </summary>
+        internal static string Model_Users {
+            get {
+                return ResourceManager.GetString("Model.Users", resourceCulture);
             }
         }
         
@@ -232,11 +259,164 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Temizle.
+        /// </summary>
+        internal static string Table_SearchBar_Clear {
+            get {
+                return ResourceManager.GetString("Table.SearchBar.Clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ara.
+        /// </summary>
+        internal static string Table_SearchBar_Search {
+            get {
+                return ResourceManager.GetString("Table.SearchBar.Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Türkçe.
         /// </summary>
         internal static string tr {
             get {
                 return ResourceManager.GetString("tr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yeni Kullanıcı Ekle.
+        /// </summary>
+        internal static string User_AddNew {
+            get {
+                return ResourceManager.GetString("User.AddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doğum Tarihi.
+        /// </summary>
+        internal static string User_BornDate {
+            get {
+                return ResourceManager.GetString("User.BornDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail.
+        /// </summary>
+        internal static string User_Email {
+            get {
+                return ResourceManager.GetString("User.Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ad.
+        /// </summary>
+        internal static string User_Firstname {
+            get {
+                return ResourceManager.GetString("User.Firstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hesabı Aktifleştir?.
+        /// </summary>
+        internal static string User_isActive {
+            get {
+                return ResourceManager.GetString("User.isActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soyad.
+        /// </summary>
+        internal static string User_Lastname {
+            get {
+                return ResourceManager.GetString("User.Lastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Ekle.
+        /// </summary>
+        internal static string User_ModalTitle_Add {
+            get {
+                return ResourceManager.GetString("User.ModalTitle.Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Düzenle.
+        /// </summary>
+        internal static string User_ModalTitle_Edit {
+            get {
+                return ResourceManager.GetString("User.ModalTitle.Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Detayları.
+        /// </summary>
+        internal static string User_ModalTitle_Show {
+            get {
+                return ResourceManager.GetString("User.ModalTitle.Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Takma Adı.
+        /// </summary>
+        internal static string User_Nickname {
+            get {
+                return ResourceManager.GetString("User.Nickname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kurum.
+        /// </summary>
+        internal static string User_OrganizationID {
+            get {
+                return ResourceManager.GetString("User.OrganizationID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parola.
+        /// </summary>
+        internal static string User_Password {
+            get {
+                return ResourceManager.GetString("User.Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sistem Yöneticisi?.
+        /// </summary>
+        internal static string User_SuperAdmin {
+            get {
+                return ResourceManager.GetString("User.SuperAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvan.
+        /// </summary>
+        internal static string User_TitleID {
+            get {
+                return ResourceManager.GetString("User.TitleID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Adı.
+        /// </summary>
+        internal static string User_Username {
+            get {
+                return ResourceManager.GetString("User.Username", resourceCulture);
             }
         }
     }

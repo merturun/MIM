@@ -16,14 +16,31 @@ namespace MIM.Controllers
     {
         private MIMDBContext db = new MIMDBContext();
 
-        // GET: Users
-        public async Task<ActionResult> List()
+        // GET: /Users
+        public async Task<ActionResult> Index()
+        {            
+            var users = db.Users.Include(u => u.organization).Include(u => u.title);
+            IEnumerable<User> asd = db.Users;
+            return View(await users.ToListAsync());
+        }
+
+
+        // GET: /Users/Table
+        public async Task<ActionResult> Table()
         {
             var users = db.Users.Include(u => u.organization).Include(u => u.title);
             return View(await users.ToListAsync());
         }
 
-        // GET: Users/Show/5
+        // Users/Modal/
+
+        public ActionResult Modal(string type,int id = 0)
+        {
+            return PartialView("Modal");
+        }
+
+
+        // GET: /Users/Show/5
         public async Task<ActionResult> Show(int? id)
         {
             if (id == null)
@@ -38,17 +55,13 @@ namespace MIM.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
+        // GET: /Users/Create
         public ActionResult Create()
         {
             ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name");
             ViewBag.titleID = new SelectList(db.Titles, "titleID", "name");
             return View();
         }
-
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -58,12 +71,12 @@ namespace MIM.Controllers
             {
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
-                return RedirectToAction("List");
+                return RedirectToAction("Index");
             }
 
             ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", user.organizationID);
             ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
-            return View(user);
+            return JavaScript("console.log('create back')");
         }
 
         // GET: Users/Edit/5
@@ -88,7 +101,7 @@ namespace MIM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "userID,organizationID,titleID,firstname,lastname,nickname,username,password,email,isActive,bornDate,superAdmin")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "userID,organizationID,titleID,firstname,lastname,nickname,username,password,email,isactive,borndate,superAdmin")] User user)
         {
             if (ModelState.IsValid)
             {

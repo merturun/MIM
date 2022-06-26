@@ -31,6 +31,6 @@ namespace MIM.Models
         public bool superAdmin { get; set; }
         public virtual ICollection<Group> groups { get; set; }
 
-        public string FullName { get { return firstname + " " + lastname; } }
+        public string fullname { get { return firstname + " " + lastname; } }
     }
 }

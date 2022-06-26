@@ -135,8 +135,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DepartmentsController.cs" />
-    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\TitlesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -165,10 +163,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\202206201419119_MIMDB.cs" />
-    <Compile Include="Migrations\202206201419119_MIMDB.designer.cs">
-      <DependentUpon>202206201419119_MIMDB.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Grant.cs" />
@@ -1897,8 +1891,8 @@
     <Content Include="assets\plugins\custom\jstree\jstree.bundle.css" />
     <Content Include="assets\plugins\custom\jstree\jstree.bundle.js" />
     <Content Include="assets\plugins\custom\jstree\throbber.gif" />
-    <Content Include="assets\plugins\custom\kanban\kanban.bundle.css" />
-    <Content Include="assets\plugins\custom\kanban\kanban.bundle.js" />
+    <Content Include="assets\plugins\custom\gmaps\kanban\kanban.bundle.css" />
+    <Content Include="assets\plugins\custom\gmaps\kanban\kanban.bundle.js" />
     <Content Include="assets\plugins\custom\leaflet\leaflet.bundle.css" />
     <Content Include="assets\plugins\custom\leaflet\leaflet.bundle.js" />
     <Content Include="assets\plugins\custom\prismjs\prismjs.bundle.css" />
@@ -2092,9 +2086,23 @@
     <Content Include="assets\plugins\global\fonts\socicon\socicon.svg" />
     <Content Include="assets\plugins\global\plugins.bundle.css" />
     <Content Include="assets\plugins\global\plugins.bundle.js" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-reboot.rtl.min.css" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-utilities.css" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-utilities.min.css" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-utilities.rtl.css" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-utilities.rtl.min.css" />
+    <Content Include="assets\plugins\bootstrap\bootstrap.css" />
+    <Content Include="assets\plugins\bootstrap\bootstrap.min.css" />
+    <Content Include="assets\plugins\bootstrap\bootstrap.rtl.css" />
+    <Content Include="assets\plugins\bootstrap\bootstrap.rtl.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2106,18 +2114,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\plugins\global\fonts\%40fortawesome\fa-brands-400.eot" />
     <Content Include="assets\plugins\global\fonts\%40fortawesome\fa-brands-400.ttf" />
     <Content Include="assets\plugins\global\fonts\%40fortawesome\fa-brands-400.woff" />
@@ -2162,35 +2163,25 @@
     <Content Include="assets\plugins\global\fonts\summernote\summernote.woff2" />
     <Content Include="assets\plugins\global\summernote-bs4.js.map" />
     <Content Include="Mvc.sitemap" />
+    <Content Include="assets\plugins\bootstrap\bootstrap.rtl.min.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap.rtl.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap.min.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-utilities.rtl.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-utilities.min.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-utilities.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="assets\plugins\bootstrap\bootstrap-reboot.rtl.css.map" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Shared\Dashboard.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\QuickUser.cshtml" />
-    <Content Include="Views\Home\LanguageChanger.cshtml" />
-    <Content Include="Views\Organizations\Create.cshtml" />
-    <Content Include="Views\Organizations\Delete.cshtml" />
-    <Content Include="Views\Organizations\Show.cshtml" />
-    <Content Include="Views\Organizations\Edit.cshtml" />
-    <Content Include="Views\Organizations\List.cshtml" />
-    <Content Include="Views\Departments\Create.cshtml" />
-    <Content Include="Views\Departments\Delete.cshtml" />
-    <Content Include="Views\Departments\Show.cshtml" />
-    <Content Include="Views\Departments\Edit.cshtml" />
-    <Content Include="Views\Departments\List.cshtml" />
-    <Content Include="Views\Titles\Create.cshtml" />
-    <Content Include="Views\Titles\Delete.cshtml" />
-    <Content Include="Views\Titles\Show.cshtml" />
-    <Content Include="Views\Titles\Edit.cshtml" />
-    <Content Include="Views\Titles\List.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Show.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\List.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
@@ -2199,12 +2190,25 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
-    <Content Include="Views\Groups\Create.cshtml" />
-    <Content Include="Views\Groups\Delete.cshtml" />
-    <Content Include="Views\Groups\Show.cshtml" />
-    <Content Include="Views\Groups\Edit.cshtml" />
-    <Content Include="Views\Groups\List.cshtml" />
+    <Content Include="Views\Users\Modal.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Header.cshtml" />
+    <Content Include="Views\Users\Table.cshtml" />
+    <Content Include="Views\Users\List.cshtml" />
+    <Content Include="Views\Home\QuickUser.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\LanguageChanger.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ModalCreator.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\language\lang.en.resx">
@@ -2222,11 +2226,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202206201419119_MIMDB.resx">
-      <DependentUpon>202206201419119_MIMDB.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

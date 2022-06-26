@@ -1,0 +1,10 @@
+﻿<script type="text/javascript">
+    $.ajax({
+        url: "create",
+        type: 'get',
+        success: function (data) {
+            console.log("data geldi kardeş")
+            $('#user-crud-modal').modal('show');
+        }        
+    });
+</script>

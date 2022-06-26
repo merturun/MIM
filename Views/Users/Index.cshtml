@@ -1,0 +1,70 @@
+﻿@{
+    Html.RenderPartial("Header");
+}
+
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="card card-custom card-stretch gutter-b">
+
+            <div class="card-header border-0 py-5">
+                <h3 class="card-title align-items-start flex-column">
+
+                    <span class="text-muted mt-3 font-weight-bold font-size-sm">
+
+                    </span>
+                </h3>
+                <div class="card-toolbar">
+
+                </div>
+            </div>
+
+            <div class="card-body pt-0 pb-3">
+                <div class="tab-content">
+                    <div id="dt-users_table">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function CreateModal() {
+        $.ajax({
+            url: '/Users/Create',
+            method: 'GET',
+            success: function (data) {
+                console.log("test")
+                $("#modal-area").html(data)
+                $("#user-modal").modal('show');
+            },
+        });
+    }
+    function EditModal(user_id) {
+        $.ajax({
+            url: '/Users/Edit',
+            data: { id: user_id },
+            method: 'GET',
+            success: function (data) {
+                $("#modal-area").html(data)
+                $("#user-modal").modal('show');
+            },
+        });
+    }
+    function ShowModal(user_id) {
+        $.ajax({
+            url: '/Users/Show',
+            data: { id: user_id },
+            method: 'GET',
+            success: function (data) {
+                $("#modal-area").html(data)
+                $("#user-modal").modal('show');
+            },
+        });
+    }
+</script>
+
+@{
+    Html.RenderPartial("List");    
+}

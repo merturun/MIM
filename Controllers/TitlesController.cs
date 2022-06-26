@@ -12,17 +12,17 @@ using MIM.Models;
 
 namespace MIM.Controllers
 {
-    public class TitlesController : Controller
+    public class titlesController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
 
-        // GET: Titles
+        // GET: titles
         public async Task<ActionResult> List()
         {
             return View(await db.Titles.ToListAsync());
         }
 
-        // GET: Titles/Details/5
+        // GET: titles/Details/5
         public async Task<ActionResult> Show(int? id)
         {
             if (id == null)
@@ -37,13 +37,13 @@ namespace MIM.Controllers
             return View(title);
         }
 
-        // GET: Titles/Create
+        // GET: titles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Titles/Create
+        // POST: titles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -60,7 +60,7 @@ namespace MIM.Controllers
             return View(title);
         }
 
-        // GET: Titles/Edit/5
+        // GET: titles/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,7 +75,7 @@ namespace MIM.Controllers
             return View(title);
         }
 
-        // POST: Titles/Edit/5
+        // POST: titles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -91,7 +91,7 @@ namespace MIM.Controllers
             return View(title);
         }
 
-        // GET: Titles/Delete/5
+        // GET: titles/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -106,7 +106,7 @@ namespace MIM.Controllers
             return View(title);
         }
 
-        // POST: Titles/Delete/5
+        // POST: titles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
