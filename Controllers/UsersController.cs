@@ -16,6 +16,13 @@ namespace MIM.Controllers
     {
         private MIMDBContext db = new MIMDBContext();
 
+        public ActionResult TestDeneme()
+        {
+            ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name");
+            ViewBag.titleID = new SelectList(db.Titles, "titleID", "name");
+            return View();
+        }
+
         // GET: /Users
         public async Task<ActionResult> Index()
         {            
@@ -31,14 +38,6 @@ namespace MIM.Controllers
             var users = db.Users.Include(u => u.organization).Include(u => u.title);
             return View(await users.ToListAsync());
         }
-
-        // Users/Modal/
-
-        public ActionResult Modal(string type,int id = 0)
-        {
-            return PartialView("Modal");
-        }
-
 
         // GET: /Users/Show/5
         public async Task<ActionResult> Show(int? id)
@@ -76,7 +75,7 @@ namespace MIM.Controllers
 
             ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", user.organizationID);
             ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
-            return JavaScript("console.log('create back')");
+            return View(user);
         }
 
         // GET: Users/Edit/5

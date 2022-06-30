@@ -11,7 +11,6 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-
 namespace MIM.Controllers
 {
     public class HomeController : Controller
@@ -55,7 +54,13 @@ namespace MIM.Controllers
         {
             string[] languages = new string[2] { "tr", "en" };
             return PartialView("LanguageChanger",languages);
-        }    
+        }
+
+        [ChildActionOnly]
+        public ActionResult Aside()
+        {
+            return PartialView("Aside");
+        }
 
         public JavaScriptResult ModalCreator(string size,string controller, string action,bool isSub)
         {

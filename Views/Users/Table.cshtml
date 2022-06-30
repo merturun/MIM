@@ -49,7 +49,7 @@
                 @foreach (var item in Model)
                 {
                     <tr class="text-center">
-                        <td>
+                        <td onclick="EditModal(' @Html.DisplayFor(modelItem => item.userID) ')">
                             @Html.DisplayFor(modelItem => item.userID)
                         </td>
                         <td>
@@ -65,10 +65,10 @@
                             @Html.DisplayFor(modelItem => item.lastname)
                         </td>
                         <td style="width: 15%">
-                            <a href="" onclick="ShowModal()" class="btn btn-outline-secondary btn-icon" title="Göster">
+                            <a onclick="ShowModal( @Html.DisplayFor(modelItem => item.userID) )" class="btn btn-outline-secondary btn-icon" title="Göster">
                                 <span><i class="flaticon2-expand"></i></span>
                             </a>
-                            <a href="" onclick="EditModal(@Html.DisplayFor(modelItem => item.userID))" data-remote="true" data-toggle="modal" data-target="#modal-window#{modal}" class="btn btn-outline-secondary btn-icon" title="Düzenle">
+                            <a href="" onclick="EditModal( @Html.DisplayFor(modelItem => item.userID) )" data-remote="true" data-toggle="modal" data-target="#modal-window#{modal}" class="btn btn-outline-secondary btn-icon" title="Düzenle">
                                 <i class="flaticon2-edit"></i>
                             </a>
                             <a href="" data-url="#{path}" class="btn btn-outline-secondary btn-icon delRow" title="Sil">

@@ -11,7 +11,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div><div class="container"></div>
                   <div class="modal-body">
-                      @using (Html.BeginForm())
+                      @using (Html.BeginForm("Create", "Users", FormMethod.Post, new { id = "usercreate" }))
                       {
                           @Html.AntiForgeryToken()
 
@@ -75,13 +75,14 @@
                               <div class="col-lg-4 col-md-9 col-sm-12">
                                   <div class="input-group date">
                                       @Html.EditorFor(model => model.bornDate, new { htmlAttributes = new { type = "text", @class = "form-control" } })
-                                      @Html.ValidationMessageFor(model => model.bornDate, "", new { @class = "text-danger" })
                                       <div class="input-group-append">
                                           <span class="input-group-text">
                                               <i class="la la-calendar"></i>
                                           </span>
                                       </div>
                                   </div>
+                                      @Html.ValidationMessageFor(model => model.bornDate, "", new { @class = "text-danger" })
+                                  
                               </div>
                           </div>
                           <div class="form-group row">
@@ -104,9 +105,9 @@
                                   </div>
                               </div>
                           </div>
-                          
+
                           <div class="modal-footer">
-                              <input class="btn btn-primary" type="submit" value="Ekle" />
+                              <input class="btn btn-primary" type="submit" value="Ekle" />  
                           </div>
                       }
                   </div>
@@ -122,8 +123,46 @@
         $('#bornDate, #kt_datepicker_3_validate').datepicker({
             rtl: KTUtil.isRTL(),
             todayBtn: "linked",
+            format: 'dd/mm/yyyy',
             clearBtn: true,
             todayHighlight: true,
             templates: arrows
+        });
+
+        $("#usercreate").submit(function (event) {
+
+         console.log("Override method for User Create modal submit button")
+
+         event.preventDefault();
+         $("#user-modal").modal('hide');
+         var $form = $(this),
+             url = $form.attr('action');
+
+         var posting = $.post(url, {
+             organizationID: $('#organizationID').val(),
+             titleID: $('#titleID').val(),
+             firstname: $('#firstname').val(),
+             lastname: $('#lastname').val(),
+             nickname: $('#nickname').val(),
+             username: $('#username').val(),
+             password: $('#password').val(),
+             bornDate: $('#bornDate').val(),
+             isActive: $('#isActive').val(),
+             SuperAdmin: $('#SuperAdmin').val(),
+             titleID: $('#titleID').val(),
+             titleID: $('#titleID').val(),
+             __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
+
+         });
+
+         posting.done(function (data) {
+
+             $('#modal-area').html(data);
+             $("#user-modal").modal('show');
+         });
+
+         posting.fail(function () {
+             $('#result').text('failed');
+         });
         });
 </script>

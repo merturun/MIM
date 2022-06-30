@@ -52,6 +52,7 @@ var KTBootstrapDatepicker = function () {
         // enable clear button 
         $('#kt_datepicker_3, #kt_datepicker_3_validate').datepicker({
             rtl: KTUtil.isRTL(),
+            format: 'dd/mm/yyyy',
             todayBtn: "linked",
             clearBtn: true,
             todayHighlight: true,

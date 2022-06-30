@@ -163,6 +163,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\LanguageHelper.cs" />
+    <Compile Include="Migrations\202206240820092_okul_vt.cs" />
+    <Compile Include="Migrations\202206240820092_okul_vt.Designer.cs">
+      <DependentUpon>202206240820092_okul_vt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206240843337_okul_vt2.cs" />
+    <Compile Include="Migrations\202206240843337_okul_vt2.Designer.cs">
+      <DependentUpon>202206240843337_okul_vt2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Grant.cs" />
@@ -419,6 +427,7 @@
     <Content Include="assets\media\logos\logo-1.png" />
     <Content Include="assets\media\logos\logo-4.png" />
     <Content Include="assets\media\logos\logo-dark.png" />
+    <Content Include="assets\media\logos\logo-dark2.png" />
     <Content Include="assets\media\logos\logo-default-inverse.png" />
     <Content Include="assets\media\logos\logo-default.png" />
     <Content Include="assets\media\logos\logo-letter-1.png" />
@@ -435,6 +444,7 @@
     <Content Include="assets\media\logos\logo-letter-8.png" />
     <Content Include="assets\media\logos\logo-letter-9.png" />
     <Content Include="assets\media\logos\logo-light.png" />
+    <Content Include="assets\media\logos\logo-light2.png" />
     <Content Include="assets\media\logos\logo.png" />
     <Content Include="assets\media\logos\stars.png" />
     <Content Include="assets\media\misc\bg-1.jpg" />
@@ -2209,6 +2219,8 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Views\Users\TestDeneme.cshtml" />
+    <Content Include="Views\Home\Aside.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\language\lang.en.resx">
@@ -2226,6 +2238,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202206240820092_okul_vt.resx">
+      <DependentUpon>202206240820092_okul_vt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206240843337_okul_vt2.resx">
+      <DependentUpon>202206240843337_okul_vt2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

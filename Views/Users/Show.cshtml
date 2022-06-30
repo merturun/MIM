@@ -1,108 +1,107 @@
 ﻿@model MIM.Models.User
-
 @{
-    ViewBag.Title = "Details";
-    string modal_size = "-xl"; // "", "-xl"
-
+    Layout = null;
+    string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"   
 }
+<div class="modal" id="user-modal">
+    <div class="modal-dialog modal-dialog-centered @modal_size">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Show")</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div><div class="container"></div>
+                  <div class="modal-body">
+                      <dl class="dl-horizontal">
+                          <dt>
+                              @Html.DisplayNameFor(model => model.organization.name)
+                          </dt>
 
-<h2>Details</h2>
+                          <dd>
+                              @Html.DisplayFor(model => model.organization.name)
+                          </dd>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.organization.name)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.title.name)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.organization.name)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.title.name)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.title.name)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.firstname)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.title.name)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.firstname)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.firstname)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.lastname)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.firstname)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.lastname)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lastname)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.nickname)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.lastname)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.nickname)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nickname)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.username)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.nickname)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.username)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.username)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.password)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.username)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.password)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.password)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.email)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.password)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.email)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.isActive)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.isActive)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.isActive)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.bornDate)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.isActive)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.bornDate)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.bornDate)
-        </dt>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.superAdmin)
+                          </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.bornDate)
-        </dd>
+                          <dd>
+                              @Html.DisplayFor(model => model.superAdmin)
+                          </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.superAdmin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.superAdmin)
-        </dd>
-
-    </dl>
+                      </dl>
+                  </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
-    @Html.ActionLink("Back to List", "List")
-</p>
