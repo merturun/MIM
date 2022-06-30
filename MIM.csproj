@@ -172,6 +172,7 @@
       <DependentUpon>202206240843337_okul_vt2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Seed\GrantSeed.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Grant.cs" />
     <Compile Include="Models\Group.cs" />

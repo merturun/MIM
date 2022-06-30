@@ -6,6 +6,7 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
     using MIM.Config;
+    using MIM.Migrations.Seed;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MIMDBContext>
     {
@@ -98,6 +99,9 @@
             context.Users.Add(user);
 
             base.Seed(context);
+
+            GrantSeed gs = new GrantSeed(context);
+            gs.SeedData();
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿@{
-    Layout = "";
+    Layout = "";    
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@MvcApplication.language">
 
 <head>
     <base href="../../../">
@@ -23,6 +23,17 @@
     <link href="assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <script>
+        function cl(language) {
+            $.ajax({
+                url: "/Home/ChangeLanguage?language=" + language,
+                type: 'get',
+                success: function (data) {
+                    document.location.reload();
+                }
+            });
+        };
+    </script>
 </head>
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 
@@ -49,22 +60,24 @@
                                 <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">@LanguageHelper.GetString("Login.Welcome")</h3>
                             </div>
                             <div class="form-group">
-                                <label class="font-size-h6 font-weight-bolder text-dark">@LanguageHelper.GetString("Login.Username")</label>
-                                <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="text" name="username" />
+                                @Html.Label(@LanguageHelper.GetString("Login.Username"), htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark" })
+                                @Html.TextBox("username", "", htmlAttributes: new { @class = "form-control form-control-solid h-auto py-6 px-6 rounded-lg" })
                             </div>
                             <div class="form-group">
-                                <div class="d-flex justify-content-between mt-n5">
-                                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">@LanguageHelper.GetString("Login.Password")</label>
-                                </div>
-                                <input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" name="password" />
+                                @Html.Label(@LanguageHelper.GetString("Login.Password"), htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark" })
+                                @Html.TextBox("password", "", htmlAttributes: new { @class = "form-control form-control-solid h-auto py-6 px-6 rounded-lg" })
                             </div>
                             <div class="pb-lg-0 pb-5">
                                 <input id="Submit1" type="submit" value="@LanguageHelper.GetString("Login.Login")" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" />
-                            </div>                            
+                            </div>
                         }
+
                     </div>
                 </div>
             </div>
+            @{
+                Html.RenderAction("LanguageChanger", "Home");
+            }
         </div>
     </div>
     <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
