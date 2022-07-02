@@ -8,6 +8,7 @@ namespace MIM.Models
 {
     public class Organization
     {
+        public static Organization current;
         public Organization()
         {
             this.users = new HashSet<User>();

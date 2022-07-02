@@ -1,5 +1,6 @@
 ﻿@{
     Html.RenderPartial("Header");
+    ViewBag.Title = LanguageHelper.GetString("Model.Users");
 }
 <div class="row">
     <div class="col-12">
@@ -41,7 +42,7 @@
     }
     function EditModal(user_id) {
         $.ajax({
-            url: '/Users/Edit',
+            url: '/Users/Edit/' + user_id + '/',
             data: { id: user_id },
             method: 'GET',
             success: function (data) {
@@ -60,8 +61,18 @@
             },
         });
     }
+    function DeleteModal(user_id) {
+        $.ajax({
+            url: '/Users/Delete/' + user_id + '/',
+            method: 'GET',
+            success: function (data) {
+                $("#modal-area").html(data)
+                $("#user-modal").modal('show');
+            },
+        });
+    }
 </script>
 
 @{
-    Html.RenderPartial("List");    
+    Html.RenderPartial("List");
 }

@@ -147,6 +147,24 @@
   <data name="Login.Welcome" xml:space="preserve">
     <value>MIM Yönetim Sistemine Hoşgeldiniz</value>
   </data>
+  <data name="Modal.Button.Add" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
+  <data name="Modal.Button.Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="Modal.Button.Create" xml:space="preserve">
+    <value>Oluştur</value>
+  </data>
+  <data name="Modal.Button.Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="Modal.Button.Edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="Modal.Button.SaveChanges" xml:space="preserve">
+    <value>Değişiklikleri Kaydet</value>
+  </data>
   <data name="Model.User" xml:space="preserve">
     <value>Kullanıcı</value>
   </data>
@@ -225,6 +243,9 @@
   <data name="User.ModalTitle.Add" xml:space="preserve">
     <value>Kullanıcı Ekle</value>
   </data>
+  <data name="User.ModalTitle.Delete" xml:space="preserve">
+    <value>Bu kullanıcıyı silmek istediğinize emin misiniz ?</value>
+  </data>
   <data name="User.ModalTitle.Edit" xml:space="preserve">
     <value>Kullanıcı Düzenle</value>
   </data>
@@ -248,5 +269,23 @@
   </data>
   <data name="User.Username" xml:space="preserve">
     <value>Kullanıcı Adı</value>
+  </data>
+  <data name="User.Validate.Email" xml:space="preserve">
+    <value>E-mail adresi giriniz.</value>
+  </data>
+  <data name="User.Validate.Firstname" xml:space="preserve">
+    <value>Lütfen isim giriniz.</value>
+  </data>
+  <data name="User.Validate.Firstname2" xml:space="preserve">
+    <value>Bir ad en az 3 karakterli olmalıdır.</value>
+  </data>
+  <data name="User.Validate.Lastname" xml:space="preserve">
+    <value>Lütfen soyisim giriniz.</value>
+  </data>
+  <data name="User.Validate.Nickname" xml:space="preserve">
+    <value>Lütfen takma isim giriniz</value>
+  </data>
+  <data name="User.Validate.Username" xml:space="preserve">
+    <value>Lütfen kullanıcı adı giriniz.</value>
   </data>
 </root>

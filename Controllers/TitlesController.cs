@@ -10,15 +10,18 @@ using System.Web.Mvc;
 using MIM.Config;
 using MIM.Models;
 
+
 namespace MIM.Controllers
 {
     public class titlesController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
 
+
         // GET: titles
         public async Task<ActionResult> List()
         {
+            Session["asd"] = "asd";
             return View(await db.Titles.ToListAsync());
         }
 

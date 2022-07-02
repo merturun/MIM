@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MIM.Models.User>
 
 @{
-    Layout = null;
+    Layout = null;    
 }
 <div id="users_list">
     <div class="table-responsive" style="overflow: inherit;">
@@ -68,10 +68,10 @@
                             <a onclick="ShowModal( @Html.DisplayFor(modelItem => item.userID) )" class="btn btn-outline-secondary btn-icon" title="Göster">
                                 <span><i class="flaticon2-expand"></i></span>
                             </a>
-                            <a href="" onclick="EditModal( @Html.DisplayFor(modelItem => item.userID) )" data-remote="true" data-toggle="modal" data-target="#modal-window#{modal}" class="btn btn-outline-secondary btn-icon" title="Düzenle">
+                            <a href="" onclick="EditModal(@Html.DisplayFor(modelItem => item.userID))" data-remote="true" data-toggle="modal" data-target="#modal-window#{modal}" class="btn btn-outline-secondary btn-icon" title="Düzenle">
                                 <i class="flaticon2-edit"></i>
                             </a>
-                            <a href="" data-url="#{path}" class="btn btn-outline-secondary btn-icon delRow" title="Sil">
+                            <a href="" onclick="DeleteModal(@Html.DisplayFor(modelItem => item.userID))" data-remote="true" data-toggle="modal" data-target="#modal-window#{modal}" class="btn btn-outline-secondary btn-icon delRow" title="Sil">
                                 <i class="flaticon2-rubbish-bin"></i>
                             </a>                            
                         </td>

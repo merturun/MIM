@@ -9,19 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using MIM.Config;
 using MIM.Models;
+using FluentValidation.Results;
 
 namespace MIM.Controllers
 {
     public class UsersController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
-
-        public ActionResult TestDeneme()
-        {
-            ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name");
-            ViewBag.titleID = new SelectList(db.Titles, "titleID", "name");
-            return View();
-        }
 
         // GET: /Users
         public async Task<ActionResult> Index()
@@ -66,6 +60,25 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "userID,organizationID,titleID,firstname,lastname,nickname,username,password,email,isActive,bornDate,superAdmin")] User user)
         {
+            //UserValidator uValidator = new UserValidator();
+            //ValidationResult results = uValidator.Validate(user);
+            //if (results.IsValid)
+            //{
+            //    db.Entry(user).State = EntityState.Modified;
+            //    await db.SaveChangesAsync();
+            //    return RedirectToAction("List");
+            //}
+            //else
+            //{
+            //    foreach (var item in results.Errors)
+            //    {
+            //        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            //    }
+            //}
+
+            //ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", user.organizationID);
+            //ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
+            //return View(user);
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);
@@ -96,8 +109,6 @@ namespace MIM.Controllers
         }
 
         // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "userID,organizationID,titleID,firstname,lastname,nickname,username,password,email,isactive,borndate,superAdmin")] User user)
@@ -106,7 +117,7 @@ namespace MIM.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("List");
+                return RedirectToAction("Index");
             }
             ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", user.organizationID);
             ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
@@ -136,7 +147,7 @@ namespace MIM.Controllers
             User user = await db.Users.FindAsync(id);
             db.Users.Remove(user);
             await db.SaveChangesAsync();
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

@@ -3,6 +3,7 @@
     Layout = null;
     string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"   
 }
+
 <div class="modal" id="user-modal">
     <div class="modal-dialog modal-dialog-centered @modal_size">
         <div class="modal-content">
@@ -81,39 +82,43 @@
                                           </span>
                                       </div>
                                   </div>
-                                      @Html.ValidationMessageFor(model => model.bornDate, "", new { @class = "text-danger" })
-                                  
+                                  @Html.ValidationMessageFor(model => model.bornDate, "", new { @class = "text-danger" })
+
                               </div>
                           </div>
                           <div class="form-group row">
                               @Html.LabelFor(model => model.isActive, @LanguageHelper.GetStringForModal("User.isActive"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
-                              <div class="col-3 col-form-label">
-                                  <div class="checkbox-inline">
-                                      <label class="checkbox checkbox-primary">
-                                          @Html.CheckBoxFor(model => model.isActive, new { @checked = true })
-                                          @Html.ValidationMessageFor(model => model.isActive, "", new { @class = "text-danger" })
+                              <div class="col-3">
+                                  <span class="switch switch-lg switch-icon">
+                                      <label>
+                                          @Html.CheckBoxFor(model => model.isActive, new { id = "isActive", @checked = "checked" })
+                                          <span></span>
                                       </label>
-                                  </div>
+                                  </span>
                               </div>
                               @Html.LabelFor(model => model.superAdmin, @LanguageHelper.GetStringForModal("User.SuperAdmin"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
-                              <div class="col-3 col-form-label">
-                                  <div class="checkbox-inline">
-                                      <label class="checkbox checkbox-primary">
-                                          @Html.CheckBoxFor(model => model.superAdmin)
-                                          @Html.ValidationMessageFor(model => model.superAdmin, "", new { @class = "text-danger" })
+                              <div class="col-3">
+                                  <span class="switch switch-lg switch-icon">
+                                      <label>
+                                          @Html.CheckBoxFor(model => model.superAdmin, new { id = "superAdmin", @checked = "checked" })
+                                          <span></span>
                                       </label>
-                                  </div>
+                                  </span>
                               </div>
                           </div>
 
                           <div class="modal-footer">
-                              <input class="btn btn-primary" type="submit" value="Ekle" />  
+                              <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
+                              <input type="cancel" id="user-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-1" />
                           </div>
                       }
                   </div>
             </div>
     </div>
 </div>
+<script>
+    $("#user-modal-cancel").click(function (event) { $("#user-modal").modal('hide'); })
+</script>
 <script>
         var arrows = {
             leftArrow: '<i class="la la-angle-left"></i>',
@@ -147,18 +152,24 @@
              username: $('#username').val(),
              password: $('#password').val(),
              bornDate: $('#bornDate').val(),
-             isActive: $('#isActive').val(),
-             SuperAdmin: $('#SuperAdmin').val(),
-             titleID: $('#titleID').val(),
-             titleID: $('#titleID').val(),
+             email: $('#email').val(),
+             isActive: isActive.checked,
+             superAdmin: superAdmin.checked,
              __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
 
          });
 
          posting.done(function (data) {
-
-             $('#modal-area').html(data);
-             $("#user-modal").modal('show');
+             $.ajax({
+                 url: '/Users/Table',
+                 method: 'GET',
+                 success: function (data) {
+                     $('#dt-users_table').html(data)
+                 },
+                 error: function (data) {
+                     $('#dt-users_table').html("table error")
+                 },
+             });
          });
 
          posting.fail(function () {
