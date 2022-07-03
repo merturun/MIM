@@ -10,27 +10,28 @@ using System.Web.Mvc;
 using MIM.Config;
 using MIM.Models;
 using FluentValidation.Results;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MIM.Controllers
 {
     public class UsersController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
-
         // GET: /Users
         public async Task<ActionResult> Index()
         {            
             var users = db.Users.Include(u => u.organization).Include(u => u.title);
-            IEnumerable<User> asd = db.Users;
             return View(await users.ToListAsync());
         }
 
 
         // GET: /Users/Table
-        public async Task<ActionResult> Table()
+        public ActionResult Table(int? page)
         {
-            var users = db.Users.Include(u => u.organization).Include(u => u.title);
-            return View(await users.ToListAsync());
+            var _page = page ?? 1;
+            var users = db.Users.Include(u => u.organization).Include(u => u.title).ToList().ToPagedList(Convert.ToInt32(_page),10);
+            return View(users);
         }
 
         // GET: /Users/Show/5

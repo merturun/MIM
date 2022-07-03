@@ -1,7 +1,24 @@
-﻿@model IEnumerable<MIM.Models.User>
+﻿@model IPagedList<MIM.Models.User>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    Layout = null;
+}
 
 @{
-    Layout = null;    
+    var pLRO = PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+          new AjaxOptions()
+          {
+              HttpMethod = "GET",
+              UpdateTargetId = "dt-users_table"
+          }
+       );
+    //and now here set all the properties you want
+    pLRO.DisplayLinkToFirstPage = PagedListDisplayMode.Always;
+    pLRO.DisplayLinkToLastPage = PagedListDisplayMode.Always;
+    //you can even style the format
+    pLRO.LinkToFirstPageFormat = "First";
+    pLRO.LinkToLastPageFormat = "Last";
 }
 <div id="users_list">
     <div class="table-responsive" style="overflow: inherit;">
@@ -73,13 +90,30 @@
                             </a>
                             <a href="" onclick="DeleteModal(@Html.DisplayFor(modelItem => item.userID))" data-remote="true" data-toggle="modal" data-target="#modal-window#{modal}" class="btn btn-outline-secondary btn-icon delRow" title="Sil">
                                 <i class="flaticon2-rubbish-bin"></i>
-                            </a>                            
+                            </a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+        @{ Html.RenderPartial("Pagination", Model); }
+
     </div>
 </div>
 
+<script>
+    function GetPage(page) {
+        $.ajax({
+            url: '/Users/Table?page=' + page,
+            method: 'GET',
+            success: function (data) {
+                $('#dt-users_table').html(data)
+            },
+            error: function (data) {
+                $('#dt-users_table').html("table error")
+            },
+        });
+    }
+        
+</script>
 
