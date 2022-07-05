@@ -15,10 +15,11 @@ using PagedList.Mvc;
 
 namespace MIM.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
-        // GET: /Users
+        // GET: /Users        
         public async Task<ActionResult> Index()
         {            
             var users = db.Users.Include(u => u.organization).Include(u => u.title);

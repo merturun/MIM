@@ -1,12 +1,10 @@
 ﻿@{
     Html.RenderPartial("Header");
     ViewBag.Title = LanguageHelper.GetString("Model.Users");
-    Session["page"] = 2;
 }
 <div class="row">
     <div class="col-12">
-        <div class="card card-custom card-stretch gutter-b">
-            asd: @Session["page"]
+        <div class="card card-custom card-stretch gutter-b">            
             <div class="card-header border-0 py-5">
                 <h3 class="card-title align-items-start flex-column">
 

@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\OrganizationsController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\TitlesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Helper\ApplicationHelper.cs" />
@@ -203,7 +204,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Helper\SessionHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\GrantSeed.cs" />
     <Compile Include="Models\Department.cs" />
@@ -2244,7 +2244,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\LanguageChanger.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\Home\ModalCreator.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Scripts\bootstrap.min.js.map" />

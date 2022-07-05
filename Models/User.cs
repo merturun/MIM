@@ -36,6 +36,15 @@ namespace MIM.Models
         public virtual ICollection<Group> groups { get; set; }
 
         public string fullname { get { return firstname + " " + lastname; } }
+
+        public string symbol { get
+            {
+                string[] test = fullname.Split(' ');
+                string sembol = "";
+                foreach (string item in test)                
+                    sembol += item.Substring(0, 1);
+                return sembol.ToUpper();
+            } }
     }
 
     public class UserValidator : AbstractValidator<User>

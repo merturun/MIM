@@ -19,22 +19,8 @@ namespace MIM.Controllers
 
         public ActionResult Index()
         {
-            User user = db.Users.FirstOrDefault();
-            if (MvcApplication.current_user == null) return RedirectToAction("Login", "Home");
             return View();
         }
-
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
-
 
         public void ChangeLanguage(string language)
         {
@@ -60,38 +46,6 @@ namespace MIM.Controllers
         public ActionResult Aside()
         {
             return PartialView("Aside");
-        }
-
-        public JavaScriptResult ModalCreator(string size,string controller, string action,bool isSub)
-        {
-            string js;
-            js = "";
-            return null;
-        }
-
-        #region "Login Methods"
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(User user)
-        {
-            var UserInDb = db.Users.FirstOrDefault(x => x.username == user.username && x.password == user.password);
-            if (UserInDb != null)
-            {
-                MvcApplication.current_user = UserInDb;
-                MvcApplication.current_organization = UserInDb.organization;
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                ViewBag.mesaj = "Giriş yapamadın ak";
-                return View();
-            }
-        }
-
-        #endregion "Login Methods"
+        }        
     }
 }

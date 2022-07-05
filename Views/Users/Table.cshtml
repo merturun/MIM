@@ -1,24 +1,9 @@
 ﻿@model IPagedList<MIM.Models.User>
 @using PagedList;
 @using PagedList.Mvc;
+@using System.Web.Security;
 @{
     Layout = null;
-}
-
-@{
-    var pLRO = PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
-          new AjaxOptions()
-          {
-              HttpMethod = "GET",
-              UpdateTargetId = "dt-users_table"
-          }
-       );
-    //and now here set all the properties you want
-    pLRO.DisplayLinkToFirstPage = PagedListDisplayMode.Always;
-    pLRO.DisplayLinkToLastPage = PagedListDisplayMode.Always;
-    //you can even style the format
-    pLRO.LinkToFirstPageFormat = "First";
-    pLRO.LinkToLastPageFormat = "Last";
 }
 <div id="users_list">
     <div class="table-responsive" style="overflow: inherit;">
@@ -114,6 +99,6 @@
             },
         });
     }
-        
+
 </script>
 

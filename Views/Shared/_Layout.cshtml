@@ -62,7 +62,7 @@
             @{
                 Html.RenderAction("Aside", "Home");
             }
-            
+
             <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
                 <div id="kt_header" class="header header-fixed">
                     <div class="container-fluid d-flex align-items-stretch justify-content-between">
@@ -79,7 +79,7 @@
                                     <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">@LanguageHelper.GetString("NavBar.Hi"),</span>
                                     <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">@ApplicationHelper.GetUserName()</span>
                                     <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
-                                        <span class="symbol-label font-size-h5 font-weight-bold">@ApplicationHelper.GetUserSymbol()</span>
+                                        <span class="symbol-label font-size-h5 font-weight-bold">@MvcApplication.current_user.symbol</span>
                                     </span>
                                 </div>
                             </div>
