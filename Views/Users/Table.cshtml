@@ -68,7 +68,7 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.lastname)
-                        </td>
+                        </td>                        
                         <td style="width: 15%">
                             @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Users", new { id = item.userID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
                             @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Users", new { id = item.userID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })

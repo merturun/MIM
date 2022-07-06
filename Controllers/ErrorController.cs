@@ -18,5 +18,10 @@ namespace MIM.Controllers
         {
             return View();
         }
+
+        public ActionResult Unknown()
+        {
+            return View();
+        }
     }
 }

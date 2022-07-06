@@ -180,7 +180,6 @@
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\TitlesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Helper\ApplicationHelper.cs" />
     <Compile Include="App_GlobalResources\language\lang.en.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2261,6 +2260,7 @@
     <Content Include="Views\Users\pagination.cshtml" />
     <Content Include="Views\Users\AjaxTest.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Unknown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\language\lang.en.resx">
