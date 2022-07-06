@@ -12,6 +12,7 @@ using MIM.Models;
 using FluentValidation.Results;
 using PagedList;
 using PagedList.Mvc;
+using System.Threading;
 
 namespace MIM.Controllers
 {
@@ -26,6 +27,11 @@ namespace MIM.Controllers
             return View(await users.ToListAsync());
         }
 
+        public ActionResult AjaxTest(int time)
+        {
+            Thread.Sleep(time);
+            return View();
+        }
 
         // GET: /Users/Table
         public ActionResult Table(int? page)

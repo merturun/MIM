@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -23,8 +24,10 @@ namespace MIM
         public static User current_user { get { db = new MIMDBContext(); return db.Users.FirstOrDefault(x => x.userID == userID); } }
         public static Organization current_organization { get { db = new MIMDBContext(); return db.Organizations.FirstOrDefault(x => x.organizationID == organizationID); } }
         public static string language = "tr";
+
         protected void Application_Start()
         {
+            GlobalFilters.Filters.Add(new HandleErrorAttribute());
             GlobalFilters.Filters.Add(new AuthorizeAttribute());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

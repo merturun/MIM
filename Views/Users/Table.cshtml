@@ -5,6 +5,9 @@
 @{
     Layout = null;
 }
+<div class="spinner" id="LoadingTest" style="display: none;"></div>
+<div id="sonuc"></div>
+@Ajax.ActionLink("Test", "AjaxTest", new { time = 5000 }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "sonuc", OnSuccess = "console.log('Success Ajax')", OnBegin = "console.log('Begin Ajax')", LoadingElementId = "LoadingTest" })
 <div id="users_list">
     <div class="table-responsive" style="overflow: inherit;">
         <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
@@ -67,15 +70,9 @@
                             @Html.DisplayFor(modelItem => item.lastname)
                         </td>
                         <td style="width: 15%">
-                            <a onclick="ShowModal( @Html.DisplayFor(modelItem => item.userID) )" class="btn btn-outline-secondary btn-icon" title="Göster">
-                                <span><i class="flaticon2-expand"></i></span>
-                            </a>
-                            <a href="" onclick="EditModal(@Html.DisplayFor(modelItem => item.userID))" data-remote="true" data-toggle="modal" data-target="#modal-window#{modal}" class="btn btn-outline-secondary btn-icon" title="Düzenle">
-                                <i class="flaticon2-edit"></i>
-                            </a>
-                            <a href="" onclick="DeleteModal(@Html.DisplayFor(modelItem => item.userID))" data-remote="true" data-toggle="modal" data-target="#modal-window#{modal}" class="btn btn-outline-secondary btn-icon delRow" title="Sil">
-                                <i class="flaticon2-rubbish-bin"></i>
-                            </a>
+                            @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Users", new { id = item.userID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Users", new { id = item.userID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Users", new { id = item.userID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
                         </td>
                     </tr>
                 }

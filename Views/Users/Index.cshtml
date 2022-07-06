@@ -26,50 +26,6 @@
         </div>
     </div>
 </div>
-<script>
-    function CreateModal() {
-        $.ajax({
-            url: '/Users/Create',
-            method: 'GET',
-            success: function (data) {
-                console.log("test")
-                $("#modal-area").html(data)
-                $("#user-modal").modal('show');
-            },
-        });
-    }
-    function EditModal(user_id) {
-        $.ajax({
-            url: '/Users/Edit/' + user_id + '/',
-            data: { id: user_id },
-            method: 'GET',
-            success: function (data) {
-                $("#modal-area").html(data)
-                $("#user-modal").modal('show');
-            },
-        });
-    }
-    function ShowModal(user_id) {
-        $.ajax({
-            url: '/Users/Show/' + user_id + '/',
-            method: 'GET',
-            success: function (data) {
-                $("#modal-area").html(data)
-                $("#user-modal").modal('show');
-            },
-        });
-    }
-    function DeleteModal(user_id) {
-        $.ajax({
-            url: '/Users/Delete/' + user_id + '/',
-            method: 'GET',
-            success: function (data) {
-                $("#modal-area").html(data)
-                $("#user-modal").modal('show');
-            },
-        });
-    }
-</script>
 @{
     Html.RenderPartial("List");
 }
