@@ -32,16 +32,69 @@
                         <span class="menu-text">Ana Sayfa</span>
                     </a>
                 </li>
+
                 <li class="menu-section">
                     <h4 class="menu-text">Yönetim Paneli</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
-                <li class="menu-item menu-item" aria-haspopup="true">
-                    <a href="@Url.Action("Index","Users" )" class="menu-link">
-                        <span class="icon flaticon-users-1 menu-icon"></span>
-                        <span class="menu-text">Kullanıcılar</span>
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+                        <span class="flaticon-users-1 menu-icon"></span>
+                        <span class="menu-text">Kurum   </span>
+                        <i class="menu-arrow"></i>
                     </a>
-                </li>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item menu-item-parent" aria-haspopup="true">
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="@Url.Action("Index","Users" )" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Kullanıcılar</span>
+                                    <span class="menu-label">
+                                        <span class="label label-success label-inline">new</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="@Url.Action("Index","Titles" )" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Ünvanlar</span>
+                                    <span class="menu-label">
+                                        <span class="label label-success label-inline">new</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="@Url.Action("Index","Groups" )" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Gruplar</span>
+                                    <span class="menu-label">
+                                        <span class="label label-success label-inline">new</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="@Url.Action("Index","Departments" )" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Departmanlar</span>
+                                    <span class="menu-label">
+                                        <span class="label label-success label-inline">new</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>                
                 <li class="menu-section">
                     <h4 class="menu-text">Section Test 2</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -86,7 +139,7 @@
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
-                                    </i>    
+                                    </i>
                                     <span class="menu-text">Sub Menu With Notification Count</span>
                                     <span class="menu-label">
                                         <span class="label label-rounded label-primary">6</span>

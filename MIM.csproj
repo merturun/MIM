@@ -175,7 +175,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\TitlesController.cs" />
@@ -2261,6 +2263,21 @@
     <Content Include="Views\Users\AjaxTest.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\Unknown.cshtml" />
+    <Content Include="Views\Titles\Create.cshtml" />
+    <Content Include="Views\Titles\Delete.cshtml" />
+    <Content Include="Views\Titles\Details.cshtml" />
+    <Content Include="Views\Titles\Edit.cshtml" />
+    <Content Include="Views\Titles\Index.cshtml" />
+    <Content Include="Views\Groups\Create.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\Groups\Details.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
+    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Departments\Details.cshtml" />
+    <Content Include="Views\Departments\Edit.cshtml" />
+    <Content Include="Views\Departments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\language\lang.en.resx">

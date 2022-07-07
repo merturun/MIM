@@ -9,113 +9,110 @@ using System.Web;
 using System.Web.Mvc;
 using MIM.Config;
 using MIM.Models;
-using FluentValidation.Results;
-using PagedList;
-using PagedList.Mvc;
 
 namespace MIM.Controllers
 {
-    public class TitlesController : Controller
+    public class GroupsController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
 
-        // GET: Titles
+        // GET: Groups
         public async Task<ActionResult> Index()
         {
-            return View(await db.Titles.ToListAsync());
+            return View(await db.Groups.ToListAsync());
         }
 
-        // GET: Titles/Details/5
+        // GET: Groups/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Title title = await db.Titles.FindAsync(id);
-            if (title == null)
+            Group group = await db.Groups.FindAsync(id);
+            if (group == null)
             {
                 return HttpNotFound();
             }
-            return View(title);
+            return View(group);
         }
 
-        // GET: Titles/Create
+        // GET: Groups/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Titles/Create
+        // POST: Groups/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "titleID,name,description")] Title title)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description")] Group group)
         {
             if (ModelState.IsValid)
             {
-                db.Titles.Add(title);
+                db.Groups.Add(group);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(title);
+            return View(group);
         }
 
-        // GET: Titles/Edit/5
+        // GET: Groups/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Title title = await db.Titles.FindAsync(id);
-            if (title == null)
+            Group group = await db.Groups.FindAsync(id);
+            if (group == null)
             {
                 return HttpNotFound();
             }
-            return View(title);
+            return View(group);
         }
 
-        // POST: Titles/Edit/5
+        // POST: Groups/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "titleID,name,description")] Title title)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description")] Group group)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(title).State = EntityState.Modified;
+                db.Entry(group).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(title);
+            return View(group);
         }
 
-        // GET: Titles/Delete/5
+        // GET: Groups/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Title title = await db.Titles.FindAsync(id);
-            if (title == null)
+            Group group = await db.Groups.FindAsync(id);
+            if (group == null)
             {
                 return HttpNotFound();
             }
-            return View(title);
+            return View(group);
         }
 
-        // POST: Titles/Delete/5
+        // POST: Groups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Title title = await db.Titles.FindAsync(id);
-            db.Titles.Remove(title);
+            Group group = await db.Groups.FindAsync(id);
+            db.Groups.Remove(group);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
