@@ -192,11 +192,35 @@
   <data name="Table.SearchBar.Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="Title.AddNew" xml:space="preserve">
+    <value>Create New Title</value>
+  </data>
+  <data name="Title.Description" xml:space="preserve">
+    <value>Title Description</value>
+  </data>
+  <data name="Title.ModalTitle.Add" xml:space="preserve">
+    <value>Add Title</value>
+  </data>
+  <data name="Title.ModalTitle.Delete" xml:space="preserve">
+    <value>Are you sure to delete this title ?</value>
+  </data>
+  <data name="Title.ModalTitle.Edit" xml:space="preserve">
+    <value>Edit Title</value>
+  </data>
+  <data name="Title.ModalTitle.Show" xml:space="preserve">
+    <value>Title Details</value>
+  </data>
+  <data name="Title.Name" xml:space="preserve">
+    <value>Title Name</value>
+  </data>
+  <data name="Title.OrganizationID" xml:space="preserve">
+    <value>Organization</value>
+  </data>
   <data name="tr" xml:space="preserve">
     <value>Turkish</value>
   </data>
   <data name="User.AddNew" xml:space="preserve">
-    <value>Add New User</value>
+    <value>Create New User</value>
   </data>
   <data name="User.BornDate" xml:space="preserve">
     <value>Born Date</value>

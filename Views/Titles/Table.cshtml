@@ -1,0 +1,92 @@
+﻿@model IPagedList<MIM.Models.Title>
+@using PagedList;
+@using PagedList.Mvc;
+@using System.Web.Security;
+@{
+    Layout = null;
+}
+<
+<div id="titles_list">
+    <div class="table-responsive" style="overflow: inherit;">
+        <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+            <thead>
+                <tr class="text-center">
+                    <th>
+                        id
+                    </th>
+                    <th>
+                        @LanguageHelper.GetString("User.Name")
+                    </th>
+                    <th>
+                        @LanguageHelper.GetString("User.Description")
+                    </th>
+                    <th>
+                        @LanguageHelper.GetString("User.OrganizationID")
+                    </th>
+                    <th>
+                        <div class="btn-toolbar-right mr-2" role="toolbar">
+                            @LanguageHelper.GetString("Table.Action")
+                        </div>
+                    </th>
+                </tr>
+                <tr class="text-center">
+                    <th style="width: 5%">@Html.TextBox("test2", "", new { @class = "form-control" })</th>
+                    <th style="width: 20%">@Html.TextBox("test4", "", new { @class = "form-control" })</th>
+                    <th style="width: 20%">@Html.TextBox("test5", "", new { @class = "form-control" })</th>
+                    <th style="width: 20%">@Html.DropDownList("Organization", new SelectList((new MIMDBContext()).Organizations.ToList(), "OrganizationID", "name"), @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
+                    <th style="width: 15%">
+                        <div class="btn-toolbar-right" role="toolbar">
+                            <div class="btn-group mr-2" role="group">
+                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-primary">@LanguageHelper.GetString("Table.SearchBar.Search")</span>
+                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-warning">@LanguageHelper.GetString("Table.SearchBar.Clear")</span>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <td onclick="EditModal(' @Html.DisplayFor(modelItem => item.titleID) ')">
+                            @Html.DisplayFor(modelItem => item.titleID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.organization.name)
+                        </td>
+                        <td style="width: 15%">
+                            @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Titles", new { id = item.titleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Titles", new { id = item.titleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Titles", new { id = item.titleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @{ Html.RenderPartial("Pagination", Model); }
+
+    </div>
+</div>
+
+<script>
+    function GetPage(page) {
+        $.ajax({
+            url: '/Titles/Table?page=' + page,
+            method: 'GET',
+            success: function (data) {
+                $('#dt-titles_table').html(data)
+            },
+            error: function (data) {
+                $('#dt-titles_table').html("table error")
+            },
+        });
+    }
+
+</script>
+

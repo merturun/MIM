@@ -1,0 +1,13 @@
+﻿
+<script>
+    $.ajax({
+        url: '/Titles/Table?page=1',
+        method: 'GET',
+        success: function (data) {
+            $('#dt-titles_table').html(data)
+        },
+        error: function (data) {
+            $('#dt-titles_table').html("table error")
+        },
+    });
+</script>

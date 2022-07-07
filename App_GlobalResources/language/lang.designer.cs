@@ -277,6 +277,78 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yeni Ünvan Ekle.
+        /// </summary>
+        internal static string Title_AddNew {
+            get {
+                return ResourceManager.GetString("Title.AddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvan Açıklaması.
+        /// </summary>
+        internal static string Title_Description {
+            get {
+                return ResourceManager.GetString("Title.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvan Ekle.
+        /// </summary>
+        internal static string Title_ModalTitle_Add {
+            get {
+                return ResourceManager.GetString("Title.ModalTitle.Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bu ünvanı silmek istediğinize emin misiniz ?.
+        /// </summary>
+        internal static string Title_ModalTitle_Delete {
+            get {
+                return ResourceManager.GetString("Title.ModalTitle.Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvanı Düzenle.
+        /// </summary>
+        internal static string Title_ModalTitle_Edit {
+            get {
+                return ResourceManager.GetString("Title.ModalTitle.Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvan Detayları.
+        /// </summary>
+        internal static string Title_ModalTitle_Show {
+            get {
+                return ResourceManager.GetString("Title.ModalTitle.Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvan Adı.
+        /// </summary>
+        internal static string Title_Name {
+            get {
+                return ResourceManager.GetString("Title.Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kurum.
+        /// </summary>
+        internal static string Title_OrganizationID {
+            get {
+                return ResourceManager.GetString("Title.OrganizationID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Türkçe.
         /// </summary>
         internal static string tr {

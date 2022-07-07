@@ -15,6 +15,7 @@ namespace MIM.Models
             this.licenses = new HashSet<License>();
             this.departments = new HashSet<Department>();
             this.childs = new HashSet<Organization>();
+            this.titles = new HashSet<Title>();
         }
         [Key]
         public int organizationID { get; set; }
@@ -31,6 +32,7 @@ namespace MIM.Models
         public virtual ICollection<Organization> childs { get; set; } // Alt Organizasyonlar
         public virtual ICollection<User> users { get; set; } // Kullanıcılar
         public virtual ICollection<License> licenses { get; set; } // Lisanslar
-        public virtual ICollection<Department> departments { get; set; } // Departmanlar
+        public virtual ICollection<Department> departments { get; set; } // Departmanlar 
+        public virtual ICollection<Title> titles { get; set; } // Departmanlar
     }
 }

@@ -1,0 +1,43 @@
+﻿@model MIM.Models.Title
+@{
+    Layout = null;
+    string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
+}
+<div class="modal" id="title-modal">
+    <div class="modal-dialog modal-dialog-centered @modal_size">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageHelper.GetString("Title.ModalTitle.Show")</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div><div class="container"></div>
+            <div style="padding-bottom: 0px;" class="modal-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.organization.name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.organization.name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.description)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

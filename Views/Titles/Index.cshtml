@@ -1,39 +1,31 @@
-﻿@model IEnumerable<MIM.Models.Title>
+﻿@{
+    Html.RenderPartial("Header");
+    ViewBag.Title = LanguageHelper.GetString("Model.Titles");
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-custom card-stretch gutter-b">
+            <div class="card-header border-0 py-5">
+                <h3 class="card-title align-items-start flex-column">
 
+                    <span class="text-muted mt-3 font-weight-bold font-size-sm">
+
+                    </span>
+                </h3>
+                <div class="card-toolbar">
+
+                </div>
+            </div>
+
+            <div class="card-body pt-0 pb-3">
+                <div class="tab-content">
+                    <div id="dt-titles_table">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @{
-    ViewBag.Title = "Index";
+    Html.RenderPartial("List");
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.titleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.titleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.titleID })
-        </td>
-    </tr>
-}
-
-</table>

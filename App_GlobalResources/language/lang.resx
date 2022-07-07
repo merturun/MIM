@@ -189,6 +189,30 @@
   <data name="Table.SearchBar.Search" xml:space="preserve">
     <value>Ara</value>
   </data>
+  <data name="Title.AddNew" xml:space="preserve">
+    <value>Yeni Ünvan Ekle</value>
+  </data>
+  <data name="Title.Description" xml:space="preserve">
+    <value>Ünvan Açıklaması</value>
+  </data>
+  <data name="Title.ModalTitle.Add" xml:space="preserve">
+    <value>Ünvan Ekle</value>
+  </data>
+  <data name="Title.ModalTitle.Delete" xml:space="preserve">
+    <value>Bu ünvanı silmek istediğinize emin misiniz ?</value>
+  </data>
+  <data name="Title.ModalTitle.Edit" xml:space="preserve">
+    <value>Ünvanı Düzenle</value>
+  </data>
+  <data name="Title.ModalTitle.Show" xml:space="preserve">
+    <value>Ünvan Detayları</value>
+  </data>
+  <data name="Title.Name" xml:space="preserve">
+    <value>Ünvan Adı</value>
+  </data>
+  <data name="Title.OrganizationID" xml:space="preserve">
+    <value>Kurum</value>
+  </data>
   <data name="tr" xml:space="preserve">
     <value>Türkçe</value>
   </data>

@@ -1,45 +1,93 @@
 ﻿@model MIM.Models.Title
-
 @{
-    ViewBag.Title = "Edit";
+    Layout = null;
+    string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
 }
 
-<h2>Edit</h2>
+<div class="modal" id="title-modal">
+    <div class="modal-dialog modal-dialog-centered @modal_size">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageHelper.GetString("Title.ModalTitle.Edit")</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div><div class="container"></div>
+                  <div style="padding-bottom: 0px;" class="modal-body">
+                      @using (Html.BeginForm("Edit", "Titles", FormMethod.Post, new { id = "titleedit" }))
+                      {
+                          @Html.AntiForgeryToken()
+                          @Html.HiddenFor(model => model.titleID)
+                          @Html.Hidden("organizationID",MvcApplication.current_organization.organizationID)
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Title</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.titleID)
+                          <div class="form-group">
+                              @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <div class="col-md-10">
+                                  @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                              </div>
+                          </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                          <div class="form-group">
+                              @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <div class="col-md-10">
+                                  @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                              </div>
+                          </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                          <div class="form-group">
+                              @Html.LabelFor(model => model.organizationID, "organizationID", htmlAttributes: new { @class = "control-label col-md-2" })
+                              <div class="col-md-10">
+                                  @Html.DropDownList("organizationID", null, htmlAttributes: new { @class = "form-control" })
+                                  @Html.ValidationMessageFor(model => model.organizationID, "", new { @class = "text-danger" })
+                              </div>
+                          </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+
+
+                          <div class="modal-footer">
+                              <input class="btn btn-warning" type="submit" value="@LanguageHelper.GetString("Modal.Button.SaveChanges")" />
+                              <input type="cancel" id="title-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-1" />
+                          </div>
+                      }
+                  </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    $("#title-modal-cancel").click(function (event) { $("#title-modal").modal('hide'); })
+</script>
+<script>
+    $("#titleedit").submit(function (event) {
+
+        event.preventDefault();
+        $("#title-modal").modal('hide');
+        var $form = $(this),
+            url = $form.attr('action');
+
+        var posting = $.post(url, {
+            organizationID: $('#organizationID').val(),
+            titleID: $('#titleID').val(),
+            name: $('#name').val(),
+            description: $('#description').val(),
+            __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
+
+        });
+
+        posting.done(function (data) {
+            $.ajax({
+                url: '/Titles/Table',
+                method: 'GET',
+                success: function (data) {
+                    $('#dt-titles_table').html(data)
+                },
+                error: function (data) {
+                    $('#dt-titles_table').html("table error")
+                },
+            });
+        });
+
+        posting.fail(function () {
+            $('#result').text('failed');
+        });
+    });
+</script>
