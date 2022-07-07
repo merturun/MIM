@@ -2,7 +2,7 @@
 @{
     Layout = null;
     ViewBag.Title = LanguageHelper.GetString("Model.Titles");
-    string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
+    string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
 }
 <div class="modal" id="title-modal">
     <div class="modal-dialog modal-dialog-centered @modal_size">
@@ -13,16 +13,9 @@
             </div><div class="container"></div>
             <div style="padding-bottom: 0px;" class="modal-body">
                 <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.organization.name)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.organization.name)
-                    </dd>
 
                     <dt>
-                        @Html.DisplayNameFor(model => model.name)
+                        @LanguageHelper.GetString("Title.Name")
                     </dt>
 
                     <dd>
@@ -30,7 +23,7 @@
                     </dd>
 
                     <dt>
-                        @Html.DisplayNameFor(model => model.description)
+                        @LanguageHelper.GetString("Title.Description")
                     </dt>
 
                     <dd>
@@ -44,8 +37,8 @@
 
                     <div class="form-actions no-color">
                         @Html.HiddenFor(modelItem => modelItem.titleID)
-                        <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-1" />
-                        <input type="cancel" id="title-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-1" />
+                        <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-2" />
+                        <input type="cancel" id="title-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-2" />
                     </div>
                 }
             </div>

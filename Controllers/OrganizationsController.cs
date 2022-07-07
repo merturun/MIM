@@ -48,7 +48,7 @@ namespace MIM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "organizationID,name,description,contactName,contactEmail,contactPhone,language,adres,isActive,parentID")] Organization organization)
+        public async Task<ActionResult> Create([Bind(Include = "organizationID,name,description,contactName,contactEmail,contactPhone,language,adress,isActive,parentID")] Organization organization)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace MIM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "organizationID,name,description,contactName,contactEmail,contactPhone,language,adres,isActive,parentID")] Organization organization)
+        public async Task<ActionResult> Edit([Bind(Include = "organizationID,name,description,contactName,contactEmail,contactPhone,language,adress,isActive,parentID")] Organization organization)
         {
             if (ModelState.IsValid)
             {

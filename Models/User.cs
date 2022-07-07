@@ -11,7 +11,7 @@ namespace MIM.Models
 {
     public class User
     {
-        public static User current;
+        public static User current { get; set; }
         public User()
         {
             this.groups = new HashSet<Group>();
@@ -19,10 +19,9 @@ namespace MIM.Models
 
         [Key]
         public int userID { get; set; }
-        public int organizationID { get; set; }   
-        public virtual Organization organization { get; set; }
-        public int titleID { get; set; }
-        public virtual Title title { get; set; }
+        public int organizationID { get; set; } public virtual Organization organization { get; set; }
+        public int? titleID { get; set; } public virtual Title title { get; set; }
+        public int? departmentID { get; set; } public virtual Department department { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string nickname { get; set; }
@@ -34,17 +33,8 @@ namespace MIM.Models
         public DateTime bornDate { get; set; }
         public bool superAdmin { get; set; }
         public virtual ICollection<Group> groups { get; set; }
-
         public string fullname { get { return firstname + " " + lastname; } }
-
-        public string symbol { get
-            {
-                string[] test = fullname.Split(' ');
-                string sembol = "";
-                foreach (string item in test)                
-                    sembol += item.Substring(0, 1);
-                return sembol.ToUpper();
-            } }
+        public string symbol { get { string[] test = fullname.Split(' '); string sembol = ""; foreach (string item in test) { sembol += item.Substring(0, 1); } return sembol.ToUpper(); } }
     }
 
     public class UserValidator : AbstractValidator<User>

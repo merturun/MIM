@@ -26,27 +26,30 @@
                 contactEmail = "urn.mert@gmail.com",
                 contactPhone = "05305756626",
                 language = "tr",
-                adres = "Bursa",
+                adress = "Bursa",
                 isActive = true
             };
             context.Organizations.Add(org);
 
             Title title1 = new Title()
             {
-                name = "Yazılım Geliştirici",
-                description = "Bişiler yazan adam"
+                name = "Fullstack Developer",
+                description = "All in One",
+                organization = org
             };
             context.Titles.Add(title1);
             Title title2 = new Title()
             {
-                name = "Kaldırım Mühendisi",
-                description = "Kaldırımları tasarlayan kimse"
+                name = "Backend Developer",
+                description = "Sunucu tarafını geliştiren kimse.",
+                organization = org
             };
             context.Titles.Add(title2);
             Title title3 = new Title()
             {
-                name = "Frontend Geliştirici",
-                description = "Bişiler geliştiren Adam"
+                name = "Frontend Developer",
+                description = "İstemci tarafını geliştiren kimse.",
+                organization = org
             };
             context.Titles.Add(title3);
 

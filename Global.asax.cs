@@ -18,11 +18,8 @@ namespace MIM
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static int ListPerPage = 10;
         public static MIMDBContext db = new MIMDBContext();
-        public static int userID;
-        public static int organizationID;
-        public static User current_user { get { db = new MIMDBContext(); return db.Users.FirstOrDefault(x => x.userID == userID); } }
-        public static Organization current_organization { get { db = new MIMDBContext(); return db.Organizations.FirstOrDefault(x => x.organizationID == organizationID); } }
         public static string language = "tr";
 
         protected void Application_Start()

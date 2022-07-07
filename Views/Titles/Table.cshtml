@@ -15,13 +15,10 @@
                         id
                     </th>
                     <th>
-                        @LanguageHelper.GetString("User.Name")
+                        @LanguageHelper.GetString("Title.Name")
                     </th>
                     <th>
-                        @LanguageHelper.GetString("User.Description")
-                    </th>
-                    <th>
-                        @LanguageHelper.GetString("User.OrganizationID")
+                        @LanguageHelper.GetString("Title.Description")
                     </th>
                     <th>
                         <div class="btn-toolbar-right mr-2" role="toolbar">
@@ -30,10 +27,9 @@
                     </th>
                 </tr>
                 <tr class="text-center">
-                    <th style="width: 5%">@Html.TextBox("test2", "", new { @class = "form-control" })</th>
-                    <th style="width: 20%">@Html.TextBox("test4", "", new { @class = "form-control" })</th>
-                    <th style="width: 20%">@Html.TextBox("test5", "", new { @class = "form-control" })</th>
-                    <th style="width: 20%">@Html.DropDownList("Organization", new SelectList((new MIMDBContext()).Organizations.ToList(), "OrganizationID", "name"), @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
+                    <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
+                    <th style="width: 40%">@Html.TextBox("name", "", new { @class = "form-control" })</th>
+                    <th style="width: 40%">@Html.TextBox("description", "", new { @class = "form-control" })</th>                    
                     <th style="width: 15%">
                         <div class="btn-toolbar-right" role="toolbar">
                             <div class="btn-group mr-2" role="group">
@@ -56,9 +52,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.organization.name)
                         </td>
                         <td style="width: 15%">
                             @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Titles", new { id = item.titleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })

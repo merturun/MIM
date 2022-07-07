@@ -31,7 +31,7 @@ namespace MIM.Controllers
         [ChildActionOnly]
         public ActionResult QuickUser()
         {
-            if(MvcApplication.current_user != null) return PartialView("QuickUser",MvcApplication.current_user);
+            if(MIM.Models.User.current != null) return PartialView("QuickUser", MIM.Models.User.current);
             return PartialView("QuickUser");
         }
 

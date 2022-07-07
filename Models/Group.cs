@@ -17,7 +17,7 @@ namespace MIM.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public virtual Organization Organization { get; set; }
+        public int? organizationID { get; set; } public Organization organization { get; set; }
         public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<Grant> Grants { get; set; }
 

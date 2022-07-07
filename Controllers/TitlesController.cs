@@ -22,7 +22,7 @@ namespace MIM.Controllers
         // GET: Titles
         public async Task<ActionResult> Index()
         {
-            var titles = db.Titles.Include(t => t.organization);
+            var titles = db.Titles.Include(t => t.organization).Where(x=>x.organizationID == Organization.current.organizationID);
             return View(await titles.ToListAsync());
         }
 
@@ -30,7 +30,7 @@ namespace MIM.Controllers
         public ActionResult Table(int? page)
         {
             var _page = page ?? 1;
-            var titles = db.Titles.Include(u => u.organization).Include(t => t.organization).ToList().ToPagedList(_page, 10);
+            var titles = db.Titles.Include(u => u.organization).Include(t => t.organization).Where(x => x.organizationID == Organization.current.organizationID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
             return View(titles);
         }
 
@@ -52,7 +52,6 @@ namespace MIM.Controllers
         // GET: Titles/Create
         public ActionResult Create()
         {
-            ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name");
             return View();
         }
 
@@ -61,8 +60,9 @@ namespace MIM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "titleID,name,description,organizationID")] Title title)
+        public async Task<ActionResult> Create([Bind(Include = "titleID,name,description")] Title title)
         {
+            title.organizationID = Organization.current.organizationID;
             if (ModelState.IsValid)
             {
                 db.Titles.Add(title);
@@ -70,7 +70,6 @@ namespace MIM.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", title.organizationID);
             return View(title);
         }
 
@@ -86,7 +85,6 @@ namespace MIM.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", title.organizationID);
             return View(title);
         }
 
@@ -95,15 +93,15 @@ namespace MIM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "titleID,name,description,organizationID")] Title title)
+        public async Task<ActionResult> Edit([Bind(Include = "titleID,name,description")] Title title)
         {
+            title.organizationID = Organization.current.organizationID;
             if (ModelState.IsValid)
             {
                 db.Entry(title).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", title.organizationID);
             return View(title);
         }
 

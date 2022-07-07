@@ -27,6 +27,5 @@ public class MIMDBContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-
     }
 }

@@ -25,10 +25,9 @@ namespace MIM.Models
         public string contactEmail { get; set; } // Organizasyonda İletişim maili
         public string contactPhone { get; set; } // Organizasyonda İletişim numarası
         public string language { get; set; } // Organizasyon varsayılan dil
-        public string adres { get; set; } // Organizasyon Adresi
+        public string adress { get; set; } // Organizasyon Adresi
         public bool isActive { get; set; } // Organizasyonun Lisansı var mı yok mu ?
-        public int parentID { get; set; } // Ana Organizasyon
-        public virtual Organization parent { get; set; } // Ana Organizasyon
+        public int parentID { get; set; } public virtual Organization parent { get; set; } // Ana Organizasyon
         public virtual ICollection<Organization> childs { get; set; } // Alt Organizasyonlar
         public virtual ICollection<User> users { get; set; } // Kullanıcılar
         public virtual ICollection<License> licenses { get; set; } // Lisanslar

@@ -26,8 +26,8 @@ namespace MIM.Controllers
             if (UserInDb != null)
             {
                 FormsAuthentication.SetAuthCookie(UserInDb.username, false);
-                MvcApplication.userID = UserInDb.userID;
-                MvcApplication.organizationID = UserInDb.organizationID;
+                MIM.Models.Organization.current = UserInDb.organization;
+                MIM.Models.User.current = UserInDb;                    
                 return RedirectToAction("Index", "Home");
             }
             else

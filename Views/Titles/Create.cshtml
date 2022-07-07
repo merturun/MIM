@@ -11,42 +11,33 @@
                 <h4 class="modal-title">@LanguageHelper.GetString("Title.ModalTitle.Add")</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div><div class="container"></div>
-            <div style="padding-bottom: 0px;" class="modal-body">
-                @using (Html.BeginForm("Create", "Titles", FormMethod.Post, new { id = "titlecreate" }))
-                {
-                    @Html.AntiForgeryToken()
+                  <div style="padding-bottom: 0px;" class="modal-body">
+                      @using (Html.BeginForm("Create", "Titles", FormMethod.Post, new { id = "titlecreate" }))
+                      {
+                          @Html.AntiForgeryToken()
+                          @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                          <div class="form-group">
+                              @Html.LabelFor(model => model.name, @LanguageHelper.GetStringForModal("Title.Name"), htmlAttributes: new { @class = "control-label col-md-2" })
+                              <div class="col-md-12">
+                                  @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                              </div>
+                          </div>
 
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                          <div class="form-group">
+                              @Html.LabelFor(model => model.description, @LanguageHelper.GetStringForModal("Title.Description"), htmlAttributes: new { @class = "control-label col-md-3" })
+                              <div class="col-md-12">
+                                  @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                              </div>
+                          </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.organizationID, "organizationID", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownList("organizationID", null, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.organizationID, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
-                        <input type="cancel" id="title-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-1" />
-                    </div>
-                }
-            </div>
+                          <div class="modal-footer">
+                              <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
+                              <input type="cancel" id="title-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-1" />
+                          </div>
+                      }
+                  </div>
         </div>
     </div>
 </div>
@@ -54,19 +45,6 @@
     $("#title-modal-cancel").click(function (event) { $("#title-modal").modal('hide'); })
 </script>
 <script>
-    var arrows = {
-        leftArrow: '<i class="la la-angle-left"></i>',
-        rightArrow: '<i class="la la-angle-right"></i>'
-    }
-
-    $('#bornDate, #kt_datepicker_3_validate').datepicker({
-        rtl: KTUtil.isRTL(),
-        todayBtn: "linked",
-        format: 'dd/mm/yyyy',
-        clearBtn: true,
-        todayHighlight: true,
-        templates: arrows
-    });
 
     $("#titlecreate").submit(function (event) {
         event.preventDefault();
@@ -75,16 +53,15 @@
             url = $form.attr('action');
 
         var posting = $.post(url, {
-            organizationID: $('#organizationID').val(),
-            titleID: $('#name').val(),
-            firstname: $('#description').val(),
+            name: $('#name').val(),
+            description: $('#description').val(),
             __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
 
         });
 
         posting.done(function (data) {
             $.ajax({
-                url: '/Users/Table',
+                url: '/Titles/Table',
                 method: 'GET',
                 success: function (data) {
                     $('#dt-titles_table').html(data)
