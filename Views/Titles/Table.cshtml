@@ -5,14 +5,14 @@
 @{
     Layout = null;
 }
-<
+
 <div id="titles_list">
     <div class="table-responsive" style="overflow: inherit;">
         <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
             <thead>
                 <tr class="text-center">
                     <th>
-                        id
+                        ID
                     </th>
                     <th>
                         @LanguageHelper.GetString("Title.Name")
@@ -44,19 +44,19 @@
                 @foreach (var item in Model)
                 {
                     <tr class="text-center">
-                        <td onclick="EditModal(' @Html.DisplayFor(modelItem => item.titleID) ')">
-                            @Html.DisplayFor(modelItem => item.titleID)
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TitleID)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.name)
+                            @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.description)
+                            @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         <td style="width: 15%">
-                            @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Titles", new { id = item.titleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                            @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Titles", new { id = item.titleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                            @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Titles", new { id = item.titleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Titles", new { id = item.TitleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Titles", new { id = item.TitleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Titles", new { id = item.TitleID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#title-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
                         </td>
                     </tr>
                 }

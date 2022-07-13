@@ -15,14 +15,13 @@ using PagedList.Mvc;
 
 namespace MIM.Controllers
 {
-    [Authorize]
     public class UsersController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
         // GET: /Users        
         public async Task<ActionResult> Index()
         {            
-            var users = db.Users.Include(u => u.organization).Include(u => u.title).Where(x => x.organizationID == Organization.current.organizationID);
+            var users = db.Users.Include(u => u.Organization).Include(u => u.Title).Include(d=>d.Department).Where(x => x.OrganizationID == Organization.current.OrganizationID);
             return View(await users.ToListAsync());
         }
 
@@ -30,7 +29,9 @@ namespace MIM.Controllers
         public ActionResult Table(int? page)
         {
             var _page = page ?? 1;
-            var users = db.Users.Include(u => u.organization).Include(u => u.title).Where(x => x.organizationID == Organization.current.organizationID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            var users = db.Users.Include(u => u.Organization).Include(u => u.Title).Include(d => d.Department).Where(x => x.OrganizationID == Organization.current.OrganizationID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View(users);
         }
 
@@ -52,13 +53,14 @@ namespace MIM.Controllers
         // GET: /Users/Create
         public ActionResult Create()
         {
-            ViewBag.titleID = new SelectList(db.Titles, "titleID", "name");
+            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "userID,titleID,firstname,lastname,nickname,username,password,email,isActive,bornDate,superAdmin")] User user)
+        public async Task<ActionResult> Create([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID")] User user)
         {
             //UserValidator uValidator = new UserValidator();
             //ValidationResult results = uValidator.Validate(user);
@@ -79,14 +81,15 @@ namespace MIM.Controllers
             //ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", user.organizationID);
             //ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
             //return View(user);
-            user.organizationID = Organization.current.organizationID;
+            user.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
+            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View(user);
         }
 
@@ -102,23 +105,25 @@ namespace MIM.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
+            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View(user);
         }
 
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "userID,titleID,firstname,lastname,nickname,username,password,email,isactive,borndate,superAdmin")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID")] User user)
         {
-            user.organizationID = Organization.current.organizationID;
+            user.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
+            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View(user);
         }
 

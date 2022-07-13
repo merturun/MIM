@@ -8,14 +8,13 @@ namespace MIM.Models
 {
     public class License
     {
-        public License()
-        {
-            this.Modules = new HashSet<Module>();
-        }
-        [Key]
-        public int Id { get; set; }
+        public int LicenseID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public virtual ICollection<Module> Modules  { get; set; }
+        public int OrganizationID { get; set; }
+
+        public virtual Organization Organization { get; set; }
+
+        public List<Module> Modules { get; set; }
     }
 }

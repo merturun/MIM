@@ -26,7 +26,7 @@
     <script>
         function cl(language) {
             $.ajax({
-                url: "/Home/ChangeLanguage?language=" + language,
+                url: "/Security/ChangeLanguage?language=" + language,
                 type: 'get',
                 success: function (data) {
                     document.location.reload();
@@ -39,17 +39,8 @@
 
     <div class="d-flex flex-column flex-root">
         <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
-            <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #F2C98A;">
-                <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
-                    <a href="#" class="text-center mb-10">
-                        <img src="assets/media/logos/logo-letter-1.png" class="max-h-70px" alt="" />
-                    </a>
-                    <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg" style="color: #986923;">
-                        Discover Amazing Metronic
-                        <br />with great build tools
-                    </h3>
-                </div>
-                <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url(assets/media/svg/illustrations/login-visual-1.svg)"></div>
+            <div class="login-aside d-flex flex-column flex-row-auto" style="background-image: url(assets/media/svg/illustrations/logo.png)">
+                <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url(assets/media/svg/illustrations/logo.png)"></div>
             </div>
             <div class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
                 <div class="d-flex flex-column-fluid flex-center">
@@ -76,7 +67,7 @@
                 </div>
             </div>
             @{
-                Html.RenderAction("LanguageChanger", "Home");
+                Html.RenderAction("LanguageChanger", "Security");
             }
         </div>
     </div>

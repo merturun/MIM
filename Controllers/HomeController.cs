@@ -24,8 +24,7 @@ namespace MIM.Controllers
 
         public void ChangeLanguage(string language)
         {
-            MvcApplication.language = language;
-            
+            MvcApplication.language = language;            
         }
 
         [ChildActionOnly]

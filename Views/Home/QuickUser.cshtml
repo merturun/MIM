@@ -17,7 +17,7 @@
             </div>
             <div class="d-flex flex-column">
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"></a>
-                <div class="text-muted mt-1">@MIM.Models.User.current.title.name</div>
+                <div class="text-muted mt-1">@MIM.Models.User.current.Title.Name</div>
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
                         <span class="navi-link p-0 pb-2">
@@ -32,7 +32,7 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span class="navi-text text-muted text-hover-primary">@MIM.Models.User.current.email</span>
+                            <span class="navi-text text-muted text-hover-primary">@MIM.Models.User.current.Email</span>
                         </span>
                     </a>
                     <a href="@Url.Action("SignOut","Security")" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">@LanguageHelper.GetString("QuickUser.SignOut")</a>

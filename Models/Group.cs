@@ -8,18 +8,12 @@ namespace MIM.Models
 {
     public class Group
     {
-        public Group()
-        {
-            this.Users = new HashSet<User>();
-            this.Grants = new HashSet<Grant>();
-        }
-        [Key]
-        public int Id { get; set; }
+        public int GroupID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int? organizationID { get; set; } public Organization organization { get; set; }
-        public virtual ICollection<User> Users { get; set; }
-        public virtual ICollection<Grant> Grants { get; set; }
-
+        public int OrganizationID { get; set; }
+        public virtual Organization Organization { get; set; }
+        public virtual List<Grant> Grants { get; set; }
+        public virtual List<User> Users { get; set; }
     }
 }

@@ -22,11 +22,11 @@ namespace MIM.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-            var UserInDb = db.Users.FirstOrDefault(x => x.username == user.username && x.password == user.password);
+            var UserInDb = db.Users.FirstOrDefault(x => x.Username == user.Username && x.Password == user.Password);
             if (UserInDb != null)
             {
-                FormsAuthentication.SetAuthCookie(UserInDb.username, false);
-                MIM.Models.Organization.current = UserInDb.organization;
+                FormsAuthentication.SetAuthCookie(UserInDb.Username, false);
+                MIM.Models.Organization.current = UserInDb.Organization;
                 MIM.Models.User.current = UserInDb;                    
                 return RedirectToAction("Index", "Home");
             }
@@ -34,6 +34,18 @@ namespace MIM.Controllers
             {                
                 return View();
             }
+        }
+
+        public void ChangeLanguage(string language)
+        {
+            MvcApplication.language = language;
+        }
+
+        [ChildActionOnly]
+        public ActionResult LanguageChanger()
+        {
+            string[] languages = new string[2] { "tr", "en" };
+            return PartialView("LanguageChanger", languages);
         }
 
         public ActionResult SignOut()

@@ -11,30 +11,45 @@ namespace MIM.Models
 {
     public class User
     {
-        public static User current { get; set; }
+        public static User current = new User(true);
+
         public User()
         {
-            this.groups = new HashSet<Group>();
+            Groups = new List<Group>();
+        }
+        public User(bool isDefault=true)
+        {
+            Firstname = Lastname = Nickname = Username = Password = "Default";
+            Email = "Default@default.com";
+            Title = new Title() { Name = "Default" };
         }
 
-        [Key]
-        public int userID { get; set; }
-        public int organizationID { get; set; } public virtual Organization organization { get; set; }
-        public int? titleID { get; set; } public virtual Title title { get; set; }
-        public int? departmentID { get; set; } public virtual Department department { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public string nickname { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string email { get; set; }
-        public bool isActive { get; set; }
+        #region "Model Properties"
+        public int UserID { get; set; }
+        public int OrganizationID { get; set; }
+        public virtual Organization Organization { get; set; }
+        public int TitleID { get; set; }
+        public virtual Title Title { get; set; }
+        public int? DepartmentID { get; set; }
+        public virtual Department Department { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Nickname { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public bool IsActive { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime bornDate { get; set; }
-        public bool superAdmin { get; set; }
-        public virtual ICollection<Group> groups { get; set; }
-        public string fullname { get { return firstname + " " + lastname; } }
+        public DateTime BornDate { get; set; }
+        public bool SuperAdmin { get; set; }
+        public List<Group> Groups { get; set; }
+
+        #endregion "Model Properties"
+
+        #region "Method + Properties"
+        public string fullname { get { return Firstname + " " + Lastname; } }
         public string symbol { get { string[] test = fullname.Split(' '); string sembol = ""; foreach (string item in test) { sembol += item.Substring(0, 1); } return sembol.ToUpper(); } }
+        #endregion "Method + Properties"
     }
 
     public class UserValidator : AbstractValidator<User>
@@ -45,13 +60,13 @@ namespace MIM.Models
                        + "@"
                        + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))\z";
 
-            RuleFor(x => x.firstname).NotEmpty().WithMessage(LanguageHelper.GetString("User.Validate.Firstname")) //Ad Validate
+            RuleFor(x => x.Firstname).NotEmpty().WithMessage(LanguageHelper.GetString("User.Validate.Firstname")) //Ad Validate
                 .MinimumLength(3).WithMessage(LanguageHelper.GetString("User.Validate.Firstname2"));
 
-            RuleFor(x => x.email).NotEmpty().WithMessage(LanguageHelper.GetString("User.Validate.Email"));
+            RuleFor(x => x.Email).NotEmpty().WithMessage(LanguageHelper.GetString("User.Validate.Email"));
                 //.Matches(theEmailPattern);
 
-            RuleFor(x => x.username).NotEmpty().WithMessage(LanguageHelper.GetString("User.Validate.Username")); //username validate
+            RuleFor(x => x.Username).NotEmpty().WithMessage(LanguageHelper.GetString("User.Validate.Username")); //username validate
 
 
 

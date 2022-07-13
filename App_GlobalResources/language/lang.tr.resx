@@ -129,6 +129,30 @@
   <data name="Crud.Edit" xml:space="preserve">
     <value>Düzenle</value>
   </data>
+  <data name="Department.AddNew" xml:space="preserve">
+    <value>Yeni Departman Ekle</value>
+  </data>
+  <data name="Department.Description" xml:space="preserve">
+    <value>Departman Açıklaması</value>
+  </data>
+  <data name="Department.Manager" xml:space="preserve">
+    <value>Departman Yöneticisi</value>
+  </data>
+  <data name="Department.ModalTitle.Add" xml:space="preserve">
+    <value>Departman Ekle</value>
+  </data>
+  <data name="Department.ModalTitle.Delete" xml:space="preserve">
+    <value>Bu departmanı silmek istediğinize emin misiniz ?</value>
+  </data>
+  <data name="Department.ModalTitle.Edit" xml:space="preserve">
+    <value>Departman Düzenle</value>
+  </data>
+  <data name="Department.ModalTitle.Show" xml:space="preserve">
+    <value>Departman Detayları</value>
+  </data>
+  <data name="Department.Name" xml:space="preserve">
+    <value>Departman Adı</value>
+  </data>
   <data name="Dropdown.First" xml:space="preserve">
     <value>Seçiniz</value>
   </data>
@@ -164,6 +188,12 @@
   </data>
   <data name="Modal.Button.SaveChanges" xml:space="preserve">
     <value>Değişiklikleri Kaydet</value>
+  </data>
+  <data name="Model.Department" xml:space="preserve">
+    <value>Departman</value>
+  </data>
+  <data name="Model.Departments" xml:space="preserve">
+    <value>Departmanlar</value>
   </data>
   <data name="Model.Title" xml:space="preserve">
     <value>Ünvan</value>
@@ -257,6 +287,9 @@
   </data>
   <data name="User.BornDate" xml:space="preserve">
     <value>Doğum Tarihi</value>
+  </data>
+  <data name="User.Department" xml:space="preserve">
+    <value>Departman</value>
   </data>
   <data name="User.Email" xml:space="preserve">
     <value>E-mail</value>

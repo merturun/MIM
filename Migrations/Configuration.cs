@@ -18,93 +18,105 @@
 
         protected override void Seed(MIMDBContext context)
         {
+            context.Configuration.LazyLoadingEnabled = false;
+
             Organization org = new Organization()
             {
-                name = "MIM",
-                description = "Proje Ödevi",
-                contactName = "Mert Ürün",
-                contactEmail = "urn.mert@gmail.com",
-                contactPhone = "05305756626",
-                language = "tr",
-                adress = "Bursa",
-                isActive = true
+                Name = "MIM",
+                Description = "Proje Ödevi",
+                ContactName = "Mert Ürün",
+                ContactEmail = "urn.mert@gmail.com",
+                ContactPhone = "05305756626",
+                Address = "Bursa",
+                IsActive = true
             };
             context.Organizations.Add(org);
 
             Title title1 = new Title()
             {
-                name = "Fullstack Developer",
-                description = "All in One",
-                organization = org
+                Name = "Fullstack Developer",
+                Description = "All in One",
+                Organization = org
             };
             context.Titles.Add(title1);
+
             Title title2 = new Title()
             {
-                name = "Backend Developer",
-                description = "Sunucu tarafını geliştiren kimse.",
-                organization = org
+                Name = "Backend Developer",
+                Description = "Sunucu tarafını geliştiren kimse.",
+                Organization = org
             };
             context.Titles.Add(title2);
+
             Title title3 = new Title()
             {
-                name = "Frontend Developer",
-                description = "İstemci tarafını geliştiren kimse.",
-                organization = org
+                Name = "Frontend Developer",
+                Description = "İstemci tarafını geliştiren kimse.",
+                Organization = org
             };
             context.Titles.Add(title3);
 
-            User user = new User()
+            Department dep = new Department()
             {
-                organization = org,
-                firstname = "Mert",
-                lastname = "Ürün",
-                nickname = "Dawn",
-                username = "merturun",
-                title = title1,
-                password = "test",
-                email = "urn.mert@gmail.com",
-                bornDate = new DateTime(1988, 9, 2),
-                isActive = true,
-                superAdmin = true
+                Name = "IT",
+                Description = "Bilgi İşlem",
+                Organization = org,
             };
-            context.Users.Add(user);
 
-            user = new User()
+            User user1 = new User()
             {
-                organization = org,
-                firstname = "Mert Can",
-                lastname = "Yılmaz",
-                nickname = "Bilemedim",
-                username = "mertcan",
-                title = title2,
-                password = "test",
-                email = "???",
-                bornDate = new DateTime(1998, 6, 14),
-                isActive = true,
-                superAdmin = true
+                Organization = org,
+                Firstname = "Mert",
+                Lastname = "Ürün",
+                Nickname = "Dawn",
+                Username = "merturun",
+                Title = title1,
+                Password = "test",
+                Email = "urn.mert@gmail.com",
+                BornDate = new DateTime(1988, 9, 2),
+                IsActive = true,
+                SuperAdmin = true,
+                Department = dep,
             };
-            context.Users.Add(user);
+            context.Users.Add(user1);
 
-            user = new User()
+            User user2 = new User()
             {
-                organization = org,
-                firstname = "İsmail",
-                lastname = "Gülaç",
-                nickname = "VDemented",
-                username = "vdemented",
-                title = title3,
-                password = "test",
-                email = "ismailgulac@gmail.com",
-                bornDate = new DateTime(1992, 3, 24),
-                isActive = true,
-                superAdmin = true
+                Organization = org,
+                Firstname = "Mert Can",
+                Lastname = "Yılmaz",
+                Nickname = "Bilemedim",
+                Username = "mertcan",
+                Title = title2,
+                Password = "test",
+                Email = "???",
+                BornDate = new DateTime(1998, 6, 14),
+                IsActive = true,
+                SuperAdmin = true,
+                Department = dep,
             };
-            context.Users.Add(user);
+            context.Users.Add(user2);
 
-            base.Seed(context);
-
+            User user3 = new User()
+            {
+                Organization = org,
+                Firstname = "İsmail",
+                Lastname = "Gülaç",
+                Nickname = "VDemented",
+                Username = "vdemented",
+                Title = title3,
+                Password = "test",
+                Email = "ismailgulac@gmail.com",
+                BornDate = new DateTime(1992, 3, 24),
+                IsActive = true,
+                SuperAdmin = true,
+                Department = dep,
+            };
+            context.Users.Add(user3);
             GrantSeed gs = new GrantSeed(context);
             gs.SeedData();
+
+            base.Seed(context);
         }
     }
 }

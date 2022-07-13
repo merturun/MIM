@@ -1,0 +1,92 @@
+﻿@model IPagedList<MIM.Models.Department>
+@using PagedList;
+@using PagedList.Mvc;
+@using System.Web.Security;
+@{
+    Layout = null;
+}
+
+<div id="departments_list">
+    <div class="table-responsive" style="overflow: inherit;">
+        <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+            <thead>
+                <tr class="text-center">
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        @LanguageHelper.GetString("Department.Name")
+                    </th>
+                    <th>
+                        @LanguageHelper.GetString("Department.Description")
+                    </th>
+                    <th>
+                        @LanguageHelper.GetString("Department.Manager")
+                    </th>
+                    <th>
+                        <div class="btn-toolbar-right mr-2" role="toolbar">
+                            @LanguageHelper.GetString("Table.Action")
+                        </div>
+                    </th>
+                </tr>
+                <tr class="text-center">
+                    <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
+                    <th style="width: 30%">@Html.TextBox("firstname", "", new { @class = "form-control" })</th>
+                    <th style="width: 30%">@Html.TextBox("lastname", "", new { @class = "form-control" })</th>
+                    <th style="width: 20%">@Html.DropDownList("UserID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
+                    <th style="width: 15%">
+                        <div class="btn-toolbar-right" role="toolbar">
+                            <div class="btn-group mr-2" role="group">
+                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-primary">@LanguageHelper.GetString("Table.SearchBar.Search")</span>
+                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-warning">@LanguageHelper.GetString("Table.SearchBar.Clear")</span>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartmentID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.fullname)
+                        </td>
+                        <td style="width: 15%">
+                            @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                            @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @{ Html.RenderPartial("Pagination", Model); }
+
+    </div>
+</div>
+
+<script>
+    function GetPage(page) {
+        $.ajax({
+            url: '/Departments/Table?page=' + page,
+            method: 'GET',
+            success: function (data) {
+                $('#dt-departments_table').html(data)
+            },
+            error: function (data) {
+                $('#dt-departments_table').html("table error")
+            },
+        });
+    }
+
+</script>
+

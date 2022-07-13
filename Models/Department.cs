@@ -8,16 +8,12 @@ namespace MIM.Models
 {
     public class Department
     {
-        public Department()
-        {
-            this.Users = new HashSet<User>();
-        }
-        [Key]
-        public int Id { get; set; }
+        public int DepartmentID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int organizationID { get; set; } public Organization organization { get; set; }
-        public virtual User Manager { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public int? UserID { get; set; }
+        public virtual User User { get; set; }
+        public int OrganizationID { get; set; }
+        public virtual Organization Organization { get; set; }
     }
 }

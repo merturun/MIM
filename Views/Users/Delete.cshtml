@@ -11,129 +11,120 @@
                 <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Delete")</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div><div class="container"></div>
-                  <div style="padding-bottom: 0px;" class="modal-body">
-                      <dl class="dl-horizontal">
-                          <dt>
-                              @Html.DisplayNameFor(model => model.title.name)
-                          </dt>
+            <div style="padding-bottom: 0px;" class="modal-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title.Name)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.title.name)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Title.Name)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.firstname)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Firstname)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.firstname)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Firstname)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.lastname)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Lastname)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.lastname)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Lastname)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.nickname)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nickname)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.nickname)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Nickname)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.username)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.username)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Username)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.password)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.password)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Password)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.email)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.email)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.isActive)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.isActive)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.IsActive)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.bornDate)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BornDate)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.bornDate)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.BornDate)
+                    </dd>
 
-                          <dt>
-                              @Html.DisplayNameFor(model => model.superAdmin)
-                          </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SuperAdmin)
+                    </dt>
 
-                          <dd>
-                              @Html.DisplayFor(model => model.superAdmin)
-                          </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.SuperAdmin)
+                    </dd>
 
-                      </dl>
-                      @using (Html.BeginForm("Delete", "Users", FormMethod.Post, new { id = "userdelete" }))
-                      {
-                          @Html.AntiForgeryToken()
+                </dl>
+                @using (Ajax.BeginForm("Delete", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure="toastr.error('Silme Başarısız', 'Kullanıcı')" }, new { id = "userdelete" }))
+                {
+                    @Html.AntiForgeryToken()
 
-                          <div class="form-actions no-color">
-                              @Html.HiddenFor(modelItem => modelItem.userID)
-                              <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-1" />
-                              <input type="cancel" id="user-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-1" />
-                          </div>
-                      }
-                  </div>
+                    <div class="form-actions no-color">
+                        @Html.HiddenFor(modelItem => modelItem.UserID)
+                        <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-1" />
+                        <input type="cancel" id="user-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-2" />
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>
 <script>
     $("#user-modal-cancel").click(function (event) { $("#user-modal").modal('hide'); })
 </script>
+</script>
 <script>
-    $("#userdelete").submit(function (event) {
-        event.preventDefault();
+    function GetTable() {
         $("#user-modal").modal('hide');
-        var $form = $(this),
-            url = $form.attr('action');
-
-        var posting = $.post(url, {
-            userID: $('#userID').val(),
-            __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
+        toastr.success("Silme Başarılı", "Kullanıcı")
+        $.ajax({
+            url: '/Users/Table',
+            method: 'GET',
+            success: function (data) {
+                $('#dt-users_table').html(data)
+            },
+            error: function (data) {
+                $('#dt-users_table').html("table error")
+            },
         });
-
-        posting.done(function (data) {
-            $.ajax({
-                url: '/Users/Table',
-                method: 'GET',
-                success: function (data) {
-                    $('#dt-users_table').html(data)
-                }
-            });
-        });
-
-        posting.fail(function () {
-            $('#result').text('failed');
-        });
+    };
 </script>

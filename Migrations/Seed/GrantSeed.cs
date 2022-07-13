@@ -1,4 +1,5 @@
 ﻿using MIM.Config;
+using MIM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace MIM.Migrations.Seed
     public class GrantSeed
     {
         public MIMDBContext db;
+        List<Grant> list = new List<Grant>();
 
         public GrantSeed(MIMDBContext db)
         {
@@ -32,7 +34,6 @@ namespace MIM.Migrations.Seed
 
         public void SeedData()
         {
-
         }
     }
 }

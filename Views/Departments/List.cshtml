@@ -1,0 +1,13 @@
+﻿
+<script>
+    $.ajax({
+        url: '/Departments/Table?page=1',
+        method: 'GET',
+        success: function (data) {
+            $('#dt-departments_table').html(data)
+        },
+        error: function (data) {
+            $('#dt-departments_table').html("table error")
+        },
+    });
+</script>
