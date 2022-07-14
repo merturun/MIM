@@ -1,0 +1,13 @@
+﻿
+<script>
+    $.ajax({
+        url: '/Groups/Table?page=1',
+        method: 'GET',
+        success: function (data) {
+            $('#dt-groups_table').html(data)
+        },
+        error: function (data) {
+            $('#dt-groups_table').html("table error")
+        },
+    });
+</script>

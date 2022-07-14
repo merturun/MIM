@@ -1,0 +1,72 @@
+﻿@model IPagedList<MIM.Models.Group>
+@using PagedList;
+@using PagedList.Mvc;
+
+<div class="d-flex justify-content-around bd-highlight">
+    <div class="p-2 bd-highlight">
+        <div class="dataTables_paginate paging_full_numbers" id="kt_datatable_paginate">
+            <ul class="pagination">
+                @if (Model.HasPreviousPage)
+                {
+                    <li class="paginate_button page-item first" id="kt_datatable_first">
+                        <p onclick="GetPage(1)" aria-controls="kt_datatable" data-dt-idx="0" tabindex="0" style="height:28px" class="page-link">
+                            <i class="ki ki-double-arrow-back"></i>
+                        </p>
+                    </li>
+                    <li class="paginate_button page-item previous" id="kt_datatable_previous">
+                        <p onclick="GetPage(@Model.PageNumber-1)" aria-controls="kt_datatable" data-dt-idx="1" tabindex="0" style="height:28px" class="page-link">
+                            <i class="ki ki-arrow-back"></i>
+                        </p>
+                    </li>
+                }
+                else
+                {
+                    <li class="paginate_button page-item first disabled" id="kt_datatable_first">
+                        <p aria-controls="kt_datatable" data-dt-idx="0" tabindex="0" style="height:28px" class="page-link">
+                            <i class="ki ki-double-arrow-back"></i>
+                        </p>
+                    </li>
+                    <li class="paginate_button page-item previous disabled" id="kt_datatable_previous">
+                        <p aria-controls="kt_datatable" data-dt-idx="1" tabindex="0" style="height:28px" class="page-link">
+                            <i class="ki ki-arrow-back"></i>
+                        </p>
+                    </li>
+                }
+                @for (int i = 1; i < Model.PageCount + 1; i++)
+                {
+                    string isactive = (Model.PageNumber == i) ? "active" : "";
+
+                    <li class="paginate_button page-item @isactive">
+                        <p onclick="GetPage(@i)" aria-controls="kt_datatable" data-dt-idx="3" tabindex="0" style="height:28px" class="page-link">@i</p>
+                    </li>
+                }
+                @if (Model.HasNextPage)
+                {
+                    <li class="paginate_button page-item next" id="kt_datatable_next">
+                        <p onclick="GetPage(@Model.PageNumber+1)" aria-controls="kt_datatable" data-dt-idx="7" tabindex="0" style="height:28px" class="page-link">
+                            <i class="ki ki-arrow-next"></i>
+                        </p>
+                    </li>
+                    <li class="paginate_button page-item last" id="kt_datatable_last">
+                        <p onclick="GetPage(@Model.PageCount)" aria-controls="kt_datatable" data-dt-idx="8" tabindex="0" style="height:28px" class="page-link">
+                            <i class="ki ki-double-arrow-next"></i>
+                        </p>
+                    </li>
+                }
+                else
+                {
+                    <li class="paginate_button page-item disabled" id="kt_datatable_next">
+                        <p aria-controls="kt_datatable" data-dt-idx="7" tabindex="0" class="page-link">
+                            <i class="ki ki-arrow-next"></i>
+                        </p>
+                    </li>
+                    <li class="paginate_button page-item last disabled" id="kt_datatable_last">
+                        <p aria-controls="kt_datatable" data-dt-idx="8" tabindex="0" class="page-link">
+                            <i class="ki ki-double-arrow-next"></i>
+                        </p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

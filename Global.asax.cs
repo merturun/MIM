@@ -13,6 +13,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace MIM
 {
@@ -31,7 +32,5 @@ namespace MIM
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
-
     }
 }

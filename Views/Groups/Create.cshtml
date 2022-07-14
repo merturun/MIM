@@ -1,32 +1,32 @@
-﻿@model MIM.Models.Title
+﻿@model MIM.Models.Group
 @{
     Layout = null;
     string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
 }
 
-<div class="modal" id="title-modal">
+<div class="modal" id="group-modal">
     <div class="modal-dialog modal-dialog-centered @modal_size">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">@LanguageHelper.GetString("Title.ModalTitle.Add")</h4>
+                <h4 class="modal-title">@LanguageHelper.GetString("Group.ModalTitle.Add")</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div><div class="container"></div>
                   <div style="padding-bottom: 0px;" class="modal-body">
-                      @using (Ajax.BeginForm("Create", "Titles", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.AddError") + "', '" + LanguageHelper.GetString("Model.Title") + "')" }))
+                      @using (Ajax.BeginForm("Create", "Groups", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.AddError") + "', '" + LanguageHelper.GetString("Model.Group") + "')" }))
                       {
                           @Html.AntiForgeryToken()
-                          @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                           <div class="form-group row align-items-center">
-                              @Html.LabelFor(model => model.Name, @LanguageHelper.GetStringForModal("Title.Name"), htmlAttributes: new { @class = "control-label col-md-4" })
-                              <div class="col-md-8">
+                              @Html.LabelFor(model => model.Name, @LanguageHelper.GetStringForModal("Group.Name"), htmlAttributes: new { @class = "control-label col-5 font-weight-bold  my-auto" })
+                              <div class="col-md-7">
                                   @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                                   @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                               </div>
                           </div>
 
                           <div class="form-group row align-items-center">
-                              @Html.LabelFor(model => model.Description, @LanguageHelper.GetStringForModal("Title.Description"), htmlAttributes: new { @class = "control-label col-md-4" })
-                              <div class="col-md-8">
+                              @Html.LabelFor(model => model.Description, @LanguageHelper.GetStringForModal("Group.Description"), htmlAttributes: new { @class = "control-label col-5 font-weight-bold  my-auto" })
+                              <div class="col-md-7">
                                   @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                                   @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                               </div>
@@ -43,16 +43,16 @@
 </div>
 <script>
     function GetTable() {
-        $("#title-modal").modal('hide');
-        toastr.success('@LanguageHelper.GetString("Model.Toastr.AddSuccess")', '@LanguageHelper.GetString("Model.Title")')
+        $("#group-modal").modal('hide');
+        toastr.success('@LanguageHelper.GetString("Model.Toastr.AddSuccess")', '@LanguageHelper.GetString("Model.Group")')
         $.ajax({
-            url: '/Titles/Table',
+            url: '/Groups/Table',
             method: 'GET',
             success: function (data) {
-                $('#dt-titles_table').html(data)
+                $('#dt-groups_table').html(data)
             },
             error: function (data) {
-                $('#dt-titles_table').html("table error")
+                $('#dt-groups_table').html("table error")
             },
         });
     };

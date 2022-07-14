@@ -176,6 +176,7 @@
   <ItemGroup>
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\TitlesController.cs" />
@@ -205,9 +206,9 @@
     </Compile>
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\202207132157409_MIMCore.cs" />
-    <Compile Include="Migrations\202207132157409_MIMCore.Designer.cs">
-      <DependentUpon>202207132157409_MIMCore.cs</DependentUpon>
+    <Compile Include="Migrations\202207132243014_MIMCore.cs" />
+    <Compile Include="Migrations\202207132243014_MIMCore.Designer.cs">
+      <DependentUpon>202207132243014_MIMCore.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\GrantSeed.cs" />
@@ -2289,6 +2290,15 @@
     <Content Include="Views\Departments\pagination.cshtml" />
     <Content Include="Views\Departments\Table.cshtml" />
     <Content Include="Views\Departments\List.cshtml" />
+    <Content Include="Views\Groups\Create.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\Groups\Show.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Groups\Header.cshtml" />
+    <Content Include="Views\Groups\List.cshtml" />
+    <Content Include="Views\Groups\pagination.cshtml" />
+    <Content Include="Views\Groups\Table.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\language\lang.en.resx">
@@ -2308,8 +2318,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202207132157409_MIMCore.resx">
-      <DependentUpon>202207132157409_MIMCore.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207132243014_MIMCore.resx">
+      <DependentUpon>202207132243014_MIMCore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

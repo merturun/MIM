@@ -13,7 +13,7 @@ namespace MIM.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202207132157409_MIMCore"; }
+            get { return "202207132243014_MIMCore"; }
         }
         
         string IMigrationMetadata.Source

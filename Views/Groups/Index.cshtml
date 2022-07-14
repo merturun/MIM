@@ -1,0 +1,31 @@
+﻿@{
+    Html.RenderPartial("Header");
+    ViewBag.Title = LanguageHelper.GetString("Model.Groups");
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-custom card-stretch gutter-b">
+            <div class="card-header border-0 py-5">
+                <h3 class="card-title align-items-start flex-column">
+
+                    <span class="text-muted mt-3 font-weight-bold font-size-sm">
+
+                    </span>
+                </h3>
+                <div class="card-toolbar">
+
+                </div>
+            </div>
+
+            <div class="card-body pt-0 pb-3">
+                <div class="tab-content">
+                    <div id="dt-groups_table">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    Html.RenderPartial("List");
+}
