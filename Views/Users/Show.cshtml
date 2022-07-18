@@ -34,59 +34,59 @@
                             <center>
                                 <div class="row items-align-center">
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.Firstname, @LanguageHelper.GetString("User.Firstname").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                                        <hr style="width:50%" />
+                                        @Html.LabelFor(model => model.Firstname, @LanguageHelper.GetString("User.Firstname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        <hr style="width:50%;"/>
 
                                         @Html.DisplayFor(model => model.Firstname)
                                     </div>
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.Lastname, @LanguageHelper.GetString("User.Lastname").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                                        <hr style="width:50%" />
+                                        @Html.LabelFor(model => model.Lastname, @LanguageHelper.GetString("User.Lastname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        <hr style="width:50%;"/>
 
                                         @Html.DisplayFor(model => model.Lastname)
                                     </div>
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.Nickname, @LanguageHelper.GetString("User.Nickname").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                                        <hr style="width:50%" />
+                                        @Html.LabelFor(model => model.Nickname, @LanguageHelper.GetString("User.Nickname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        <hr style="width:50%;" />
 
                                         @Html.DisplayFor(model => model.Nickname)
                                     </div>
                                 </div>
                                 <br />
-                                <hr />
+                                <hr class="chr"/>
                                 <br />
                                 <div class="row items-align-center">
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.Username, @LanguageHelper.GetString("User.Username").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        @Html.LabelFor(model => model.Username, @LanguageHelper.GetString("User.Username"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                         <hr style="width:50%" />
 
                                         @Html.DisplayFor(model => model.Username)
                                     </div>
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.Password, @LanguageHelper.GetString("User.Password").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        @Html.LabelFor(model => model.Password, @LanguageHelper.GetString("User.Password"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                         <hr style="width:50%" />
 
                                         @Html.DisplayFor(model => model.Password)
                                     </div>
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.Email, @LanguageHelper.GetString("User.Email").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        @Html.LabelFor(model => model.Email, @LanguageHelper.GetString("User.Email"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                         <hr style="width:50%" />
 
                                         @Html.DisplayFor(model => model.Email)
                                     </div>
                                 </div>
                                 <br />
-                                <hr />
+                                <hr class="chr"/>
                                 <br />
                                 <div class="row items-align-center">
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.BornDate, @LanguageHelper.GetString("User.BornDate").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        @Html.LabelFor(model => model.BornDate, @LanguageHelper.GetString("User.BornDate"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                         <hr style="width:50%" />
 
                                         @Html.DisplayFor(model => model.BornDate)
                                     </div>
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetString("User.isActive").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetString("User.isActive"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                         <hr style="width:50%" />
 
                                         <label>
@@ -95,7 +95,7 @@
                                         </label>
                                     </div>
                                     <div style="width:33%">
-                                        @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetString("User.SuperAdmin").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetString("User.SuperAdmin"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                         <hr style="width:50%" />
 
                                         <label>
@@ -110,20 +110,50 @@
                             <center>
                                 <div class="row align-items-center">
                                     <div style="width:50%">
-                                        @Html.LabelFor(model => model.Title.Name, LanguageHelper.GetString("Title.Name").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        @Html.LabelFor(model => model.Title.Name, LanguageHelper.GetString("Title.Name"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                         <hr style="width:50%" />
-                                        @Html.DisplayFor(Model => Model.Title.Name)
+                                        @Html.DisplayFor(model => model.Title.Name)
                                     </div>
                                     <div style="width:50%">
-                                        @Html.LabelFor(model => model.Title.Description, LanguageHelper.GetString("Title.Description").ToString(), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        @Html.LabelFor(model => model.Title.Description, LanguageHelper.GetString("Title.Description"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                         <hr style="width:50%" />
-                                        @Html.DisplayFor(Model => Model.Title.Description)
+                                        @Html.DisplayFor(model => model.Title.Description)
                                     </div>
                                 </div>
                             </center>
                         </div>
-                        <div class="tab-pane fade" id="kt_tab_pane_3_2" role="tabpanel">Kullanıcı Departman Bilgileri</div>
-                        <div class="tab-pane fade" id="kt_tab_pane_4_2" role="tabpanel">Kullanıcı Grup Bilgileri</div>
+                        <div class="tab-pane fade" id="kt_tab_pane_3_2" role="tabpanel">
+                            <center>
+                                <div class="row align-items-center">
+                                    <div style="width:50%">
+                                        @Html.LabelFor(model => model.Department.Name, LanguageHelper.GetString("Department.Name"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        <hr style="width:50%" />
+                                        @Html.DisplayFor(model => model.Department.Name)
+                                    </div>
+                                    <div style="width:50%">
+                                        @Html.LabelFor(model => model.Department.Description, LanguageHelper.GetString("Department.Description"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                        <hr style="width:50%" />
+                                        @Html.DisplayFor(model => model.Department.Description)
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="tab-pane fade" id="kt_tab_pane_4_2" role="tabpanel">
+                            <center>
+                                <div class="row align-items-center">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>Name</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Abuzittin</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </center>
+                        </div>
                     </div>
                 </div>
             </div>
