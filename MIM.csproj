@@ -205,6 +205,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\HtmlObjectHelper.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Migrations\202207161229095_mim.cs" />
     <Compile Include="Migrations\202207161229095_mim.Designer.cs">

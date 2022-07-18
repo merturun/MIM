@@ -390,6 +390,9 @@
   <data name="User.SuperAdmin" xml:space="preserve">
     <value>Sistem Yöneticisi?</value>
   </data>
+  <data name="User.Table.NoDepartment" xml:space="preserve">
+    <value>Departmanı Yok</value>
+  </data>
   <data name="User.Table.NoTitle" xml:space="preserve">
     <value>Ünvanı yok</value>
   </data>

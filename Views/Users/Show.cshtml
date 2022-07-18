@@ -146,10 +146,14 @@
                                             <td>ID</td>
                                             <td>Name</td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Abuzittin</td>
-                                        </tr>
+                                        @foreach (var item in Model.Groups)
+                                        {
+                                            <tr>
+                                                <td>@item.GroupID</td>
+                                                <td>@item.Name</td>
+                                            </tr>
+                                        }
+
                                     </table>
                                 </div>
                             </center>

@@ -5,7 +5,6 @@
 @{
     Layout = null;
 }
-
 <div id="users_list">
     <div class="table-responsive" style="overflow: inherit;">
         <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
@@ -62,18 +61,10 @@
                         @Html.DisplayFor(modelItem => item.Lastname)
                     </td>
                     <td>
-                        @if (item.Title == null)
-                        {
-
-                            <span class="label label-lg label-light-warning label-inline">@LanguageHelper.GetString("User.Table.NoTitle")</span>
-                        }
-                        else
-                        {
-                            @Html.DisplayFor(modelItem => item.Title.Name)
-                        }
+                        @Html.Raw(HtmlObjectHelper.IsExistLabel<Title>(item.Title, "warning", "User.Table.NoTitle"))
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Department.Name)
+                        @Html.Raw(HtmlObjectHelper.IsExistLabel<Department>(item.Department, "warning", "User.Table.NoDepartment"))
                     </td>
                     <td style="width: 15%">
                         @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })

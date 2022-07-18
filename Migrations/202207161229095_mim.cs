@@ -68,7 +68,7 @@ namespace MIM.Migrations
                         UserID = c.Int(nullable: false, identity: true),
                         OrganizationID = c.Int(nullable: false),
                         TitleID = c.Int(nullable: true),
-                        DepartmentID = c.Int(nullable: false),
+                        DepartmentID = c.Int(nullable: true),
                         Firstname = c.String(nullable: false),
                         Lastname = c.String(nullable: false),
                         Nickname = c.String(),

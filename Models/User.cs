@@ -44,7 +44,7 @@ namespace MIM.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BornDate { get; set; }
         public bool SuperAdmin { get; set; }
-        public List<Group> Groups { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
 
       
 

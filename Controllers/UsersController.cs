@@ -43,6 +43,7 @@ namespace MIM.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = await db.Users.FindAsync(id);
+            ViewBag.Groups = new SelectList(user.Groups, "GroupID", "Name");
             if (user == null)
             {
                 return HttpNotFound();
@@ -55,32 +56,18 @@ namespace MIM.Controllers
         {
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
+            ViewBag.Groups = new SelectList(db.Groups, "GroupID", "Name");
             return View();
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID")] User user)
+        public async Task<ActionResult> Create([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups")] User user,int[] GroupIDS)
         {
-            //UserValidator uValidator = new UserValidator();
-            //ValidationResult results = uValidator.Validate(user);
-            //if (results.IsValid)
-            //{
-            //    db.Entry(user).State = EntityState.Modified;
-            //    await db.SaveChangesAsync();
-            //    return RedirectToAction("List");
-            //}
-            //else
-            //{
-            //    foreach (var item in results.Errors)
-            //    {
-            //        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-            //    }
-            //}
-
-            //ViewBag.organizationID = new SelectList(db.Organizations, "organizationID", "name", user.organizationID);
-            //ViewBag.titleID = new SelectList(db.Titles, "titleID", "name", user.titleID);
-            //return View(user);
+            foreach (var item in GroupIDS)
+            {
+                user.Groups.Add(db.Groups.FirstOrDefault(x => x.GroupID == item));
+            }
             user.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -100,7 +87,8 @@ namespace MIM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await db.Users.FindAsync(id);
+        ViewBag.Groups = new SelectList(db.Groups, "GroupID", "Name");
+        User user = await db.Users.FindAsync(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -113,7 +101,7 @@ namespace MIM.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID")] User user, int[] GroupIDS)
         {
             user.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
