@@ -29,7 +29,7 @@ namespace MIM.Controllers
         public ActionResult Table(int? page)
         {
             var _page = page ?? 1;
-            var users = db.Users.Include(u => u.Organization).Include(d => d.Department).Where(x => x.OrganizationID == Organization.current.OrganizationID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            var users = db.Users.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View(users);
