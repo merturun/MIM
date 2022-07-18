@@ -120,11 +120,59 @@
   <data name="About.Desc" xml:space="preserve">
     <value>About Us</value>
   </data>
+  <data name="Department.AddNew" xml:space="preserve">
+    <value>Create New Department</value>
+  </data>
+  <data name="Department.Description" xml:space="preserve">
+    <value>Department Description</value>
+  </data>
+  <data name="Department.Manager" xml:space="preserve">
+    <value>Department Manager</value>
+  </data>
+  <data name="Department.ModalTitle.Add" xml:space="preserve">
+    <value>Add Department</value>
+  </data>
+  <data name="Department.ModalTitle.Delete" xml:space="preserve">
+    <value>Are you sure to delete this department?</value>
+  </data>
+  <data name="Department.ModalTitle.Edit" xml:space="preserve">
+    <value>Edit Department</value>
+  </data>
+  <data name="Department.ModalTitle.Show" xml:space="preserve">
+    <value>Department Details</value>
+  </data>
+  <data name="Department.Name" xml:space="preserve">
+    <value>Department Name</value>
+  </data>
   <data name="Dropdown.First" xml:space="preserve">
     <value>Choose One</value>
   </data>
   <data name="en" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="Group.AddNew" xml:space="preserve">
+    <value>Create New Group</value>
+  </data>
+  <data name="Group.Description" xml:space="preserve">
+    <value>Group Description</value>
+  </data>
+  <data name="Group.ModalTitle.Add" xml:space="preserve">
+    <value>Add Group</value>
+  </data>
+  <data name="Group.ModalTitle.Delete" xml:space="preserve">
+    <value>Are you sure to delete this group?</value>
+  </data>
+  <data name="Group.ModalTitle.Edit" xml:space="preserve">
+    <value>Edit Group</value>
+  </data>
+  <data name="Group.ModalTitle.Show" xml:space="preserve">
+    <value>Group Details</value>
+  </data>
+  <data name="Group.Name" xml:space="preserve">
+    <value>Group Name</value>
+  </data>
+  <data name="HomePage.Title" xml:space="preserve">
+    <value>Home Page</value>
   </data>
   <data name="Login.Login" xml:space="preserve">
     <value>Login</value>
@@ -155,6 +203,18 @@
   </data>
   <data name="Modal.Button.SaveChanges" xml:space="preserve">
     <value>Save Changes</value>
+  </data>
+  <data name="Model.Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="Model.Departments" xml:space="preserve">
+    <value>Departments</value>
+  </data>
+  <data name="Model.Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Model.Groups" xml:space="preserve">
+    <value>Groups</value>
   </data>
   <data name="Model.Title" xml:space="preserve">
     <value>Title</value>
@@ -207,8 +267,14 @@
   <data name="Site.Title" xml:space="preserve">
     <value>MIM Management System</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
   <data name="Table.Action" xml:space="preserve">
     <value>Actions</value>
+  </data>
+  <data name="Table.NoRecord" xml:space="preserve">
+    <value>No record found</value>
   </data>
   <data name="Table.SearchBar.Clear" xml:space="preserve">
     <value>Clear</value>
@@ -281,6 +347,9 @@
   </data>
   <data name="User.SuperAdmin" xml:space="preserve">
     <value>Account is Super Admin?</value>
+  </data>
+  <data name="User.Table.NoTitle" xml:space="preserve">
+    <value>No Title</value>
   </data>
   <data name="User.TitleID" xml:space="preserve">
     <value>Title</value>

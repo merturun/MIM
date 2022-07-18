@@ -44,7 +44,8 @@ namespace MIM.Controllers
             Title title = await db.Titles.FindAsync(id);
             if (title == null)
             {
-                return HttpNotFound();
+                title.Name = "Ünvan yok";
+                return View(title);
             }
             return View(title);
         }

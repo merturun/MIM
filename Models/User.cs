@@ -21,14 +21,16 @@ namespace MIM.Models
         {
             Firstname = Lastname = Nickname = Username = Password = "Default";
             Email = "Default@default.com";
+           
             Title = new Title() { Name = "Default" };
+           
         }
 
         #region "Model Properties"
         public int UserID { get; set; }
         public int OrganizationID { get; set; }
         public virtual Organization Organization { get; set; }
-        public int TitleID { get; set; }
+        public int? TitleID { get; set; }
         public virtual Title Title { get; set; }
         public int? DepartmentID { get; set; }
         public virtual Department Department { get; set; }
@@ -43,6 +45,8 @@ namespace MIM.Models
         public DateTime BornDate { get; set; }
         public bool SuperAdmin { get; set; }
         public List<Group> Groups { get; set; }
+
+      
 
         #endregion "Model Properties"
 

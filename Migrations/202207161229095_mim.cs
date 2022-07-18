@@ -3,7 +3,7 @@ namespace MIM.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class MIMCore : DbMigration
+    public partial class mim : DbMigration
     {
         public override void Up()
         {
@@ -67,7 +67,7 @@ namespace MIM.Migrations
                     {
                         UserID = c.Int(nullable: false, identity: true),
                         OrganizationID = c.Int(nullable: false),
-                        TitleID = c.Int(nullable: false),
+                        TitleID = c.Int(nullable: true),
                         DepartmentID = c.Int(nullable: false),
                         Firstname = c.String(nullable: false),
                         Lastname = c.String(nullable: false),
@@ -78,17 +78,14 @@ namespace MIM.Migrations
                         IsActive = c.Boolean(nullable: false),
                         BornDate = c.DateTime(nullable: false),
                         SuperAdmin = c.Boolean(nullable: false),
-                        Title_TitleID = c.Int(),
                     })
                 .PrimaryKey(t => t.UserID)
                 .ForeignKey("dbo.Departments", t => t.DepartmentID)
-                .ForeignKey("dbo.Titles", t => t.Title_TitleID)
                 .ForeignKey("dbo.Titles", t => t.TitleID)
-                .ForeignKey("dbo.Organizations", t => t.OrganizationID, cascadeDelete: false)
+                .ForeignKey("dbo.Organizations", t => t.OrganizationID, cascadeDelete: true)
                 .Index(t => t.OrganizationID)
                 .Index(t => t.TitleID)
-                .Index(t => t.DepartmentID)
-                .Index(t => t.Title_TitleID);
+                .Index(t => t.DepartmentID);
             
             CreateTable(
                 "dbo.Titles",
@@ -148,8 +145,8 @@ namespace MIM.Migrations
                         UserID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.GroupID, t.UserID })
-                .ForeignKey("dbo.Groups", t => t.GroupID, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserID, cascadeDelete: true)
+                .ForeignKey("dbo.Groups", t => t.GroupID, cascadeDelete: false)
+                .ForeignKey("dbo.Users", t => t.UserID, cascadeDelete: false)
                 .Index(t => t.GroupID)
                 .Index(t => t.UserID);
             
@@ -180,7 +177,6 @@ namespace MIM.Migrations
             DropForeignKey("dbo.GroupUsers", "UserID", "dbo.Users");
             DropForeignKey("dbo.GroupUsers", "GroupID", "dbo.Groups");
             DropForeignKey("dbo.Users", "TitleID", "dbo.Titles");
-            DropForeignKey("dbo.Users", "Title_TitleID", "dbo.Titles");
             DropForeignKey("dbo.Users", "DepartmentID", "dbo.Departments");
             DropForeignKey("dbo.GrantGroups", "GroupID", "dbo.Groups");
             DropForeignKey("dbo.GrantGroups", "GrantID", "dbo.Grants");
@@ -193,7 +189,6 @@ namespace MIM.Migrations
             DropIndex("dbo.GrantGroups", new[] { "GrantID" });
             DropIndex("dbo.Licenses", new[] { "OrganizationID" });
             DropIndex("dbo.Titles", new[] { "OrganizationID" });
-            DropIndex("dbo.Users", new[] { "Title_TitleID" });
             DropIndex("dbo.Users", new[] { "DepartmentID" });
             DropIndex("dbo.Users", new[] { "TitleID" });
             DropIndex("dbo.Users", new[] { "OrganizationID" });

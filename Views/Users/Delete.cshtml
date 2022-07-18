@@ -94,28 +94,24 @@
                     </dd>
 
                 </dl>
-                @using (Ajax.BeginForm("Delete", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure="toastr.error('Silme Başarısız', 'Kullanıcı')" }, new { id = "userdelete" }))
+                @using (Ajax.BeginForm("Delete", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.DeleteError") + "', '" + LanguageHelper.GetString("Model.Department") + "')" }))
                 {
                     @Html.AntiForgeryToken()
 
-                    <div class="form-actions no-color">
-                        @Html.HiddenFor(modelItem => modelItem.UserID)
-                        <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-1" />
-                        <input type="cancel" id="user-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-2" />
-                    </div>
+            <div class="form-actions no-color">
+                @Html.HiddenFor(modelItem => modelItem.UserID)
+                <input data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-3" />
+                <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-2" />
+            </div>
                 }
             </div>
         </div>
     </div>
 </div>
 <script>
-    $("#user-modal-cancel").click(function (event) { $("#user-modal").modal('hide'); })
-</script>
-</script>
-<script>
     function GetTable() {
         $("#user-modal").modal('hide');
-        toastr.success("Silme Başarılı", "Kullanıcı")
+                toastr.success('@LanguageHelper.GetString("Model.Toastr.DeleteSuccess")', '@LanguageHelper.GetString("Model.User")')
         $.ajax({
             url: '/Users/Table',
             method: 'GET',

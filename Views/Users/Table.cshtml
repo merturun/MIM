@@ -62,7 +62,15 @@
                         @Html.DisplayFor(modelItem => item.Lastname)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Title.Name)
+                        @if (item.Title == null)
+                        {
+
+                            <span class="label label-lg label-light-warning label-inline">@LanguageHelper.GetString("User.Table.NoTitle")</span>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.Title.Name)
+                        }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Department.Name)

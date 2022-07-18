@@ -180,6 +180,9 @@
   <data name="Group.Name" xml:space="preserve">
     <value>Grup Adı</value>
   </data>
+  <data name="HomePage.Title" xml:space="preserve">
+    <value>Ana Sayfa</value>
+  </data>
   <data name="Login.Login" xml:space="preserve">
     <value>Giriş Yap</value>
   </data>
@@ -374,6 +377,9 @@
   </data>
   <data name="User.SuperAdmin" xml:space="preserve">
     <value>Sistem Yöneticisi?</value>
+  </data>
+  <data name="User.Table.NoTitle" xml:space="preserve">
+    <value>Ünvanı yok</value>
   </data>
   <data name="User.TitleID" xml:space="preserve">
     <value>Ünvan</value>
