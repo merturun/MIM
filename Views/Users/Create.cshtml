@@ -108,14 +108,14 @@
                           <div class="form-group">
                               @Html.LabelFor(model => model.Groups, @LanguageHelper.GetStringForModal("User.TitleID"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
                               <div class="col-4">
-                                  @Html.DropDownList("GroupIDS", (IEnumerable<SelectListItem>)ViewBag.Groups, @LanguageHelper.GetStringForModal("Dropdown.First"), htmlAttributes: new { @class = "form-control", multiple="multiple" })
+                                  @Html.DropDownList("GroupIDS", (IEnumerable<SelectListItem>)ViewBag.Groups, htmlAttributes: new { @class = "form-control", multiple="multiple" })
                                   @Html.ValidationMessageFor(model => model.Groups, "", new { @class = "text-danger" })
                               </div>
                           </div>
-                              <div class="modal-footer">
-                                  <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
-                                  <input type="cancel" id="user-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-2" />
-                              </div>
+                          <div class="modal-footer">
+                              <input class="btn btn-primary col-2" data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" />
+                              <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
+                          </div>
                               }
                           </div>
                       </div>

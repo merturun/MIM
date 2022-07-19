@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MIM.Helper
 {
@@ -17,5 +18,22 @@ namespace MIM.Helper
 
             return tmp;
         }
+
+        //public static string MultipleDropDownList<T>(IEnumerable<SelectListItem> list,T obj,string objectid, string first)
+        //{
+        //    string tmp = "";
+        //    string a = "", b = "";
+        //    tmp += " <select id='" + objectid + "' multiple='multiple' name='" + objectid + "'>";
+
+        //    foreach (SelectListItem item in list)
+        //    {
+        //        tmp += "<option selected='selected'value='" + item.Value + "'>" + item.Text + "</option>";
+        //    }
+            
+        //    tmp += "</ select>";
+        //    return tmp;
+
+
+        //}
     }
 }

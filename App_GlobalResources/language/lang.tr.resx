@@ -360,6 +360,9 @@
   <data name="User.Firstname" xml:space="preserve">
     <value>Ad</value>
   </data>
+  <data name="User.Groups" xml:space="preserve">
+    <value>Gruplar</value>
+  </data>
   <data name="User.IsActive" xml:space="preserve">
     <value>Hesabı Aktifleştir?</value>
   </data>

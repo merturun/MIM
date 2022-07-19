@@ -2,13 +2,14 @@
 @{
     Layout = null;
     string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
+    var asd = (IEnumerable<SelectListItem>)ViewBag.Groups;
 }
 
 <div class="modal" id="user-modal">
     <div class="modal-dialog modal-dialog-centered @modal_size">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Add")</h4>
+                <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Add") </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div><div class="container"></div>
                   <div style="padding-bottom: 0px;" class="modal-body">
@@ -105,28 +106,27 @@
                                   </span>
                               </div>
                           </div>
-
+                          <h3>Gruplar</h3>
+                          <hr class="chr" />
                           <div class="form-group">
-                              @Html.LabelFor(model => model.Groups, @LanguageHelper.GetStringForModal("User.TitleID"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
+                              @Html.LabelFor(model => model.Groups, @LanguageHelper.GetStringForModal("User.Groups"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
                               <div class="col-4">
-                                  @Html.DropDownList("GroupIDS", (IEnumerable<SelectListItem>)ViewBag.Groups, @LanguageHelper.GetStringForModal("Dropdown.First"), htmlAttributes: new { @class = "form-control", multiple = "multiple" })
+                                  @Html.DropDownList("GroupIDS", (List<SelectListItem>)ViewBag.Groups, htmlAttributes: new { @class = "form-control exampleSelect2", multiple = "multiple" })
                                   @Html.ValidationMessageFor(model => model.Groups, "", new { @class = "text-danger" })
                               </div>
                           </div>
 
                           <div class="modal-footer">
-                              <input class="btn btn-warning" type="submit" value="@LanguageHelper.GetString("Modal.Button.SaveChanges")" />
-                              <input type="cancel" id="user-modal-cancel" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-2" />
+                              <input class="btn btn-primary col-2" data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" />
+                              <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.SaveChanges")" />
                           </div>
+
                       }
                   </div>
         </div>
     </div>
 </div>
-<script>
-    $("#user-modal-cancel").click(function (event) { $("#user-modal").modal('hide'); })
-</script>
-    <script>
+<script> 
         var arrows = {
             leftArrow: '<i class="la la-angle-left"></i>',
         rightArrow: '<i class="la la-angle-right"></i>'

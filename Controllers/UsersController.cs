@@ -18,6 +18,7 @@ namespace MIM.Controllers
     public class UsersController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
+        public static ICollection<Group> Groups;
         // GET: /Users        
         public async Task<ActionResult> Index()
         {            
@@ -63,11 +64,15 @@ namespace MIM.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups")] User user,int[] GroupIDS)
-        {
-            foreach (var item in GroupIDS)
+        {   
+            if (GroupIDS != null)
             {
-                user.Groups.Add(db.Groups.FirstOrDefault(x => x.GroupID == item));
+                foreach (var item in GroupIDS)
+                {
+                    user.Groups.Add(db.Groups.FirstOrDefault(x => x.GroupID == item));
+                }
             }
+            
             user.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -79,16 +84,31 @@ namespace MIM.Controllers
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View(user);
         }
-
+        public List<SelectListItem> GetSelectedGroups(Group[] groups)
+        {
+            List <SelectListItem> selectListItems = new List<SelectListItem>();
+            IEnumerable <Group> allGroups = db.Groups.Where(x => x.OrganizationID == Organization.current.OrganizationID);
+            foreach (Group grp in allGroups)
+            {
+                selectListItems.Add(new SelectListItem()
+                { 
+                    Text = grp.Name.ToString(),
+                    Value = grp.GroupID.ToString(),
+                    Selected = groups.Any(x => x.GroupID == grp.GroupID)
+                });
+            }
+            return selectListItems;
+        }
         // GET: Users/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-        ViewBag.Groups = new SelectList(db.Groups, "GroupID", "Name");
-        User user = await db.Users.FindAsync(id);
+            }           
+            User user = await db.Users.FindAsync(id);
+            ViewBag.Groups = GetSelectedGroups(user.Groups.ToArray());
+            Groups = user.Groups;
             if (user == null)
             {
                 return HttpNotFound();
@@ -101,8 +121,16 @@ namespace MIM.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID")] User user, int[] GroupIDS)
+        public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups")] User user, int[] GroupIDS)
         {
+            if (GroupIDS != null)
+            {
+                foreach (var item in GroupIDS)
+                {
+                    if (Groups.FirstOrDefault(x => x.GroupID == item) == null)
+                        user.Groups.Add(db.Groups.FirstOrDefault(x => x.GroupID == item));
+                }
+            }
             user.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -110,6 +138,7 @@ namespace MIM.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.Groups = GetSelectedGroups(user.Groups.ToArray());
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View(user);
