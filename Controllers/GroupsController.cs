@@ -92,6 +92,7 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "GroupID,Name,Description")] Group group)
         {
+            group.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
                 db.Entry(group).State = EntityState.Modified;

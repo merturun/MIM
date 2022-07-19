@@ -16,6 +16,7 @@
                     @Html.AntiForgeryToken()
 
                     @Html.HiddenFor(model => model.GroupID)
+                    
 
                     <div class="form-group row align-items-center">
                         @Html.LabelFor(model => model.Name, @LanguageHelper.GetStringForModal("Group.Name"), htmlAttributes: new { @class = "control-label col-5 font-weight-bold  my-auto" })
