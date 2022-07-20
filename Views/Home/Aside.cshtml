@@ -1,7 +1,7 @@
 ﻿<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
     <div class="brand flex-column-auto" id="kt_brand">
         <a href="@Url.Action("Index","Home" )" class="brand-logo">
-            <img alt="Logo" src="~/assets/media/logos/logo-light.png" />
+            <img alt="Logo" style="width:25%"src="~/assets/media/logos/logo.png" />
         </a>
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
             <span class="svg-icon svg-icon svg-icon-xl">
@@ -33,60 +33,77 @@
                     </a>
                 </li>
 
-                <li class="menu-section">
-                    <h4 class="menu-text">Yönetim Paneli</h4>
-                    <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-                </li>
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
-                        <span class="flaticon-users-1 menu-icon"></span>
-                        <span class="menu-text">Kurum   </span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                            </li>
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="@Url.Action("Index","Users" )" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Kullanıcılar</span>
 
-                                </a>
-                            </li>
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="@Url.Action("Index","Titles" )" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Ünvanlar</span>
-  
-                                </a>
-                            </li>
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="@Url.Action("Index","Groups" )" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Gruplar</span>
+                @if (MIM.Models.User.current.isGranted(new string[] { "Users", "Titles", "Grants", "Departments" }))
+                {
+                    <li class="menu-section">
+                        <h4 class="menu-text">Yönetim Paneli</h4>
+                        <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+                    </li>
+                    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="flaticon-users-1 menu-icon"></span>
+                            <span class="menu-text">Kurum   </span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu">
+                            <i class="menu-arrow"></i>
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                </li>
 
-                                </a>
-                            </li>
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="@Url.Action("Index","Departments" )" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Departmanlar</span>
+                                @if (MIM.Models.User.current.isGranted("Table", "Users"))
+                                {
+                                    <li class="menu-item" aria-haspopup="true">
+                                        <a href="@Url.Action("Index", "Users")" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-line">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Kullanıcılar</span>
 
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>                
+                                        </a>
+                                    </li>
+                                }
+                                @if (MIM.Models.User.current.isGranted("Table", "Titles"))
+                                {
+                                    <li class="menu-item" aria-haspopup="true">
+                                        <a href="@Url.Action("Index", "Titles")" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-line">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Ünvanlar</span>
+
+                                        </a>
+                                    </li>
+                                }
+                                @if (MIM.Models.User.current.isGranted("Table", "Groups"))
+                                {
+                                    <li class="menu-item" aria-haspopup="true">
+                                        <a href="@Url.Action("Index", "Groups")" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-line">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Gruplar</span>
+
+                                        </a>
+                                    </li>
+                                }
+                                @if (MIM.Models.User.current.isGranted("Table", "Departments"))
+                                {
+                                    <li class="menu-item" aria-haspopup="true">
+                                        <a href="@Url.Action("Index", "Departments")" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-line">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Departmanlar</span>
+
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                }
                 <li class="menu-section">
                     <h4 class="menu-text">Section Test 2</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>

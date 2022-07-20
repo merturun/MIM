@@ -58,7 +58,7 @@ namespace MIM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "GroupID,Name,Description")] Group group)
+        public async Task<ActionResult> Create([Bind(Include = "GroupID,Name,Description")] Group group, int[] GroupIDS)
         {
             group.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
@@ -92,6 +92,7 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "GroupID,Name,Description")] Group group)
         {
+            group.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
                 db.Entry(group).State = EntityState.Modified;

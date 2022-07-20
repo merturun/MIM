@@ -15,5 +15,7 @@ namespace MIM.Models
         public virtual User User { get; set; }
         public int OrganizationID { get; set; }
         public virtual Organization Organization { get; set; }
+
+        public override string ToString() { return Name; }
     }
 }

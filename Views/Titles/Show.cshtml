@@ -1,7 +1,7 @@
 ﻿@model MIM.Models.Title
 @{
     Layout = null;
-    string modal_size = "modal-sm"; // "modal-sm" "modal", "modal-lg" "modal-xl"
+    string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
 }
 <div class="modal" id="title-modal">
     <div class="modal-dialog modal-dialog-centered @modal_size">
@@ -11,17 +11,22 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div><div class="container"></div>
             <div style="padding-bottom: 0px;" class="modal-body">
-                <dl class="dl-horizontal">
-                    <div class="row">
-                    <dt> @LanguageHelper.GetStringForModal("Title.Name") &nbsp;</dt>
-                    <dd> @Html.DisplayFor(model => model.Name) </dd>
+                <center>
+                    <div class="row align-items-center">
+                        <div style="width:50%">
+                            @Html.LabelFor(model => model.Name, LanguageHelper.GetString("Title.Name"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                            <hr style="width:50%" />
+                            @Html.DisplayFor(model => model.Name)
+                        </div>
+                        <div style="width:50%">
+                            @Html.LabelFor(model => model.Description, LanguageHelper.GetString("Title.Description"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                            <hr style="width:50%" />
+                            @Html.DisplayFor(model => model.Description)
+                        </div>
+                    </div>
+                    <br />
+                </center>
             </div>
-            <div class="row">
-                <dt> @LanguageHelper.GetStringForModal("Title.Description") &nbsp;</dt>
-                <dd> @Html.DisplayFor(model => model.Description) </dd>
-            </div>
-            </dl>
         </div>
     </div>
-</div>
 </div>

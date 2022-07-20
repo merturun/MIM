@@ -120,6 +120,9 @@
   <data name="About.Desc" xml:space="preserve">
     <value>Hakkımızda</value>
   </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
   <data name="Crud.Create" xml:space="preserve">
     <value>Oluştur</value>
   </data>
@@ -195,6 +198,9 @@
   <data name="Login.Welcome" xml:space="preserve">
     <value>MIM Yönetim Sistemine Hoşgeldiniz</value>
   </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Sistem Yöneticisi</value>
+  </data>
   <data name="Modal.Button.Add" xml:space="preserve">
     <value>Ekle</value>
   </data>
@@ -249,6 +255,9 @@
   <data name="Model.Toastr.EditSuccess" xml:space="preserve">
     <value>Düzenleme işlemi Başarılı</value>
   </data>
+  <data name="Model.Toastr.NoGrant" xml:space="preserve">
+    <value>Yetkiniz yok.</value>
+  </data>
   <data name="Model.User" xml:space="preserve">
     <value>Kullanıcı</value>
   </data>
@@ -257,6 +266,9 @@
   </data>
   <data name="NavBar.Hi" xml:space="preserve">
     <value>Merhaba</value>
+  </data>
+  <data name="Passive" xml:space="preserve">
+    <value>Pasif</value>
   </data>
   <data name="QuickUser.MyActivity" xml:space="preserve">
     <value>Aktivitelerim</value>
@@ -293,6 +305,9 @@
   </data>
   <data name="Site.Title" xml:space="preserve">
     <value>MIM Yönetim Sistemi</value>
+  </data>
+  <data name="StandartUser" xml:space="preserve">
+    <value>Standart Kullanıcı</value>
   </data>
   <data name="Table.Action" xml:space="preserve">
     <value>Aksiyonlar</value>
@@ -348,7 +363,10 @@
   <data name="User.Firstname" xml:space="preserve">
     <value>Ad</value>
   </data>
-  <data name="User.isActive" xml:space="preserve">
+  <data name="User.Groups" xml:space="preserve">
+    <value>Gruplar</value>
+  </data>
+  <data name="User.IsActive" xml:space="preserve">
     <value>Hesabı Aktifleştir?</value>
   </data>
   <data name="User.Lastname" xml:space="preserve">
@@ -378,10 +396,13 @@
   <data name="User.SuperAdmin" xml:space="preserve">
     <value>Sistem Yöneticisi?</value>
   </data>
+  <data name="User.Table.NoDepartment" xml:space="preserve">
+    <value>Departmanı Yok</value>
+  </data>
   <data name="User.Table.NoTitle" xml:space="preserve">
     <value>Ünvanı yok</value>
   </data>
-  <data name="User.TitleID" xml:space="preserve">
+  <data name="User.Title" xml:space="preserve">
     <value>Ünvan</value>
   </data>
   <data name="User.Username" xml:space="preserve">

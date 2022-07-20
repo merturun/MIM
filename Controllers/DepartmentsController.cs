@@ -21,6 +21,7 @@ namespace MIM.Controllers
         public async Task<ActionResult> Index()
         {
             var departments = db.Departments.Include(d => d.Organization);
+            
             return View(await departments.ToListAsync());
         }
 

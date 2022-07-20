@@ -15,7 +15,7 @@ namespace MIM.Models
         public string Description { get; set; }
         public int OrganizationID { get; set; } 
         public Organization Organization { get; set; }
-       
-    
+
+        public override string ToString() { return Name; }
     }
 }
