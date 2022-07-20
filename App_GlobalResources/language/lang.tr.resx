@@ -255,6 +255,9 @@
   <data name="Model.Toastr.EditSuccess" xml:space="preserve">
     <value>Düzenleme işlemi Başarılı</value>
   </data>
+  <data name="Model.Toastr.NoGrant" xml:space="preserve">
+    <value>Yetkiniz yok.</value>
+  </data>
   <data name="Model.User" xml:space="preserve">
     <value>Kullanıcı</value>
   </data>

@@ -3,105 +3,108 @@
     Layout = null;
     ViewBag.Title = LanguageHelper.GetString("Model.Users");
     string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
+    bool grant = Model != null;
 }
-<div class="modal" id="user-modal">
-    <div class="modal-dialog modal-dialog-centered @modal_size">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Delete")</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div><div class="container"></div>
-            <div style="padding-bottom: 0px;" class="modal-body">
-                <center>
-                    <div class="row items-align-center">
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.Firstname, @LanguageHelper.GetString("User.Firstname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%;" />
+@if (grant)
+{
+    <div class="modal" id="user-modal">
+        <div class="modal-dialog modal-dialog-centered @modal_size">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Delete")</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div><div class="container"></div>
+                <div style="padding-bottom: 0px;" class="modal-body">
+                    <center>
+                        <div class="row items-align-center">
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.Firstname, @LanguageHelper.GetString("User.Firstname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%;" />
 
-                            @Html.DisplayFor(model => model.Firstname)
-                        </div>
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.Lastname, @LanguageHelper.GetString("User.Lastname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%;" />
+                                @Html.DisplayFor(model => model.Firstname)
+                            </div>
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.Lastname, @LanguageHelper.GetString("User.Lastname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%;" />
 
-                            @Html.DisplayFor(model => model.Lastname)
-                        </div>
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.Nickname, @LanguageHelper.GetString("User.Nickname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%;" />
+                                @Html.DisplayFor(model => model.Lastname)
+                            </div>
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.Nickname, @LanguageHelper.GetString("User.Nickname"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%;" />
 
-                            @Html.DisplayFor(model => model.Nickname)
+                                @Html.DisplayFor(model => model.Nickname)
+                            </div>
                         </div>
-                    </div>
+                        <br />
+                        <hr class="chr" />
+                        <br />
+                        <div class="row items-align-center">
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.Username, @LanguageHelper.GetString("User.Username"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%" />
+
+                                @Html.DisplayFor(model => model.Username)
+                            </div>
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.Password, @LanguageHelper.GetString("User.Password"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%" />
+
+                                @Html.DisplayFor(model => model.Password)
+                            </div>
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.Email, @LanguageHelper.GetString("User.Email"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%" />
+
+                                @Html.DisplayFor(model => model.Email)
+                            </div>
+                        </div>
+                        <br />
+                        <hr class="chr" />
+                        <br />
+                        <div class="row items-align-center">
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.BornDate, @LanguageHelper.GetString("User.BornDate"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%" />
+
+                                @Html.DisplayFor(model => model.BornDate)
+                            </div>
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetString("User.isActive"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%" />
+
+                                <label>
+                                    @Html.CheckBoxFor(model => model.IsActive, new { id = "isActive", @checked = "checked" })
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div style="width:33%">
+                                @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetString("User.SuperAdmin"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                <hr style="width:50%" />
+
+                                <label>
+                                    @Html.CheckBoxFor(model => model.SuperAdmin, new { id = "superAdmin", @checked = "checked" })
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </center>
                     <br />
-                    <hr class="chr" />
-                    <br />
-                    <div class="row items-align-center">
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.Username, @LanguageHelper.GetString("User.Username"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%" />
+                    @using (Ajax.BeginForm("Delete", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.DeleteError") + "', '" + LanguageHelper.GetString("Model.Department") + "')" }))
+                    {
+                        @Html.AntiForgeryToken()
 
-                            @Html.DisplayFor(model => model.Username)
+                        <div class="form-actions no-color">
+                            @Html.HiddenFor(modelItem => modelItem.UserID)
+                            <input data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-3" />
+                            <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-2" />
                         </div>
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.Password, @LanguageHelper.GetString("User.Password"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%" />
-
-                            @Html.DisplayFor(model => model.Password)
-                        </div>
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.Email, @LanguageHelper.GetString("User.Email"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%" />
-
-                            @Html.DisplayFor(model => model.Email)
-                        </div>
-                    </div>
-                    <br />
-                    <hr class="chr" />
-                    <br />
-                    <div class="row items-align-center">
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.BornDate, @LanguageHelper.GetString("User.BornDate"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%" />
-
-                            @Html.DisplayFor(model => model.BornDate)
-                        </div>
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetString("User.isActive"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%" />
-
-                            <label>
-                                @Html.CheckBoxFor(model => model.IsActive, new { id = "isActive", @checked = "checked" })
-                                <span></span>
-                            </label>
-                        </div>
-                        <div style="width:33%">
-                            @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetString("User.SuperAdmin"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <hr style="width:50%" />
-
-                            <label>
-                                @Html.CheckBoxFor(model => model.SuperAdmin, new { id = "superAdmin", @checked = "checked" })
-                                <span></span>
-                            </label>
-                        </div>
-                    </div>
-                </center>
-                <br />
-                @using (Ajax.BeginForm("Delete", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.DeleteError") + "', '" + LanguageHelper.GetString("Model.Department") + "')" }))
-                {
-                    @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                @Html.HiddenFor(modelItem => modelItem.UserID)
-                <input data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-3" />
-                <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-2" />
-            </div>
-                }
+                    }
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script>
+    <script>
     function GetTable() {
         $("#user-modal").modal('hide');
                 toastr.success('@LanguageHelper.GetString("Model.Toastr.DeleteSuccess")', '@LanguageHelper.GetString("Model.User")')
@@ -116,4 +119,11 @@
             },
         });
     };
-</script>
+    </script>
+}
+else
+{
+    <script>
+    toastr.error('@LanguageHelper.GetString("Model.Toastr.NoGrant")', '@LanguageHelper.GetString("Model.User")')
+    </script>
+}

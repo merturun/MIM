@@ -4,95 +4,105 @@
 @using System.Web.Security;
 @{
     Layout = null;
+    bool grant = Model != null;
 }
-<div id="users_list">
-    <div class="table-responsive" style="overflow: inherit;">
-        <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
-            <thead>
-                <tr class="text-center">
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        @LanguageHelper.GetString("User.Firstname")
-                    </th>
-                    <th>
-                        @LanguageHelper.GetString("User.Lastname")
-                    </th>
-                    <th>
-                        @LanguageHelper.GetString("User.Title")
-                    </th>
-                    <th>
-                        @LanguageHelper.GetString("User.Department")
-                    </th>
-                    <th>
-                        <div class="btn-toolbar-right mr-2" role="toolbar">
-                            @LanguageHelper.GetString("Table.Action")
-                        </div>
-                    </th>
-                </tr>
-                <tr class="text-center">
-                    <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
-                    <th style="width: 20%">@Html.TextBox("firstname", "", new { @class = "form-control" })</th>
-                    <th style="width: 20%">@Html.TextBox("lastname", "", new { @class = "form-control" })</th>
-                    <th style="width: 20%">@Html.DropDownList("TitleID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
-                    <th style="width: 20%">@Html.DropDownList("DepartmentID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
-                    <th style="width: 15%">
-                        <div class="btn-toolbar-right" role="toolbar">
-                            <div class="btn-group mr-2" role="group">
-                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-primary">@LanguageHelper.GetString("Table.SearchBar.Search")</span>
-                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-warning">@LanguageHelper.GetString("Table.SearchBar.Clear")</span>
+@if (grant)
+{    
+    <div id="users_list">
+        <div class="table-responsive" style="overflow: inherit;">
+            <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                <thead>
+                    <tr class="text-center">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            @LanguageHelper.GetString("User.Firstname")
+                        </th>
+                        <th>
+                            @LanguageHelper.GetString("User.Lastname")
+                        </th>
+                        <th>
+                            @LanguageHelper.GetString("User.Title")
+                        </th>
+                        <th>
+                            @LanguageHelper.GetString("User.Department")
+                        </th>
+                        <th>
+                            <div class="btn-toolbar-right mr-2" role="toolbar">
+                                @LanguageHelper.GetString("Table.Action")
                             </div>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                <tr class="text-center">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Firstname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Lastname)
-                    </td>
-                    <td>
-                        @Html.Raw(HtmlObjectHelper.IsExistLabel<Title>(item.Title, "warning", "User.Table.NoTitle"))
-                    </td>
-                    <td>
-                        @Html.Raw(HtmlObjectHelper.IsExistLabel<Department>(item.Department, "warning", "User.Table.NoDepartment"))
-                    </td>
-                    <td style="width: 15%">
-                        @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                        @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                        @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
-        @{ Html.RenderPartial("Pagination", Model); }
+                        </th>
+                    </tr>
+                    <tr class="text-center">
+                        <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
+                        <th style="width: 20%">@Html.TextBox("firstname", "", new { @class = "form-control" })</th>
+                        <th style="width: 20%">@Html.TextBox("lastname", "", new { @class = "form-control" })</th>
+                        <th style="width: 20%">@Html.DropDownList("TitleID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
+                        <th style="width: 20%">@Html.DropDownList("DepartmentID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
+                        <th style="width: 15%">
+                            <div class="btn-toolbar-right" role="toolbar">
+                                <div class="btn-group mr-2" role="group">
+                                    <span data-controller="common" data-action="click->common#clear" class="btn btn-light-primary">@LanguageHelper.GetString("Table.SearchBar.Search")</span>
+                                    <span data-controller="common" data-action="click->common#clear" class="btn btn-light-warning">@LanguageHelper.GetString("Table.SearchBar.Clear")</span>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="text-center">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Firstname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Lastname)
+                            </td>
+                            <td>
+                                @Html.Raw(HtmlObjectHelper.IsExistLabel<Title>(item.Title, "warning", "User.Table.NoTitle"))
+                            </td>
+                            <td>
+                                @Html.Raw(HtmlObjectHelper.IsExistLabel<Department>(item.Department, "warning", "User.Table.NoDepartment"))
+                            </td>
+                            <td style="width: 15%">
+                                @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                                @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                                @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @{ Html.RenderPartial("Pagination", Model); }
 
+        </div>
     </div>
-</div>
 
+    <script>
+        function GetPage(page) {
+            $.ajax({
+                url: '/Users/Table?page=' + page,
+                method: 'GET',
+                success: function (data) {
+                    $('#dt-users_table').html(data)
+                },
+                error: function (data) {
+                    $('#dt-users_table').html("table error")
+                },
+            });
+        }
+
+    </script>
+}
+else
+{
 <script>
-    function GetPage(page) {
-        $.ajax({
-            url: '/Users/Table?page=' + page,
-            method: 'GET',
-            success: function (data) {
-                $('#dt-users_table').html(data)
-            },
-            error: function (data) {
-                $('#dt-users_table').html("table error")
-            },
-        });
-    }
-
+    toastr.error('@LanguageHelper.GetString("Model.Toastr.NoGrant")', '@LanguageHelper.GetString("Model.User")')
+    window.location.href = "@Url.Action("Index", "Home")"
 </script>
-
+}

@@ -232,6 +232,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\chosen-sprite.png" />
     <Content Include="assets\css\chosen.css" />
     <Content Include="assets\js\chosen.jquery.js" />
     <Content Include="assets\css\pages\error\error-3.css" />
@@ -475,6 +476,7 @@
     <Content Include="assets\media\error\bg5.jpg" />
     <Content Include="assets\media\error\bg6.jpg" />
     <Content Include="assets\media\logos\favicon.ico" />
+    <Content Include="assets\media\logos\favicon.png" />
     <Content Include="assets\media\logos\logo-1.png" />
     <Content Include="assets\media\logos\logo-4.png" />
     <Content Include="assets\media\logos\logo-dark.png" />
