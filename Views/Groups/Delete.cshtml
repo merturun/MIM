@@ -1,7 +1,7 @@
 ﻿@model MIM.Models.Group
 @{ Layout = null;
     ViewBag.Title = LanguageHelper.GetString("Model.Groups");
-    string modal_size = "modal-sm"; // "modal-sm" "modal", "modal-lg" "modal-xl"
+    string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
 }
 <div class="modal" id="group-modal">
     <div class="modal-dialog modal-dialog-centered @modal_size">
@@ -10,28 +10,33 @@
                 <h4 class="modal-title">@LanguageHelper.GetString("Group.ModalTitle.Delete")</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div><div class="container"></div>
-            <div style="padding-bottom: 0px;" class="modal-body">
-                <dl class="dl-horizontal">
-                    <div class="row">
-                    <dt> @LanguageHelper.GetStringForModal("Group.Name") &nbsp;</dt>
-                    <dd> @Html.DisplayFor(model => model.Name) </dd>
-            </div>
-            <div class="row">
-                <dt> @LanguageHelper.GetStringForModal("Group.Description") &nbsp;</dt>
-                <dd> @Html.DisplayFor(model => model.Description) </dd>
-            </div>
-            </dl>
-            @using (Ajax.BeginForm("Delete", "Groups", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.DeleteError") + "', '" + LanguageHelper.GetString("Model.Group") + "')" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-actions no-color">
-                    @Html.HiddenFor(modelItem => modelItem.GroupID)
-                    <input data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-3" />
-                    <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-2" />
+                  <div style="padding-bottom: 0px;" class="modal-body">
+                      <center>
+                          <div class="row align-items-center">
+                              <div style="width:50%">
+                                  @Html.LabelFor(model => model.Name, LanguageHelper.GetString("Group.Name"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                  <hr style="width:50%" />
+                                  @Html.DisplayFor(model => model.Name)
+                              </div>
+                              <div style="width:50%">
+                                  @Html.LabelFor(model => model.Description, LanguageHelper.GetString("Group.Description"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                  <hr style="width:50%" />
+                                  @Html.DisplayFor(model => model.Description)
+                              </div>
+                          </div>
+                          <br />
+                      </center>
+                      @using (Ajax.BeginForm("Delete", "Groups", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.DeleteError") + "', '" + LanguageHelper.GetString("Model.Group") + "')" }))
+                      {
+                          @Html.AntiForgeryToken()
+                          <div class="form-actions no-color">
+                              @Html.HiddenFor(modelItem => modelItem.GroupID)
+                              <input data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" class="btn btn-primary col-2" />
+                              <input type="submit" value="@LanguageHelper.GetString("Modal.Button.Delete")" class="btn btn-danger col-2" />
 
-                </div>
-            }
-        </div>
+                          </div>
+                      }
+                  </div>
     </div>
 </div>
 </div>

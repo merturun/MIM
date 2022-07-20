@@ -18,7 +18,7 @@ namespace MIM.Controllers
         private MIMDBContext db = new MIMDBContext();
 
         // GET: Groups
-        public async Task<ActionResult> Index()
+        public  ActionResult Index()
         {
             return View();
         }
@@ -50,16 +50,21 @@ namespace MIM.Controllers
         public ActionResult Create()
         {
             ViewBag.OrganizationID = new SelectList(db.Organizations, "OrganizationID", "Name");
+            ViewBag.Grants = GetSelectedGrants(new Grant[0]);
             return View();
         }
-
+       
         // POST: Groups/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "GroupID,Name,Description")] Group group, int[] GroupIDS)
+        public async Task<ActionResult> Create([Bind(Include = "GroupID,Name,Description")] Group group, int[] GrantIDS)
         {
+            if (GrantIDS != null)
+                foreach (var item in GrantIDS)
+                    group.Grants.Add(db.Grants.FirstOrDefault(x => x.GrantID == item));
+
             group.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -67,7 +72,23 @@ namespace MIM.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.Groups = db.Grants;
             return View(group);
+        }
+        public List<SelectListItem> GetSelectedGrants(Grant[] grants)
+        {
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+            IEnumerable<Grant> allGrants = db.Grants;
+            foreach (Grant grt in allGrants)
+            {
+                selectListItems.Add(new SelectListItem()
+                {
+                    Text = grt.Name.ToString(),
+                    Value = grt.GrantID.ToString(),
+                    Selected = grants.Any(x => x.GrantID == grt.GrantID)
+                });
+            }
+            return selectListItems;
         }
 
         // GET: Groups/Edit/5
@@ -78,6 +99,7 @@ namespace MIM.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Group group = await db.Groups.FindAsync(id);
+            ViewBag.Grants = GetSelectedGrants(group.Grants.ToArray()); //Mert
             if (group == null)
             {
                 return HttpNotFound();
@@ -90,15 +112,22 @@ namespace MIM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "GroupID,Name,Description")] Group group)
+        public async Task<ActionResult> Edit([Bind(Include = "GroupID,Name,Description")] Group group, int[] GrantIDS)
         {
             group.OrganizationID = Organization.current.OrganizationID;
+            DBHelper dbh = new DBHelper();
+
+            dbh.UpdateGrants(group.GroupID, GrantIDS);
+
             if (ModelState.IsValid)
             {
                 db.Entry(group).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.Grants = GetSelectedGrants(group.Grants.ToArray()); //Mert
+
             return View(group);
         }
 

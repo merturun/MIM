@@ -146,14 +146,24 @@
                                     <div class="row align-items-center">
                                         <table class="table table-hover">
                                             <tr>
-                                                <td>ID</td>
-                                                <td>Name</td>
+                                                <td>#</td>
+                                                <td>@LanguageHelper.GetString("Group.Name")</td>
+                                                <td>@LanguageHelper.GetString("Group.Grants")</td>
                                             </tr>
                                             @foreach (var item in Model.Groups)
                                             {
                                                 <tr>
                                                     <td>@item.GroupID</td>
                                                     <td>@item.Name</td>
+
+                                                    <td>
+                                                        @foreach (var x in item.Grants)
+                                                        {
+                                                            @x.Name
+                                                            <br />
+                                                        }
+                                                    </td>
+
                                                 </tr>
                                             }
 

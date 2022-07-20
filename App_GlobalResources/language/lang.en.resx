@@ -156,6 +156,12 @@
   <data name="Group.Description" xml:space="preserve">
     <value>Group Description</value>
   </data>
+  <data name="Group.GrantCount" xml:space="preserve">
+    <value>Total Grants</value>
+  </data>
+  <data name="Group.Grants" xml:space="preserve">
+    <value>Grants</value>
+  </data>
   <data name="Group.ModalTitle.Add" xml:space="preserve">
     <value>Add Group</value>
   </data>
@@ -315,11 +321,17 @@
   <data name="User.BornDate" xml:space="preserve">
     <value>Born Date</value>
   </data>
+  <data name="User.Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
   <data name="User.Email" xml:space="preserve">
     <value>E-mail</value>
   </data>
   <data name="User.Firstname" xml:space="preserve">
     <value>First Name</value>
+  </data>
+  <data name="User.Groups" xml:space="preserve">
+    <value>Groups</value>
   </data>
   <data name="User.isActive" xml:space="preserve">
     <value>Account is Active?</value>
@@ -329,6 +341,9 @@
   </data>
   <data name="User.ModalTitle.Add" xml:space="preserve">
     <value>Add User</value>
+  </data>
+  <data name="User.ModalTitle.Delete" xml:space="preserve">
+    <value>Are you sure to delete this user?</value>
   </data>
   <data name="User.ModalTitle.Edit" xml:space="preserve">
     <value>Edit User</value>
@@ -350,6 +365,9 @@
   </data>
   <data name="User.Table.NoTitle" xml:space="preserve">
     <value>No Title</value>
+  </data>
+  <data name="User.Title" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="User.TitleID" xml:space="preserve">
     <value>Title</value>

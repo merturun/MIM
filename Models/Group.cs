@@ -8,6 +8,10 @@ namespace MIM.Models
 {
     public class Group
     {
+        public Group()
+        {
+            Grants = new List<Grant>();
+        }
         public int GroupID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

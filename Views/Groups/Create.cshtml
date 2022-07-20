@@ -2,46 +2,61 @@
 @{
     Layout = null;
     string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
+    bool grant = Model == null;
 }
 
-<div class="modal" id="group-modal">
-    <div class="modal-dialog modal-dialog-centered @modal_size">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">@LanguageHelper.GetString("Group.ModalTitle.Add")</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div><div class="container"></div>
-                  <div style="padding-bottom: 0px;" class="modal-body">
-                      @using (Ajax.BeginForm("Create", "Groups", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.AddError") + "', '" + LanguageHelper.GetString("Model.Group") + "')" }))
-                      {
-                          @Html.AntiForgeryToken()
+@if (grant)
+{
+    <link href="~/assets/css/chosen.css" rel="stylesheet" />
+    <script src="~/assets/js/chosen.jquery.js"></script>
+    <div class="modal" id="group-modal">
+        <div class="modal-dialog modal-dialog-centered @modal_size">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">@LanguageHelper.GetString("Group.ModalTitle.Add")</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div><div class="container"></div>
+                <div style="padding-bottom: 0px;" class="modal-body">
+                    @using (Ajax.BeginForm("Create", "Groups", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.AddError") + "', '" + LanguageHelper.GetString("Model.Group") + "')" }))
+                    {
+                        @Html.AntiForgeryToken()
 
-                          <div class="form-group row align-items-center">
-                              @Html.LabelFor(model => model.Name, @LanguageHelper.GetStringForModal("Group.Name"), htmlAttributes: new { @class = "control-label col-5 font-weight-bold  my-auto" })
-                              <div class="col-md-7">
-                                  @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                  @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                              </div>
-                          </div>
+                        <div class="form-group row align-items-center">
+                            @Html.LabelFor(model => model.Name, @LanguageHelper.GetStringForModal("Group.Name"), htmlAttributes: new { @class = "control-label col-5 font-weight-bold  my-auto" })
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-                          <div class="form-group row align-items-center">
-                              @Html.LabelFor(model => model.Description, @LanguageHelper.GetStringForModal("Group.Description"), htmlAttributes: new { @class = "control-label col-5 font-weight-bold  my-auto" })
-                              <div class="col-md-7">
-                                  @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                  @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                              </div>
-                          </div>
+                        <div class="form-group row align-items-center">
+                            @Html.LabelFor(model => model.Description, @LanguageHelper.GetStringForModal("Group.Description"), htmlAttributes: new { @class = "control-label col-5 font-weight-bold  my-auto" })
+                            <div class="col-md-7">
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <h3>@LanguageHelper.GetString("User.Groups")</h3>
+                        <hr class="chr" />
+                        <div class="form-group">                            
+                            <div class="col-12">
+                                @Html.DropDownList("GrantIDS", (List<SelectListItem>)ViewBag.Grants, htmlAttributes: new { @class = "form-control chosen-select col-12", multiple = "multiple" })
+                                @Html.ValidationMessageFor(model => model.Grants, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-                          <div class="modal-footer">
-                              <input class="btn btn-primary col-2" data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" />
-                              <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
-                          </div>
-                      }
-                  </div>
+                        <div class="modal-footer">
+                            <input class="btn btn-primary col-3" data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" />
+                            <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<script>
+    <script>
+    $('.chosen-select').chosen({ placeholder_text_multiple: "@Html.Raw(@LanguageHelper.GetString("Dropdown.First"))"});
+   $('#GrantIDS_chosen').css("width", "100%");
     function GetTable() {
         $("#group-modal").modal('hide');
         toastr.success('@LanguageHelper.GetString("Model.Toastr.AddSuccess")', '@LanguageHelper.GetString("Model.Group")')
@@ -56,4 +71,11 @@
             },
         });
     };
-</script>
+    </script>
+}
+else
+{
+    <script>
+    toastr.error('@LanguageHelper.GetString("Model.Toastr.NoGrant")', '@LanguageHelper.GetString("Model.Grant")')
+    </script>
+}

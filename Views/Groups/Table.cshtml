@@ -21,6 +21,9 @@
                         @LanguageHelper.GetString("Group.Description")
                     </th>
                     <th>
+                        @LanguageHelper.GetString("Group.GrantCount")
+                    </th>
+                    <th>
                         <div class="btn-toolbar-right mr-2" role="toolbar">
                             @LanguageHelper.GetString("Table.Action")
                         </div>
@@ -28,8 +31,9 @@
                 </tr>
                 <tr class="text-center">
                     <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
-                    <th style="width: 40%">@Html.TextBox("Name", "", new { @class = "form-control" })</th>
-                    <th style="width: 40%">@Html.TextBox("Description", "", new { @class = "form-control" })</th>
+                    <th style="width: 30%">@Html.TextBox("Name", "", new { @class = "form-control" })</th>
+                    <th style="width: 25%">@Html.TextBox("Description", "", new { @class = "form-control" })</th>
+                    <th style="width:25%">@Html.TextBox("Count", "", new { @class = "form-control" })</th>
                     <th style="width: 15%">
                         <div class="btn-toolbar-right" role="toolbar">
                             <div class="btn-group mr-2" role="group">
@@ -45,22 +49,25 @@
                 {
                     foreach (var item in Model)
                     {
-                        <tr class="text-center">
-                            <td>
-                                @Html.DisplayFor(modelItem => item.GroupID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td style="width: 15%">
-                                @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                                @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                                @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
-                            </td>
-                        </tr>
+                <tr class="text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @item.Grants.Count()
+                    </td>
+                    <td style="width: 15%">
+                        @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                        @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                        @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
+                    </td>
+                </tr>
                     }
                 }
                 else

@@ -224,6 +224,7 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Grant.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\DBHelper.cs" />
     <Compile Include="Models\License.cs" />
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\Organization.cs" />

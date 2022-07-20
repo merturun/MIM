@@ -46,7 +46,6 @@ namespace MIM.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = await db.Users.FindAsync(id);
-            ViewBag.Groups = new SelectList(user.Groups, "GroupID", "Name");
             if (user == null)
             {
                 return HttpNotFound();
@@ -59,7 +58,7 @@ namespace MIM.Controllers
         {
             if (!MIM.Models.User.current.isGranted("Create", "Users")) return View("");
             ViewBag.Groups = GetSelectedGroups(new Group[0]);
-            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
+            ViewBag.titleID = new SelectList(db.Titles, "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View();
         }
@@ -68,14 +67,10 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups")] User user,int[] GroupIDS)
         {   
-            if (GroupIDS != null)
-            {
-                foreach (var item in GroupIDS)
-                {
-                    user.Groups.Add(db.Groups.FirstOrDefault(x => x.GroupID == item));
-                }
-            }
-            
+            if (GroupIDS != null)            
+                foreach (var item in GroupIDS)                
+                    user.Groups.Add(db.Groups.FirstOrDefault(x => x.GroupID == item)); 
+
             user.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -129,21 +124,18 @@ namespace MIM.Controllers
         public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups")] User user, int[] GroupIDS)
         {
             if (!MIM.Models.User.current.isGranted("Edit", "Users")) return View();
-            if (GroupIDS != null)
-            {
-                foreach (var item in GroupIDS)
-                {
-                    var grp = db.Groups.FirstOrDefault(x => x.GroupID == item);
-                    user.Groups.Add(grp);
-                }
-            }
+
             user.OrganizationID = Organization.current.OrganizationID;
+            DBHelper dbh = new DBHelper();
+            dbh.UpdateGroups(user.UserID, GroupIDS);
+
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
             ViewBag.Groups = GetSelectedGroups(user.Groups.ToArray());
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");

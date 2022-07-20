@@ -168,6 +168,12 @@
   <data name="Group.Description" xml:space="preserve">
     <value>Grup Açıklaması</value>
   </data>
+  <data name="Group.GrantCount" xml:space="preserve">
+    <value>Yetki Sayısı</value>
+  </data>
+  <data name="Group.Grants" xml:space="preserve">
+    <value>Yetkiler</value>
+  </data>
   <data name="Group.ModalTitle.Add" xml:space="preserve">
     <value>Grup Ekle</value>
   </data>

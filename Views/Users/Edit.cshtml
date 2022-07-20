@@ -2,7 +2,6 @@
 @{
     Layout = null;
     string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
-    var asd = (IEnumerable<SelectListItem>)ViewBag.Groups;
     bool grant = Model != null;
 }
 
@@ -14,7 +13,7 @@
         <div class="modal-dialog modal-dialog-centered @modal_size">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Add") </h4>
+                    <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Edit") </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div><div class="container"></div>
                 <div style="padding-bottom: 0px;" class="modal-body">
@@ -113,8 +112,7 @@
                         </div>
                         <h3>@LanguageHelper.GetString("User.Groups")</h3>
                         <hr class="chr" />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Groups, @LanguageHelper.GetStringForModal("User.Groups"), htmlAttributes: new { @class = "control-label col-12 font-weight-bold  my-auto" })
+                        <div class="form-group">                            
                             <div class="col-12">
                                 @Html.DropDownList("GroupIDS", (List<SelectListItem>)ViewBag.Groups, htmlAttributes: new { @class = "form-control chosen-select col-12", multiple = "multiple" })
                                 @Html.ValidationMessageFor(model => model.Groups, "", new { @class = "text-danger" })

@@ -78,7 +78,7 @@
                     }
                 </tbody>
             </table>
-            @{ Html.RenderPartial("Pagination", Model); }
+            @if(Model.PageCount>1) { Html.RenderPartial("Pagination", Model); }
 
         </div>
     </div>
