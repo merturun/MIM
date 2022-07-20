@@ -61,7 +61,6 @@ namespace MIM.Controllers
             ViewBag.Groups = GetSelectedGroups(new Group[0]);
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
-            ViewBag.Groups = new SelectList(db.Groups, "GroupID", "Name");
             return View();
         }
         
