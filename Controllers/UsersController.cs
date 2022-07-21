@@ -18,6 +18,8 @@ namespace MIM.Controllers
     public class UsersController : Controller
     {
         private MIMDBContext db = new MIMDBContext();
+        DBHelper dbh = new DBHelper();
+
         public static ICollection<Group> Groups;
         // GET: /Users        
         public async Task<ActionResult> Index()
@@ -65,15 +67,16 @@ namespace MIM.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups")] User user,int[] GroupIDS)
+        public async Task<ActionResult> Create([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,AvatarUrl,DepartmentID,Groups")] User user,int[] GroupIDS,HttpPostedFileBase fb)
         {   
             if (GroupIDS != null)            
                 foreach (var item in GroupIDS)                
                     user.Groups.Add(db.Groups.FirstOrDefault(x => x.GroupID == item)); 
 
             user.OrganizationID = Organization.current.OrganizationID;
+            user.AvatarUrl = dbh.AddImage(fb, "AvatarImages/", true);
             if (ModelState.IsValid)
-            {
+            {                
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -126,7 +129,6 @@ namespace MIM.Controllers
             if (!MIM.Models.User.current.isGranted("Edit", "Users")) return View();
 
             user.OrganizationID = Organization.current.OrganizationID;
-            DBHelper dbh = new DBHelper();
             dbh.UpdateGroups(user.UserID, GroupIDS);
 
             if (ModelState.IsValid)
