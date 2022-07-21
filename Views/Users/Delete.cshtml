@@ -90,7 +90,7 @@
                         </div>
                     </center>
                     <br />
-                    @using (Ajax.BeginForm("Delete", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.DeleteError") + "', '" + LanguageHelper.GetString("Model.Department") + "')" }))
+                    @using (Ajax.BeginForm("Delete", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "toastr.error('" + LanguageHelper.GetString("Model.Toastr.DeleteError") + "', '" + LanguageHelper.GetString("Model.User") + "')" }))
                     {
                         @Html.AntiForgeryToken()
 

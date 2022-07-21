@@ -21,6 +21,7 @@ namespace MIM.ModelsMap
             this.Property(o => o.BornDate);
             this.Property(o => o.IsActive);
             this.Property(o => o.SuperAdmin);
+            this.Property(o => o.AvatarUrl);
 
             this.HasRequired(t => t.Title).WithMany().HasForeignKey(t => t.TitleID).WillCascadeOnDelete(false);
             this.HasRequired(t => t.Department).WithMany().HasForeignKey(t => t.DepartmentID).WillCascadeOnDelete(false);
