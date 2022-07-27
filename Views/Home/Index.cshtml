@@ -1,3 +1,17 @@
 ﻿@{
     ViewBag.Title = @LanguageHelper.GetString("HomePage.Title");
 }
+<script src="~/assets/js/common.js"></script>
+<script src="~/Scripts/chart.min.js"></script>
+
+<canvas id="barChart" width="400" height="100"></canvas>
+
+<script>
+    var c = document.getElementById("barChart");
+    var ctx = c.getContext("2d");
+    var tData = $.getValues("/Chart/UsersWithTitlesBarChart");
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: tData
+    });
+</script>

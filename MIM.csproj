@@ -174,6 +174,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
@@ -204,12 +205,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\DBHelper.cs" />
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\HtmlObjectHelper.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Migrations\202207161229095_mim.cs" />
     <Compile Include="Migrations\202207161229095_mim.Designer.cs">
       <DependentUpon>202207161229095_mim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207210914541_mig_addAvatarUrl.cs" />
+    <Compile Include="Migrations\202207210914541_mig_addAvatarUrl.Designer.cs">
+      <DependentUpon>202207210914541_mig_addAvatarUrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\GrantSeed.cs" />
@@ -221,10 +227,10 @@
     <Compile Include="ModelsMap\GroupMap.cs" />
     <Compile Include="ModelsMap\UserMap.cs" />
     <Compile Include="ModelsMap\OrganizationMap.cs" />
+    <Compile Include="Models\Chart.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Grant.cs" />
     <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\DBHelper.cs" />
     <Compile Include="Models\License.cs" />
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\Organization.cs" />
@@ -233,6 +239,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\bootstrap\bootstrap-grid.css" />
+    <Content Include="assets\bootstrap\bootstrap-grid.min.css" />
+    <Content Include="assets\bootstrap\bootstrap-grid.rtl.css" />
+    <Content Include="assets\bootstrap\bootstrap-grid.rtl.min.css" />
+    <Content Include="assets\bootstrap\bootstrap-reboot.css" />
+    <Content Include="assets\bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="assets\bootstrap\bootstrap-reboot.rtl.css" />
+    <Content Include="assets\bootstrap\bootstrap-reboot.rtl.min.css" />
+    <Content Include="assets\bootstrap\bootstrap-utilities.css" />
+    <Content Include="assets\bootstrap\bootstrap-utilities.min.css" />
+    <Content Include="assets\bootstrap\bootstrap-utilities.rtl.css" />
+    <Content Include="assets\bootstrap\bootstrap-utilities.rtl.min.css" />
+    <Content Include="assets\bootstrap\bootstrap.css" />
+    <Content Include="assets\bootstrap\bootstrap.min.css" />
+    <Content Include="assets\bootstrap\bootstrap.rtl.css" />
+    <Content Include="assets\bootstrap\bootstrap.rtl.min.css" />
     <Content Include="assets\css\chosen-sprite.png" />
     <Content Include="assets\css\chosen.css" />
     <Content Include="assets\js\chosen.jquery.js" />
@@ -266,6 +288,7 @@
     <Content Include="assets\css\themes\layout\header\base\light.css" />
     <Content Include="assets\css\themes\layout\header\menu\dark.css" />
     <Content Include="assets\css\themes\layout\header\menu\light.css" />
+    <Content Include="assets\js\common.js" />
     <Content Include="assets\js\pages\crud\datatables\advanced\column-rendering.js" />
     <Content Include="assets\js\pages\crud\datatables\advanced\column-visibility.js" />
     <Content Include="assets\js\pages\crud\datatables\advanced\footer-callback.js" />
@@ -407,6 +430,8 @@
     <Content Include="assets\js\pages\my-script.js" />
     <Content Include="assets\js\pages\widgets.js" />
     <Content Include="assets\js\scripts.bundle.js" />
+    <Content Include="assets\media\AvatarImages\39a7f226-d31f-4c3b-93d2-c18b70367ba8.png" />
+    <Content Include="assets\media\AvatarImages\5a0d83bb-dd65-435b-84bf-9884d1ddc63agoose1.png" />
     <Content Include="assets\media\bg\bg-1.jpg" />
     <Content Include="assets\media\bg\bg-10.jpg" />
     <Content Include="assets\media\bg\bg-11.jpg" />
@@ -2159,6 +2184,7 @@
     <Content Include="assets\plugins\bootstrap\bootstrap.min.css" />
     <Content Include="assets\plugins\bootstrap\bootstrap.rtl.css" />
     <Content Include="assets\plugins\bootstrap\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -2167,6 +2193,8 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\chart.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config" />
@@ -2183,6 +2211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Chart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\plugins\global\fonts\%40fortawesome\fa-brands-400.eot" />
@@ -2239,6 +2268,22 @@
     <Content Include="assets\plugins\bootstrap\bootstrap-utilities.css.map" />
     <Content Include="assets\plugins\bootstrap\bootstrap-reboot.rtl.min.css.map" />
     <Content Include="assets\plugins\bootstrap\bootstrap-reboot.rtl.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-grid.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-grid.rtl.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-reboot.rtl.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-utilities.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-utilities.min.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-utilities.rtl.css.map" />
+    <Content Include="assets\bootstrap\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="assets\bootstrap\bootstrap.css.map" />
+    <Content Include="assets\bootstrap\bootstrap.min.css.map" />
+    <Content Include="assets\bootstrap\bootstrap.rtl.css.map" />
+    <Content Include="assets\bootstrap\bootstrap.rtl.min.css.map" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -2326,6 +2371,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202207161229095_mim.resx">
       <DependentUpon>202207161229095_mim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207210914541_mig_addAvatarUrl.resx">
+      <DependentUpon>202207210914541_mig_addAvatarUrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
