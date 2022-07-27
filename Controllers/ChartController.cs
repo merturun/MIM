@@ -11,7 +11,7 @@ namespace MIM.Controllers
     public class ChartController : Controller
     {
 
-        private MIMDBContext db = new MIMDBContext();
+        private readonly MIMDBContext db = new MIMDBContext();
 
         // GET: Chart
         public JsonResult UsersWithTitlesBarChart()
@@ -20,18 +20,25 @@ namespace MIM.Controllers
                         join u in db.Users on t.TitleID equals u.TitleID into users
                         select new
                         {
-                            Title = t,
+                            Title = t.Name,
                             UserCount = users.Count(),
                         };
-            
+
+            var colors = new List<string>();
+            var random = new Random();
+            for (int i = 0; i < db.Titles.Select(x => x.TitleID).ToArray().Length; i++)
+            {
+                colors.Add(String.Format("#{0:X6}", random.Next(0x1000000)));
+            }
+
             List<Datasets> dataSet = new List<Datasets>
             {
                 new Datasets()
                 {
                     label = "User Count",
                     data = query.Select(a => a.UserCount).ToArray(),
-                    backgroundColor = new string[] { "#FFFFFF", "#000000", "#FF00000" },
-                    borderColor = new string[] { "#FFFFFF", "#000000", "#FF00000" },
+                    backgroundColor = colors.ToArray(),
+                    borderColor = colors.ToArray(),
                     borderWidth = "1"
                 }
             };

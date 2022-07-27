@@ -12,6 +12,12 @@
     var tData = $.getValues("/Chart/UsersWithTitlesBarChart");
     var myBarChart = new Chart(ctx, {
         type: 'bar',
-        data: tData
+        data: tData,
+        options: {
+            title: {
+                display: true,
+                text: 'Custom Chart Title'
+            }
+        }
     });
 </script>
