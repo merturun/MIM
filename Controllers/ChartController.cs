@@ -16,26 +16,30 @@ namespace MIM.Controllers
         // GET: Chart
         public JsonResult UsersWithTitlesBarChart()
         {
-            var userData = db.Users.ToList();
-            var titleData = db.Titles.ToList();
-            var usersPerTitle = from user in userData
-                                
-                                group user by user.TitleID;
-
-            Chart chart = new Chart();
-            chart.labels = userData.Select(x=>x.Title.Name).ToArray();
-            chart.datasets = new List<Datasets>();
-            List<Datasets> dataSet = new List<Datasets>();
-            dataSet.Add(new Datasets()
+            var query = from t in db.Titles
+                        join u in db.Users on t.TitleID equals u.TitleID into users
+                        select new
+                        {
+                            Title = t,
+                            UserCount = users.Count(),
+                        };
+            
+            List<Datasets> dataSet = new List<Datasets>
             {
-                label = "User Count",
-                data = usersPerTitle,
-                backgroundColor = new string[] { "#FFFFFF", "#000000", "#FF00000" },
-                borderColor = new string[] { "#FFFFFF", "#000000", "#FF00000" },
-                borderWidth = "1"
-            });
-            chart.datasets = dataSet;
-
+                new Datasets()
+                {
+                    label = "User Count",
+                    data = query.Select(a => a.UserCount).ToArray(),
+                    backgroundColor = new string[] { "#FFFFFF", "#000000", "#FF00000" },
+                    borderColor = new string[] { "#FFFFFF", "#000000", "#FF00000" },
+                    borderWidth = "1"
+                }
+            };
+            Chart chart = new Chart
+            {
+                labels = db.Titles.Select(x => x.Name).ToArray(),
+                datasets = dataSet
+            };
             return Json(chart, JsonRequestBehavior.AllowGet);
         }
     }
