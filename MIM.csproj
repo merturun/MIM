@@ -174,6 +174,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="ModelsMap\GroupMap.cs" />
     <Compile Include="ModelsMap\UserMap.cs" />
     <Compile Include="ModelsMap\OrganizationMap.cs" />
+    <Compile Include="Models\Chart.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Grant.cs" />
     <Compile Include="Models\Group.cs" />
@@ -286,6 +288,7 @@
     <Content Include="assets\css\themes\layout\header\base\light.css" />
     <Content Include="assets\css\themes\layout\header\menu\dark.css" />
     <Content Include="assets\css\themes\layout\header\menu\light.css" />
+    <Content Include="assets\js\common.js" />
     <Content Include="assets\js\pages\crud\datatables\advanced\column-rendering.js" />
     <Content Include="assets\js\pages\crud\datatables\advanced\column-visibility.js" />
     <Content Include="assets\js\pages\crud\datatables\advanced\footer-callback.js" />
@@ -2190,6 +2193,8 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\chart.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config" />
@@ -2206,6 +2211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Chart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\plugins\global\fonts\%40fortawesome\fa-brands-400.eot" />

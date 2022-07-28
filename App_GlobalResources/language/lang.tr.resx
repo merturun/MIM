@@ -192,6 +192,9 @@
   <data name="HomePage.Title" xml:space="preserve">
     <value>Ana Sayfa</value>
   </data>
+  <data name="Label.ChooseFile" xml:space="preserve">
+    <value>Dosya Seçiniz</value>
+  </data>
   <data name="Login.Login" xml:space="preserve">
     <value>Giriş Yap</value>
   </data>
@@ -356,6 +359,9 @@
   </data>
   <data name="User.AddNew" xml:space="preserve">
     <value>Yeni Kullanıcı Ekle</value>
+  </data>
+  <data name="User.AvatarUrl" xml:space="preserve">
+    <value>Avatar Resmi</value>
   </data>
   <data name="User.BornDate" xml:space="preserve">
     <value>Doğum Tarihi</value>

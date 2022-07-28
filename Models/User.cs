@@ -93,6 +93,19 @@ namespace MIM.Models
             isgranted = grants.Find(x => controller.Contains(x.Controller)) != null;
             return isgranted;
         }
+
+        public string GetShortName() //Layout Kısa Ad
+        {
+            return current.Firstname.Length > 15 ? current.Firstname.Substring(0, current.Firstname.Substring(0, 15)
+                .LastIndexOf(" ")) + "..." : current.Firstname + ".";
+        }
+
+        public string GetShortSymbol() //Layout Kısa Sembol
+        {
+            string[] names = current.fullname.Split(' ');
+            //return current.symbol.Length > 3 ? current.symbol.Substring(0, 3) : current.symbol;
+            return names.First().Substring(0, 1) + names.Last().Substring(0, 1);
+        }
         #endregion "Method + Properties"
     }
 }
