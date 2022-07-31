@@ -116,6 +116,7 @@ namespace MIM.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.fb = user.AvatarUrl;
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View(user);

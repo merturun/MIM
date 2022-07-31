@@ -99,15 +99,22 @@
                                     </label>
                                 </span>
                             </div>
-                            @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetStringForModal("User.SuperAdmin"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
-                            <div class="col-3">
-                                <span class="switch switch-lg switch-icon">
-                                    <label>
-                                        @Html.CheckBoxFor(model => model.SuperAdmin, new { id = "superAdmin", @checked = "checked" })
-                                        <span></span>
-                                    </label>
-                                </span>
-                            </div>
+                            @if (MIM.Models.User.current.SuperAdmin == true)
+                            {
+                                @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetStringForModal("User.SuperAdmin"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
+                                <div class="col-3">
+                                    <span class="switch switch-lg switch-icon">
+                                        <label>
+                                            @Html.CheckBoxFor(model => model.SuperAdmin, new { id = "superAdmin", @checked = "checked" })
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.HiddenFor(model => model.SuperAdmin)
+                            }
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.AvatarUrl, @LanguageHelper.GetStringForModal("User.AvatarUrl"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })

@@ -74,6 +74,8 @@ namespace MIM.Models
             isgranted = grants.Find(x => x.Action == action && x.Controller == controller) != null;
             return isgranted;
         }
+
+        public string hasAvatar() { return ((AvatarUrl == null) || (AvatarUrl == "")) ? "noavatar.png" : AvatarUrl; }
         public bool isGranted(string[] controller) // Gelen controller'lardan herhangi bir metoda yetki varsa yetki ver
         {
             bool isgranted = false;
