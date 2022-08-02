@@ -18,6 +18,7 @@ namespace MIM.Controllers
         {
             var query = from t in db.Titles
                         join u in db.Users on t.TitleID equals u.TitleID into users
+                        where t.OrganizationID == Organization.current.OrganizationID
                         select new
                         {
                             Title = t.Name,
