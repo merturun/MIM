@@ -35,7 +35,7 @@
                         </th>
                     </tr>
                     <tr class="text-center">
-                        <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control", id="idFilter" })</th>
+                        <th style="width: 5%">@Html.TextBox("UserID", "", new { @class = "form-control", id="useridFilter" })</th>
                         <th style="width: 20%">@Html.TextBox("firstname", "", new { @class = "form-control", id = "firstnameFilter" })</th>
                         <th style="width: 20%">@Html.TextBox("lastname", "", new { @class = "form-control", id = "lastnameFilter" })</th>
                         <th style="width: 20%">@Html.DropDownList("TitleID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control", id = "titleidFilter" })</th>
@@ -98,15 +98,16 @@
         }
 
         $("#clrFilter").click(function () {
-            $("#idFilter").val('')
+            $("#useridFilter").val('')
             $("#firstnameFilter").val('')
             $("#lastnameFilter").val('')
             $("#titleidFilter").val('')
             $("#departmentidFilter").val('')
+            GetPage(1);
         });
 
         $("#searchFilter").click(function () {
-            var _UserID = $("#idFilter").val()
+            var _UserID = $("#useridFilter").val()
             var _firstname = $("#firstnameFilter").val()
             var _lastname = $("#lastnameFilter").val()
             var _titleID = $("#titleidFilter").val()
