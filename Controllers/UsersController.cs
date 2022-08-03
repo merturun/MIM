@@ -179,6 +179,12 @@ namespace MIM.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             User user = await db.Users.FindAsync(id);
+
+            foreach (var group in user.Groups.ToList())
+            {
+                user.Groups.Remove(group);
+            }
+            dbh.DeleteImage(user.AvatarUrl);
             db.Users.Remove(user);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

@@ -68,6 +68,16 @@ namespace MIM.Models
             }
             return AvatarUrl;
         }
+
+        public void DeleteImage(string imgName)
+        {
+            var filePath = HttpContext.Current.Server.MapPath("/assets/media/AvatarImages/" + imgName);
+
+            if (File.Exists(filePath))
+                File.Delete(filePath);
+            
+        }
+
         public static Bitmap ResizeImage(Image image, int width, int height)
         {           
             var destRect = new Rectangle(0, 0, width, height);
