@@ -17,16 +17,16 @@
                         <div class="card-toolbar">
                             <ul class="nav nav-tabs nav-bold nav-tabs-line">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#kt_tab_pane_1_2">Genel</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#kt_tab_pane_1_2">@LanguageHelper.GetString("User.General")</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_2_2">Ünvan</a>
+                                    <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_2_2">@LanguageHelper.GetString("Model.Title")</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_3_2">Departman</a>
+                                    <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_3_2">@LanguageHelper.GetString("Model.Department")</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_4_2">Grup</a>
+                                    <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_4_2">@LanguageHelper.GetString("Model.Group")</a>
                                 </li>
                             </ul>
                         </div>
@@ -69,7 +69,7 @@
                                             @Html.LabelFor(model => model.Password, @LanguageHelper.GetString("User.Password"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                             <hr style="width:50%" />
 
-                                            @Html.DisplayFor(model => model.Password)
+                                            @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
                                         </div>
                                         <div style="width:33%">
                                             @Html.LabelFor(model => model.Email, @LanguageHelper.GetString("User.Email"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })

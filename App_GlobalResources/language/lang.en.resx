@@ -339,6 +339,9 @@
   <data name="User.Firstname" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="User.General" xml:space="preserve">
+    <value>General</value>
+  </data>
   <data name="User.Groups" xml:space="preserve">
     <value>Groups</value>
   </data>
