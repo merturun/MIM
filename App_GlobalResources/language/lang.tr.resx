@@ -123,6 +123,9 @@
   <data name="Active" xml:space="preserve">
     <value>Aktif</value>
   </data>
+  <data name="Chart.Title.UserCount" xml:space="preserve">
+    <value>Kullanıcı Sayısı</value>
+  </data>
   <data name="Crud.Create" xml:space="preserve">
     <value>Oluştur</value>
   </data>

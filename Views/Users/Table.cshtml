@@ -35,16 +35,16 @@
                         </th>
                     </tr>
                     <tr class="text-center">
-                        <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
-                        <th style="width: 20%">@Html.TextBox("firstname", "", new { @class = "form-control" })</th>
-                        <th style="width: 20%">@Html.TextBox("lastname", "", new { @class = "form-control" })</th>
-                        <th style="width: 20%">@Html.DropDownList("TitleID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
-                        <th style="width: 20%">@Html.DropDownList("DepartmentID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
+                        <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control", id="idFilter" })</th>
+                        <th style="width: 20%">@Html.TextBox("firstname", "", new { @class = "form-control", id = "firstnameFilter" })</th>
+                        <th style="width: 20%">@Html.TextBox("lastname", "", new { @class = "form-control", id = "lastnameFilter" })</th>
+                        <th style="width: 20%">@Html.DropDownList("TitleID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control", id = "titleidFilter" })</th>
+                        <th style="width: 20%">@Html.DropDownList("DepartmentID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control", id = "departmentidFilter" })</th>
                         <th style="width: 15%">
                             <div class="btn-toolbar-right" role="toolbar">
                                 <div class="btn-group mr-2" role="group">
-                                    <input class="btn btn-light-primary" type="Submit" value="@LanguageHelper.GetString("Table.SearchBar.Search")">
-                                    <input class="btn btn-light-warning" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
+                                    <input id="searchFilter" class="btn btn-light-primary text-uppercase" type="Submit" value="@LanguageHelper.GetString("Table.SearchBar.Search")">
+                                    <input id="clrFilter" class="btn btn-light-warning text-uppercase" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
                                 </div>
                             </div>
                         </th>
@@ -97,6 +97,39 @@
             });
         }
 
+        $("#clrFilter").click(function () {
+            $("#idFilter").val('')
+            $("#firstnameFilter").val('')
+            $("#lastnameFilter").val('')
+            $("#titleidFilter").val('')
+            $("#departmentidFilter").val('')
+        });
+
+        $("#searchFilter").click(function () {
+            var _UserID = $("#idFilter").val()
+            var _firstname = $("#firstnameFilter").val()
+            var _lastname = $("#lastnameFilter").val()
+            var _titleID = $("#titleidFilter").val()
+            var _departmentID = $("#departmentidFilter").val()
+            $.ajax({
+                url: '/Users/Table',
+                method: 'GET',
+                data:
+                {
+                    UserID: _UserID,
+                    firstname: _firstname,
+                    lastname: _lastname,
+                    titleID: _titleID,
+                    departmentID: _departmentID
+                },
+                success: function (data) {
+                    $('#dt-users_table').html(data)
+                },
+                error: function (data) {
+                    $('#dt-users_table').html("table error")
+                },
+            });
+        })
     </script>
 }
 else

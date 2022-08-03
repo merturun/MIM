@@ -120,6 +120,9 @@
   <data name="About.Desc" xml:space="preserve">
     <value>About Us</value>
   </data>
+  <data name="Chart.Title.UserCount" xml:space="preserve">
+    <value>User Count</value>
+  </data>
   <data name="Department.AddNew" xml:space="preserve">
     <value>Create New Department</value>
   </data>

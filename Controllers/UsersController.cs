@@ -29,13 +29,13 @@ namespace MIM.Controllers
         }
 
         // GET: /Users/Table
-        public ActionResult Table(int? page)
+        public ActionResult Table(User user, int? page)
         {
             if (!MIM.Models.User.current.isGranted("Table", "Users")) return View();
             var _page = page ?? 1;
             var users = db.Users.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
-            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
+            ViewBag.TitleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
             return View(users);
         }
 
@@ -82,8 +82,8 @@ namespace MIM.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Groups = GetSelectedGroups(new Group[0]);
-            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
-            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
+            ViewBag.TitleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
             return View(user);
         }
         public List<SelectListItem> GetSelectedGroups(Group[] groups)
@@ -117,8 +117,8 @@ namespace MIM.Controllers
                 return HttpNotFound();
             }
             ViewBag.fb = user.AvatarUrl;
-            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
-            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
+            ViewBag.TitleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
             return View(user);
         }
 
@@ -140,8 +140,8 @@ namespace MIM.Controllers
             }
 
             ViewBag.Groups = GetSelectedGroups(user.Groups.ToArray());
-            ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "Name");
-            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
+            ViewBag.TitleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
             return View(user);
         }
 
