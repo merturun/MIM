@@ -23,7 +23,7 @@
                               @Html.HiddenFor(model => model.UserID)
                               @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                               <div class="form-group row align-items-center">
-                                  @Html.LabelFor(model => model.TitleID, @LanguageHelper.GetStringForModal("User.TitleID"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
+                                  @Html.LabelFor(model => model.TitleID, @LanguageHelper.GetStringForModal("User.Title"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
                                   <div class="col-4">
                                       @Html.DropDownListFor(model => model.TitleID, null, @LanguageHelper.GetStringForModal("Dropdown.First"), htmlAttributes: new { @class = "form-control" })
                                       @Html.ValidationMessageFor(model => model.TitleID, "", new { @class = "text-danger" })
@@ -91,7 +91,7 @@
                                   </div>
                               </div>
                               <div class="form-group row">
-                                  @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetStringForModal("User.isActive"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
+                                  @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetStringForModal("User.IsActive"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
                                   <div class="col-3">
                                       <span class="switch switch-lg switch-icon">
                                           <label>

@@ -52,7 +52,7 @@
                                 @Html.LabelFor(model => model.Password, @LanguageHelper.GetString("User.Password"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                 <hr style="width:50%" />
 
-                                @Html.DisplayFor(model => model.Password)
+                                @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
                             </div>
                             <div style="width:33%">
                                 @Html.LabelFor(model => model.Email, @LanguageHelper.GetString("User.Email"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
@@ -72,7 +72,7 @@
                                 @Html.DisplayFor(model => model.BornDate)
                             </div>
                             <div style="width:33%">
-                                @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetString("User.isActive"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetString("User.IsActive"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
                                 <hr style="width:50%" />
 
                                 <label>

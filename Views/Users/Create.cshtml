@@ -15,136 +15,133 @@
                     <h4 class="modal-title">@LanguageHelper.GetString("User.ModalTitle.Add")</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div><div class="container"></div>
-                <div style="padding-bottom: 0px;" class="modal-body">
-                    @using (Ajax.BeginForm("Create", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "" }, new { id = "usercreate", enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
+                      <div style="padding-bottom: 0px;" class="modal-body">
+                          @using (Ajax.BeginForm("Create", "Users", new AjaxOptions { HttpMethod = "POST", OnSuccess = "GetTable()", OnFailure = "" }, new { id = "usercreate", enctype = "multipart/form-data" }))
+                          {
+                              @Html.AntiForgeryToken()
 
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group row align-items-center">
-                            @Html.LabelFor(model => model.TitleID, @LanguageHelper.GetStringForModal("User.TitleID"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
-                            <div class="col-4">
-                                @Html.DropDownList("titleID", null, @LanguageHelper.GetStringForModal("Dropdown.First"), htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.TitleID, "", new { @class = "text-danger" })
-                            </div>
-                            @Html.LabelFor(model => model.DepartmentID, @LanguageHelper.GetStringForModal("Department.Manager"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
-                            <div class="col-4">
-                                @Html.DropDownList("DepartmentID", null, @LanguageHelper.GetStringForModal("Dropdown.First"), htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                              <div class="form-group row align-items-center">
+                                  @Html.LabelFor(model => model.TitleID, @LanguageHelper.GetStringForModal("User.Title"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
+                                  <div class="col-4">
+                                      @Html.DropDownList("titleID", null, @LanguageHelper.GetStringForModal("Dropdown.First"), htmlAttributes: new { @class = "form-control" })
+                                      @Html.ValidationMessageFor(model => model.TitleID, "", new { @class = "text-danger" })
+                                  </div>
+                                  @Html.LabelFor(model => model.DepartmentID, @LanguageHelper.GetStringForModal("Department.Manager"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold  my-auto" })
+                                  <div class="col-4">
+                                      @Html.DropDownList("DepartmentID", null, @LanguageHelper.GetStringForModal("Dropdown.First"), htmlAttributes: new { @class = "form-control" })
+                                      @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
+                                  </div>
+                              </div>
 
-                        <div class="form-group row align-items-center">
-                            @Html.LabelFor(model => model.Firstname, @LanguageHelper.GetStringForModal("User.Firstname"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
-                            <div class="col-4">
-                                @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
-                            </div>
-                            @Html.LabelFor(model => model.Lastname, @LanguageHelper.GetStringForModal("User.Lastname"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
-                            <div class="col-4">
-                                @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                              <div class="form-group row align-items-center">
+                                  @Html.LabelFor(model => model.Firstname, @LanguageHelper.GetStringForModal("User.Firstname"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
+                                  <div class="col-4">
+                                      @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                                      @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
+                                  </div>
+                                  @Html.LabelFor(model => model.Lastname, @LanguageHelper.GetStringForModal("User.Lastname"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
+                                  <div class="col-4">
+                                      @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                                      @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+                                  </div>
+                              </div>
 
 
-                        <div class="form-group row align-items-center">
-                            @Html.LabelFor(model => model.Nickname, @LanguageHelper.GetStringForModal("User.Nickname"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
-                            <div class="col-4">
-                                @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
-                            </div>
-                            @Html.LabelFor(model => model.Username, @LanguageHelper.GetStringForModal("User.Username"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
-                            <div class="col-4">
-                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                              <div class="form-group row align-items-center">
+                                  @Html.LabelFor(model => model.Nickname, @LanguageHelper.GetStringForModal("User.Nickname"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
+                                  <div class="col-4">
+                                      @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control" } })
+                                      @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
+                                  </div>
+                                  @Html.LabelFor(model => model.Username, @LanguageHelper.GetStringForModal("User.Username"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
+                                  <div class="col-4">
+                                      @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                      @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                  </div>
+                              </div>
 
-                        <div class="form-group row align-items-center">
-                            @Html.LabelFor(model => model.Password, @LanguageHelper.GetStringForModal("User.Password"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
-                            <div class="col-4">
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                            </div>
-                            @Html.LabelFor(model => model.Email, @LanguageHelper.GetStringForModal("User.Email"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
-                            <div class="col-4">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                              <div class="form-group row align-items-center">
+                                  @Html.LabelFor(model => model.Password, @LanguageHelper.GetStringForModal("User.Password"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
+                                  <div class="col-4">
+                                      @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                      @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                  </div>
+                                  @Html.LabelFor(model => model.Email, @LanguageHelper.GetStringForModal("User.Email"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
+                                  <div class="col-4">
+                                      @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                      @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                  </div>
+                              </div>
 
-                        <div class="form-group row align-items-center">
-                            @Html.LabelFor(model => model.BornDate, @LanguageHelper.GetStringForModal("User.BornDate"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
-                            <div class="col-lg-4 col-md-9 col-sm-12">
-                                <div class="input-group date">
-                                    @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { type = "text", @class = "form-control" } })
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">
-                                            <i class="la la-calendar"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                @Html.ValidationMessageFor(model => model.BornDate, "", new { @class = "text-danger" })
+                              <div class="form-group row align-items-center">
+                                  @Html.LabelFor(model => model.BornDate, @LanguageHelper.GetStringForModal("User.BornDate"), htmlAttributes: new { @class = "control-label col-2 font-weight-bold my-auto" })
+                                  <div class="col-lg-4 col-md-9 col-sm-12">
+                                      <div class="input-group date">
+                                          @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { type = "text", @class = "form-control" } })
+                                          <div class="input-group-append">
+                                              <span class="input-group-text">
+                                                  <i class="la la-calendar"></i>
+                                              </span>
+                                          </div>
+                                      </div>
+                                      @Html.ValidationMessageFor(model => model.BornDate, "", new { @class = "text-danger" })
 
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetStringForModal("User.isActive"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
-                            <div class="col-3">
-                                <span class="switch switch-lg switch-icon">
-                                    <label>
-                                        @Html.CheckBoxFor(model => model.IsActive, new { id = "isActive", @checked = "checked" })
-                                        <span></span>
-                                    </label>
-                                </span>
-                            </div>
-                            @if (MIM.Models.User.current.SuperAdmin == true)
-                            {
-                                @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetStringForModal("User.SuperAdmin"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
-                                <div class="col-3">
-                                    <span class="switch switch-lg switch-icon">
-                                        <label>
-                                            @Html.CheckBoxFor(model => model.SuperAdmin, new { id = "superAdmin", @checked = "checked" })
-                                            <span></span>
-                                        </label>
-                                    </span>
-                                </div>
-                            }
-                            else
-                            {
-                                @Html.HiddenFor(model => model.SuperAdmin)
-                            }
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.AvatarUrl, @LanguageHelper.GetStringForModal("User.AvatarUrl"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
-                            <div class="custom-file">
-                                @Html.TextBox("fb", "", htmlAttributes: new { @class = "custom-file-input form-control", id = "customFile", type = "file", accept = ".jpg, .png" })
-                                <label class="custom-file-label" for="customFile">@LanguageHelper.GetStringForModal("Label.ChooseFile")</label>
-                                @Html.ValidationMessageFor(model => model.AvatarUrl, "", new { @class = "text-danger", @for = "customFile" })
-                            </div>
-                        </div>
-                        <h3>@LanguageHelper.GetString("User.Groups")</h3>
-                        <hr class="chr" />
-                        <div class="form-group">
-                            <div class="col-12">
-                                @Html.DropDownList("GroupIDS", (List<SelectListItem>)ViewBag.Groups, htmlAttributes: new { @class = "form-control chosen-select col-12", multiple = "multiple" })
-                                @Html.ValidationMessageFor(model => model.Groups, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  @Html.LabelFor(model => model.IsActive, @LanguageHelper.GetStringForModal("User.IsActive"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
+                                  <div class="col-3">
+                                      <span class="switch switch-lg switch-icon">
+                                          <label>
+                                              @Html.CheckBoxFor(model => model.IsActive, new { id = "isActive", @checked = "checked" })
+                                              <span></span>
+                                          </label>
+                                      </span>
+                                  </div>
+                                  @if (MIM.Models.User.current.SuperAdmin == true)
+                                  {
+                                      @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetStringForModal("User.SuperAdmin"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
+                                      <div class="col-3">
+                                          <span class="switch switch-lg switch-icon">
+                                              <label>
+                                                  @Html.CheckBoxFor(model => model.SuperAdmin, new { id = "superAdmin", @checked = "checked" })
+                                                  <span></span>
+                                              </label>
+                                          </span>
+                                      </div>
+                                  }
+                                  else
+                                  {
+                                      @Html.HiddenFor(model => model.SuperAdmin)
+                                  }
+                              </div>
+                              <div class="form-group">
+                                  @Html.LabelFor(model => model.AvatarUrl, @LanguageHelper.GetStringForModal("User.AvatarUrl"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                                  <div class="custom-file">
+                                      @Html.TextBox("fb", "", htmlAttributes: new { @class = "custom-file-input form-control", id = "customFile", type = "file", accept = ".jpg, .png" })
+                                      <label class="custom-file-label" for="customFile">@LanguageHelper.GetStringForModal("Label.ChooseFile")</label>
+                                      @Html.ValidationMessageFor(model => model.AvatarUrl, "", new { @class = "text-danger", @for = "customFile" })
+                                  </div>
+                              </div>
+                              <h3>@LanguageHelper.GetString("User.Groups")</h3>
+                              <hr class="chr" />
+                              <div class="form-group">
+                                  <div class="col-12">
+                                      @Html.DropDownList("GroupIDS", (List<SelectListItem>)ViewBag.Groups, htmlAttributes: new { @class = "form-control chosen-select col-12", multiple = "multiple" })
+                                      @Html.ValidationMessageFor(model => model.Groups, "", new { @class = "text-danger" })
+                                  </div>
+                              </div>
 
-                        <div class="modal-footer">
-                            <input class="btn btn-primary col-2" data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" />
-                            <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
-                        </div>
-                    }
-                </div>
+                              <div class="modal-footer">
+                                  <input class="btn btn-primary col-2" data-dismiss="modal" value="@LanguageHelper.GetString("Modal.Button.Cancel")" />
+                                  <input class="btn btn-success" type="submit" value="@LanguageHelper.GetString("Modal.Button.Create")" />
+                              </div>
+                          }
+                      </div>
             </div>
         </div>
     </div>
-    <script>
-        $("#user-modal-cancel").click(function (event) { $("#user-modal").modal('hide'); })
-    </script>
     <script>
         $('.chosen-select').chosen({ placeholder_text_multiple: "@Html.Raw(@LanguageHelper.GetString("Dropdown.First"))"});
         $('#GroupIDS_chosen').css("width", "100%");
