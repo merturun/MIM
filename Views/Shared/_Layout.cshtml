@@ -89,13 +89,16 @@
                             <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             </div>
                         </div>
-                        @{ 
+                        @{
                             var ses_user = ((User)Session["user"]);
                         }
-                        @ses_user.fullname
+                        @if (@ses_user != null)
+                        {
+                            @ses_user.fullname
+                        }
                         <div class="topbar">
                             @{
-                                Html.RenderAction("LanguageChanger", "Home");
+                                                Html.RenderAction("LanguageChanger", "Home");
                             }
                             <div class="topbar-item">
                                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">

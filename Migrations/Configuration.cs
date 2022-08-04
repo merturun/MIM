@@ -53,6 +53,7 @@
             User user3 = new User() {
                 Organization = org, Firstname = "İsmail", Lastname = "Gülaç", Nickname = "VDemented", Username = "vdemented", Title = title3, Password = "test", 
                 Email = "ismailgulac@gmail.com", BornDate = new DateTime(1992, 3, 24), IsActive = true, SuperAdmin = true, Department = dep };
+            context.Users.Add(user3);
 
             User user4 = new User() { 
                 Organization = org, Firstname = "Neo", Lastname = "Zion", Nickname = "demo", Username = "demo", Title = title3, Password = "demo",
