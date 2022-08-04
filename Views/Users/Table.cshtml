@@ -50,30 +50,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @if (Model.Count > 0)
                     {
-                        <tr class="text-center">
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Firstname)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Lastname)
-                            </td>
-                            <td>
-                                @Html.Raw(HtmlObjectHelper.IsExistLabel<Title>(item.Title, "warning", "User.Table.NoTitle"))
-                            </td>
-                            <td>
-                                @Html.Raw(HtmlObjectHelper.IsExistLabel<Department>(item.Department, "warning", "User.Table.NoDepartment"))
-                            </td>
-                            <td style="width: 15%">
-                                @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                                @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                                @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
-                            </td>
-                        </tr>
+                        foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Firstname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Lastname)
+                                </td>
+                                <td>
+                                    @Html.Raw(HtmlObjectHelper.IsExistLabel<Title>(item.Title, "warning", "User.Table.NoTitle"))
+                                </td>
+                                <td>
+                                    @Html.Raw(HtmlObjectHelper.IsExistLabel<Department>(item.Department, "warning", "User.Table.NoDepartment"))
+                                </td>
+                                <td style="width: 15%">
+                                    @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                                    @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                                    @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Users", new { id = item.UserID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#user-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
+                                </td>
+                            </tr>
+                        }
+                            }
+                            else
+                            {
+                    <div class="text-center alert alert-custom alert-outline-2x alert-outline-danger fade show mb-5" role="alert">
+                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                        <div class="alert-text">@LanguageHelper.GetString("Table.NoRecord")</div>
+                        <div class="alert-close">
+                            <button type = "button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                            </button>
+                        </div>
+                    </div>
                     }
                 </tbody>
             </table>

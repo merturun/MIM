@@ -2276,7 +2276,6 @@
     <Content Include="assets\bootstrap\bootstrap.min.css.map" />
     <Content Include="assets\bootstrap\bootstrap.rtl.css.map" />
     <Content Include="assets\bootstrap\bootstrap.rtl.min.css.map" />
-    <Content Include="libman.json" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\Dashboard.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
