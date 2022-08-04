@@ -70,6 +70,60 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Departmanlar-&gt;Tüm.
+        /// </summary>
+        internal static string Departments__All {
+            get {
+                return ResourceManager.GetString("Departments->All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departmanlar-&gt;Oluştur.
+        /// </summary>
+        internal static string Departments__Create {
+            get {
+                return ResourceManager.GetString("Departments->Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departmanlar-&gt;Sil.
+        /// </summary>
+        internal static string Departments__Delete {
+            get {
+                return ResourceManager.GetString("Departments->Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departmanlar-&gt;Düzenle.
+        /// </summary>
+        internal static string Departments__Edit {
+            get {
+                return ResourceManager.GetString("Departments->Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departmanlar-&gt;Göster.
+        /// </summary>
+        internal static string Departments__Show {
+            get {
+                return ResourceManager.GetString("Departments->Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departmanlar-&gt;Tablo.
+        /// </summary>
+        internal static string Departments__Table {
+            get {
+                return ResourceManager.GetString("Departments->Table", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seçiniz.
         /// </summary>
         internal static string Dropdown_First {
@@ -84,6 +138,60 @@ namespace Resources {
         internal static string en {
             get {
                 return ResourceManager.GetString("en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gruplar-&gt;Tüm.
+        /// </summary>
+        internal static string Groups__All {
+            get {
+                return ResourceManager.GetString("Groups->All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gruplar-&gt;Oluştur.
+        /// </summary>
+        internal static string Groups__Create {
+            get {
+                return ResourceManager.GetString("Groups->Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gruplar-&gt;Sil.
+        /// </summary>
+        internal static string Groups__Delete {
+            get {
+                return ResourceManager.GetString("Groups->Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gruplar-&gt;Düzenle.
+        /// </summary>
+        internal static string Groups__Edit {
+            get {
+                return ResourceManager.GetString("Groups->Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gruplar-&gt;Göster.
+        /// </summary>
+        internal static string Groups__Show {
+            get {
+                return ResourceManager.GetString("Groups->Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gruplar-&gt;Tablo.
+        /// </summary>
+        internal static string Groups__Table {
+            get {
+                return ResourceManager.GetString("Groups->Table", resourceCulture);
             }
         }
         
@@ -286,6 +394,60 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ünvanlar-&gt;Tüm.
+        /// </summary>
+        internal static string Titles__All {
+            get {
+                return ResourceManager.GetString("Titles->All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvanlar-&gt;Oluştur.
+        /// </summary>
+        internal static string Titles__Create {
+            get {
+                return ResourceManager.GetString("Titles->Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvanlar-&gt;Sil.
+        /// </summary>
+        internal static string Titles__Delete {
+            get {
+                return ResourceManager.GetString("Titles->Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvanlar-&gt;Düzenle.
+        /// </summary>
+        internal static string Titles__Edit {
+            get {
+                return ResourceManager.GetString("Titles->Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvanlar-&gt;Göster.
+        /// </summary>
+        internal static string Titles__Show {
+            get {
+                return ResourceManager.GetString("Titles->Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvanlar-&gt;Tablo.
+        /// </summary>
+        internal static string Titles__Table {
+            get {
+                return ResourceManager.GetString("Titles->Table", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yeni Ünvan Ekle.
         /// </summary>
         internal static string Title_AddNew {
@@ -363,6 +525,60 @@ namespace Resources {
         internal static string tr {
             get {
                 return ResourceManager.GetString("tr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcılar-&gt;Tüm.
+        /// </summary>
+        internal static string Users__All {
+            get {
+                return ResourceManager.GetString("Users->All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcılar-&gt;Oluştur.
+        /// </summary>
+        internal static string Users__Create {
+            get {
+                return ResourceManager.GetString("Users->Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcılar-&gt;Sil.
+        /// </summary>
+        internal static string Users__Delete {
+            get {
+                return ResourceManager.GetString("Users->Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcılar-&gt;Düzenle.
+        /// </summary>
+        internal static string Users__Edit {
+            get {
+                return ResourceManager.GetString("Users->Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcılar-&gt;Göster.
+        /// </summary>
+        internal static string Users__Show {
+            get {
+                return ResourceManager.GetString("Users->Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcılar-&gt;Tablo.
+        /// </summary>
+        internal static string Users__Table {
+            get {
+                return ResourceManager.GetString("Users->Table", resourceCulture);
             }
         }
         

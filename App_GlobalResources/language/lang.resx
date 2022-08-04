@@ -120,11 +120,47 @@
   <data name="About.Desc" xml:space="preserve">
     <value>Hakkımızda</value>
   </data>
+  <data name="Departments-&gt;All" xml:space="preserve">
+    <value>Departmanlar-&gt;Tüm</value>
+  </data>
+  <data name="Departments-&gt;Create" xml:space="preserve">
+    <value>Departmanlar-&gt;Oluştur</value>
+  </data>
+  <data name="Departments-&gt;Delete" xml:space="preserve">
+    <value>Departmanlar-&gt;Sil</value>
+  </data>
+  <data name="Departments-&gt;Edit" xml:space="preserve">
+    <value>Departmanlar-&gt;Düzenle</value>
+  </data>
+  <data name="Departments-&gt;Show" xml:space="preserve">
+    <value>Departmanlar-&gt;Göster</value>
+  </data>
+  <data name="Departments-&gt;Table" xml:space="preserve">
+    <value>Departmanlar-&gt;Tablo</value>
+  </data>
   <data name="Dropdown.First" xml:space="preserve">
     <value>Seçiniz</value>
   </data>
   <data name="en" xml:space="preserve">
     <value>İngilizce</value>
+  </data>
+  <data name="Groups-&gt;All" xml:space="preserve">
+    <value>Gruplar-&gt;Tüm</value>
+  </data>
+  <data name="Groups-&gt;Create" xml:space="preserve">
+    <value>Gruplar-&gt;Oluştur</value>
+  </data>
+  <data name="Groups-&gt;Delete" xml:space="preserve">
+    <value>Gruplar-&gt;Sil</value>
+  </data>
+  <data name="Groups-&gt;Edit" xml:space="preserve">
+    <value>Gruplar-&gt;Düzenle</value>
+  </data>
+  <data name="Groups-&gt;Show" xml:space="preserve">
+    <value>Gruplar-&gt;Göster</value>
+  </data>
+  <data name="Groups-&gt;Table" xml:space="preserve">
+    <value>Gruplar-&gt;Tablo</value>
   </data>
   <data name="Login.Login" xml:space="preserve">
     <value>Giriş Yap</value>
@@ -216,6 +252,24 @@
   <data name="Title.OrganizationID" xml:space="preserve">
     <value>Kurum</value>
   </data>
+  <data name="Titles-&gt;All" xml:space="preserve">
+    <value>Ünvanlar-&gt;Tüm</value>
+  </data>
+  <data name="Titles-&gt;Create" xml:space="preserve">
+    <value>Ünvanlar-&gt;Oluştur</value>
+  </data>
+  <data name="Titles-&gt;Delete" xml:space="preserve">
+    <value>Ünvanlar-&gt;Sil</value>
+  </data>
+  <data name="Titles-&gt;Edit" xml:space="preserve">
+    <value>Ünvanlar-&gt;Düzenle</value>
+  </data>
+  <data name="Titles-&gt;Show" xml:space="preserve">
+    <value>Ünvanlar-&gt;Göster</value>
+  </data>
+  <data name="Titles-&gt;Table" xml:space="preserve">
+    <value>Ünvanlar-&gt;Tablo</value>
+  </data>
   <data name="tr" xml:space="preserve">
     <value>Türkçe</value>
   </data>
@@ -266,5 +320,23 @@
   </data>
   <data name="User.Username" xml:space="preserve">
     <value>Kullanıcı Adı</value>
+  </data>
+  <data name="Users-&gt;All" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Tüm</value>
+  </data>
+  <data name="Users-&gt;Create" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Oluştur</value>
+  </data>
+  <data name="Users-&gt;Delete" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Sil</value>
+  </data>
+  <data name="Users-&gt;Edit" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Düzenle</value>
+  </data>
+  <data name="Users-&gt;Show" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Göster</value>
+  </data>
+  <data name="Users-&gt;Table" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Tablo</value>
   </data>
 </root>
