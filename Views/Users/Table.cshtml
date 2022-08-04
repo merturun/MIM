@@ -43,7 +43,7 @@
                             <div class="btn-toolbar-right" role="toolbar">
                                 <div class="btn-group mr-2" role="group">
                                     <input id="searchFilter" class="btn btn-light-primary text-uppercase" type="Submit" value="@LanguageHelper.GetString("Table.SearchBar.Search")">
-                                    <input id="clrFilter" class="btn btn-light-warning text-uppercase" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
+                                    <input id="clearFilter" class="btn btn-light-warning text-uppercase" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
                                 </div>
                             </div>
                         </th>
@@ -109,7 +109,7 @@
             });
         }
 
-        $("#clrFilter").click(function () {
+        $("#clearFilter").click(function () {
             $("#useridFilter").val('')
             $("#firstnameFilter").val('')
             $("#lastnameFilter").val('')

@@ -25,6 +25,15 @@
                         </div>
                     </div>
                     <br />
+                    <div style="width:50%">
+                        @Html.LabelFor(model => model.Grants, LanguageHelper.GetString("Group.Grants"), htmlAttributes: new { @class = "control-label font-weight-bold my-auto" })
+                        <hr style="width:50%" />
+                        @foreach (var item in Model.Grants)
+                        {
+                            <tr> <td>@item.Name</td> </tr>
+                            <br />
+                        }
+                    </div>
                 </center>
             </div>
         </div>

@@ -30,15 +30,15 @@
                     </th>
                 </tr>
                 <tr class="text-center">
-                    <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
-                    <th style="width: 30%">@Html.TextBox("firstname", "", new { @class = "form-control" })</th>
-                    <th style="width: 30%">@Html.TextBox("lastname", "", new { @class = "form-control" })</th>
+                    <th style="width: 5%">@Html.TextBox("DepartmentID", "", new { @class = "form-control" })</th>
+                    <th style="width: 30%">@Html.TextBox("Name", "", new { @class = "form-control" })</th>
+                    <th style="width: 30%">@Html.TextBox("Description", "", new { @class = "form-control" })</th>
                     <th style="width: 20%">@Html.DropDownList("UserID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
                     <th style="width: 15%">
                         <div class="btn-toolbar-right" role="toolbar">
                             <div class="btn-group mr-2" role="group">
-                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-primary">@LanguageHelper.GetString("Table.SearchBar.Search")</span>
-                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-warning">@LanguageHelper.GetString("Table.SearchBar.Clear")</span>
+                                <input id="searchFilter" class="btn btn-light-primary text-uppercase" type="Submit" value="@LanguageHelper.GetString("Table.SearchBar.Search")">
+                                <input id="clearFilter" class="btn btn-light-warning text-uppercase" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
                             </div>
                         </div>
                     </th>
@@ -91,9 +91,20 @@
 
 <script>
     function GetPage(page) {
+        var _DepartmentID = $("#DepartmentID").val()
+        var _Name = $("#Name").val()
+        var _Description = $("#Description").val()
+        var _UserID = $("#UserID").val()
         $.ajax({
             url: '/Departments/Table?page=' + page,
             method: 'GET',
+            data:
+            {
+                DepartmentID: _DepartmentID,
+                Name: _Name,
+                Description: _Description,
+                UserID: _UserID,
+            },
             success: function (data) {
                 $('#dt-departments_table').html(data)
             },
@@ -103,5 +114,16 @@
         });
     }
 
+    $("#clearFilter").click(function () {
+        $("#DepartmentID").val('')
+        $("#Name").val('')
+        $("#Description").val('')
+        $("#UserID").val('')
+        GetPage(1);
+    });
+
+    $("#searchFilter").click(function () {
+        GetPage(1);
+    })
 </script>
 

@@ -30,15 +30,15 @@
                     </th>
                 </tr>
                 <tr class="text-center">
-                    <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
+                    <th style="width: 5%">@Html.TextBox("GroupID", "", new { @class = "form-control" })</th>
                     <th style="width: 30%">@Html.TextBox("Name", "", new { @class = "form-control" })</th>
                     <th style="width: 25%">@Html.TextBox("Description", "", new { @class = "form-control" })</th>
                     <th style="width:25%">@Html.TextBox("Count", "", new { @class = "form-control" })</th>
                     <th style="width: 15%">
                         <div class="btn-toolbar-right" role="toolbar">
                             <div class="btn-group mr-2" role="group">
-                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-primary">@LanguageHelper.GetString("Table.SearchBar.Search")</span>
-                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-warning">@LanguageHelper.GetString("Table.SearchBar.Clear")</span>
+                                <input id="searchFilter" class="btn btn-light-primary text-uppercase" type="Submit" value="@LanguageHelper.GetString("Table.SearchBar.Search")">
+                                <input id="clearFilter" class="btn btn-light-warning text-uppercase" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
                             </div>
                         </div>
                     </th>
@@ -90,9 +90,20 @@
 
 <script>
     function GetPage(page) {
+        var _GroupID = $("#GroupID").val()
+        var _Name = $("#Name").val()
+        var _Description = $("#Description").val()
+        var _Count = $("#Count").val()
         $.ajax({
             url: '/Groups/Table?page=' + page,
             method: 'GET',
+            data:
+            {
+                GroupID: _GroupID,
+                Name: _Name,
+                Description: _Description,
+                Count: _Count,
+            },
             success: function (data) {
                 $('#dt-groups_table').html(data)
             },
@@ -101,6 +112,18 @@
             },
         });
     }
+
+    $("#clearFilter").click(function () {
+        $("#GroupID").val('')
+        $("#Name").val('')
+        $("#Description").val('')
+        $("#Count").val('')
+        GetPage(1);
+    });
+
+    $("#searchFilter").click(function () {
+        GetPage(1);
+    })
 
 </script>
 

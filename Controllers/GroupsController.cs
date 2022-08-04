@@ -23,11 +23,23 @@ namespace MIM.Controllers
             return View();
         }
 
-        // GET: /Groups/Table
-        public ActionResult Table(int? page)
+        public IPagedList<Group> GetGroupList(Group group, int? page,int? Count)
         {
             var _page = page ?? 1;
-            var groups = db.Groups.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            var groups = db.Groups.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID);
+            IPagedList<Group> filtering_group = groups.ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (group.GroupID > 0) filtering_group = groups.Where(x => x.GroupID == group.GroupID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (group.Name != null) filtering_group = groups.Where(x => x.Name.Contains(group.Name)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (group.Description != null) filtering_group = groups.Where(x => x.Description.Contains(group.Description)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (Count> 0) filtering_group = groups.Where(x => x.Grants.Count() >= Count).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            return filtering_group;
+        }
+
+        // GET: /Groups/Table
+        public ActionResult Table(Group group,int? page,int? count)
+        {
+            var _page = page ?? 1;
+            var groups = GetGroupList(group, page, count);
             return View(groups);
         }
 
