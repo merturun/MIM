@@ -10,7 +10,7 @@ namespace MIM.Config
 {
     public class MIMDBContext : DbContext
     {
-        public MIMDBContext() : base("name=MIMDB")
+        public MIMDBContext() : base(GetConnectionString())
         {
         }
 
@@ -23,8 +23,24 @@ namespace MIM.Config
         public DbSet<Department> Departments { get; set; }
         public DbSet<MIM.Models.Grant> Grants { get; set; }
 
+        public static string GetConnectionString()
+        {
+            string mname = Environment.MachineName;
+            switch (mname)
+            {
+                case "DESKTOP-9416S5E":
+                    return "name=Mert";
+                case "DESKTOP-8O0HBRJ":
+                    return "name=Mertcan";
+                case "Ismailin Bilgisayarı":
+                    return "name=Ismail";
+                default:
+                    break;
+            }
+            return "name=LOCAL";
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {   
+        {
             modelBuilder.Configurations.Add(new ModuleMap());
             modelBuilder.Configurations.Add(new OrganizationMap());
             modelBuilder.Configurations.Add(new TitleMap());
