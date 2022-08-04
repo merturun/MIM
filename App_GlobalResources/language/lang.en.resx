@@ -318,9 +318,6 @@
   <data name="Site.Title" xml:space="preserve">
     <value>MIM Management System</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
   <data name="Table.Action" xml:space="preserve">
     <value>Actions</value>
   </data>

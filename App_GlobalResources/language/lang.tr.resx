@@ -424,7 +424,7 @@
     <value>Kullanıcı tüm yetkilere sahip.</value>
   </data>
   <data name="User.AvatarUrl" xml:space="preserve">
-    <value>Avatar Resmi</value>
+    <value>Avatar</value>
   </data>
   <data name="User.BornDate" xml:space="preserve">
     <value>Doğum Tarihi</value>
