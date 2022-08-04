@@ -72,8 +72,8 @@ namespace MIM.Controllers
         {
             if (!MIM.Models.User.current.isGranted("Create", "Users")) return View("");
             ViewBag.Groups = GetSelectedGroups(new Group[0]);
-            ViewBag.titleID = new SelectList(db.Titles, "TitleID", "Name");
-            ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
+            ViewBag.titleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
+            ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
             return View();
         }
         
@@ -137,11 +137,16 @@ namespace MIM.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups")] User user, int[] GroupIDS)
+        public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups,AvatarUrl")] User user, int[] GroupIDS, HttpPostedFileBase fb)
         {
             if (!MIM.Models.User.current.isGranted("Edit", "Users")) return View();
 
             user.OrganizationID = Organization.current.OrganizationID;
+            if (fb != null)
+            {
+                dbh.DeleteImage(user.AvatarUrl);
+                user.AvatarUrl = dbh.AddImage(fb, "AvatarImages/", true);
+            }
             dbh.UpdateGroups(user.UserID, GroupIDS);
 
             if (ModelState.IsValid)

@@ -112,7 +112,38 @@
                 SuperAdmin = true,
                 Department = dep,
             };
-            context.Users.Add(user3);
+            User user4 = new User()
+            {
+                Organization = org,
+                Firstname = "Neo",
+                Lastname = "Zion",
+                Nickname = "demo",
+                Username = "demo",
+                Title = title3,
+                Password = "123456",
+                Email = "johndeo@mim.com",
+                BornDate = new DateTime(2000, 1, 1),
+                IsActive = true,
+                SuperAdmin = false,
+                Department = dep,
+            };
+            context.Users.Add(user4);
+            User user5 = new User()
+            {
+                Organization = org,
+                Firstname = "Trinity",
+                Lastname = "Zion",
+                Nickname = "admin",
+                Username = "admin",
+                Title = title3,
+                Password = "123456",
+                Email = "admin@mim.com",
+                BornDate = new DateTime(2000, 1, 1),
+                IsActive = true,
+                SuperAdmin = true,
+                Department = dep,
+            };
+            context.Users.Add(user5);
             GrantSeed gs = new GrantSeed(context);
             gs.SeedData();
 

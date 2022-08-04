@@ -2,16 +2,17 @@
 @{
     Layout = null;
     string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
-    bool grant = Model != null;
 }
-@if (grant)
+@if (Model != null)
 {
     <div class="modal" id="user-modal">
         <div class="modal-dialog modal-dialog-centered @modal_size">
             <div class="modal-content">
                 <div class="card card-custom">
                     <div class="card-header card-header-tabs-line">
+                        
                         <div class="card-title">
+                            <img class="symbol symbol-100" style="  margin-right:10px" src="/assets/media/AvatarImages/@Model.hasAvatar()" />
                             <h3 class="card-label">@Model.fullname</h3>
                         </div>
                         <div class="card-toolbar">
@@ -142,16 +143,19 @@
                                 </center>
                             </div>
                             <div class="tab-pane fade" id="kt_tab_pane_4_2" role="tabpanel">
-                                <center>
-                                    <div class="row align-items-center">
-                                        <table class="table table-hover">
-                                            <tr>
-                                                <td>#</td>
-                                                <td>@LanguageHelper.GetString("Group.Name")</td>
-                                                <td>@LanguageHelper.GetString("Group.Grants")</td>
-                                            </tr>
-                                            @foreach (var item in Model.Groups)
-                                            {
+                                @if (!Model.SuperAdmin)
+                                {
+                                    <center>
+                                        <div class="row align-items-center">
+                                            <table class="table table-hover">
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>@LanguageHelper.GetString("Group.Name")</td>
+                                                    <td>@LanguageHelper.GetString("Group.Grants")</td>
+                                                </tr>
+
+                                                @foreach (var item in Model.Groups)
+                                                {
                                                 <tr>
                                                     <td>@item.GroupID</td>
                                                     <td>@item.Name</td>
@@ -165,11 +169,16 @@
                                                     </td>
 
                                                 </tr>
-                                            }
-
-                                        </table>
-                                    </div>
-                                </center>
+                                                }
+                                            </table>
+                                        </div>
+                                    </center>
+                                }
+                                else
+                                {
+                                    <center><span class="text-danger">@LanguageHelper.GetString("User.AllGrants")</span></center>
+                                    
+                                }
                             </div>
                         </div>
                     </div>

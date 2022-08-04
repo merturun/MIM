@@ -26,11 +26,22 @@ namespace MIM.Controllers
             return View(await titles.ToListAsync());
         }
 
-        // GET: /Titles/Table
-        public ActionResult Table(int? page)
+        public IPagedList<Title> GetTitleList(Title title, int? page)
         {
             var _page = page ?? 1;
-            var titles = db.Titles.Include(u => u.Organization).Include(t => t.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            var titles = db.Titles.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID);
+            IPagedList<Title> filtering_title = titles.ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (title.TitleID > 0) filtering_title = titles.Where(x => x.TitleID == title.TitleID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (title.Name != null) filtering_title = titles.Where(x => x.Name.Contains(title.Name)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (title.Description != null) filtering_title = titles.Where(x => x.Description.Contains(title.Description)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            return filtering_title;
+        }
+
+        // GET: /Titles/Table
+        public ActionResult Table(Title title, int? page)
+        {
+            var _page = page ?? 1;
+            var titles = GetTitleList(title, page);            
             return View(titles);
         }
 

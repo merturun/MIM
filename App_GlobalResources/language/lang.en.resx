@@ -234,6 +234,9 @@
   <data name="Model.Titles" xml:space="preserve">
     <value>Titles</value>
   </data>
+  <data name="Model.Toastr.SameUser" xml:space="preserve">
+    <value>You can't delete own user.</value>
+  </data>
   <data name="Model.User" xml:space="preserve">
     <value>User</value>
   </data>
@@ -323,6 +326,9 @@
   </data>
   <data name="User.AddNew" xml:space="preserve">
     <value>Create New User</value>
+  </data>
+  <data name="User.AllGrants" xml:space="preserve">
+    <value>This user have all grants.</value>
   </data>
   <data name="User.AvatarUrl" xml:space="preserve">
     <value>Avatar</value>

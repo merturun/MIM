@@ -424,8 +424,6 @@
     <Content Include="assets\js\pages\my-script.js" />
     <Content Include="assets\js\pages\widgets.js" />
     <Content Include="assets\js\scripts.bundle.js" />
-    <Content Include="assets\media\AvatarImages\39a7f226-d31f-4c3b-93d2-c18b70367ba8.png" />
-    <Content Include="assets\media\AvatarImages\5a0d83bb-dd65-435b-84bf-9884d1ddc63agoose1.png" />
     <Content Include="assets\media\bg\bg-1.jpg" />
     <Content Include="assets\media\bg\bg-10.jpg" />
     <Content Include="assets\media\bg\bg-11.jpg" />
@@ -2205,6 +2203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\media\AvatarImages\" />
     <Folder Include="Views\Chart\" />
   </ItemGroup>
   <ItemGroup>

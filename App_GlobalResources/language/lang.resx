@@ -138,6 +138,9 @@
   <data name="Login.Welcome" xml:space="preserve">
     <value>Hoşgeldiniz</value>
   </data>
+  <data name="Model.Toastr.SameUser" xml:space="preserve">
+    <value>Kendi kullanıcınızı silemezsiniz.</value>
+  </data>
   <data name="Model.User" xml:space="preserve">
     <value>Kullanıcı</value>
   </data>
@@ -218,6 +221,9 @@
   </data>
   <data name="User.AddNew" xml:space="preserve">
     <value>Yeni Kullanıcı Ekle</value>
+  </data>
+  <data name="User.AllGrants" xml:space="preserve">
+    <value>Kullanıcı tüm yetkilere sahip.</value>
   </data>
   <data name="User.BornDate" xml:space="preserve">
     <value>Doğum Tarihi</value>

@@ -159,6 +159,24 @@
   <data name="Department.Name" xml:space="preserve">
     <value>Departman Adı</value>
   </data>
+  <data name="Departments-&gt;All" xml:space="preserve">
+    <value>Departmanlar-&gt;Tüm</value>
+  </data>
+  <data name="Departments-&gt;Create" xml:space="preserve">
+    <value>Departmanlar-&gt;Oluştur</value>
+  </data>
+  <data name="Departments-&gt;Delete" xml:space="preserve">
+    <value>Departmanlar-&gt;Sil</value>
+  </data>
+  <data name="Departments-&gt;Edit" xml:space="preserve">
+    <value>Departmanlar-&gt;Düzenle</value>
+  </data>
+  <data name="Departments-&gt;Show" xml:space="preserve">
+    <value>Departmanlar-&gt;Göster</value>
+  </data>
+  <data name="Departments-&gt;Table" xml:space="preserve">
+    <value>Departmanlar-&gt;Tablo</value>
+  </data>
   <data name="Dropdown.First" xml:space="preserve">
     <value>Seçiniz</value>
   </data>
@@ -191,6 +209,24 @@
   </data>
   <data name="Group.Name" xml:space="preserve">
     <value>Grup Adı</value>
+  </data>
+  <data name="Groups-&gt;All" xml:space="preserve">
+    <value>Gruplar-&gt;Tüm</value>
+  </data>
+  <data name="Groups-&gt;Create" xml:space="preserve">
+    <value>Gruplar-&gt;Oluştur</value>
+  </data>
+  <data name="Groups-&gt;Delete" xml:space="preserve">
+    <value>Gruplar-&gt;Sil</value>
+  </data>
+  <data name="Groups-&gt;Edit" xml:space="preserve">
+    <value>Gruplar-&gt;Düzenle</value>
+  </data>
+  <data name="Groups-&gt;Show" xml:space="preserve">
+    <value>Gruplar-&gt;Göster</value>
+  </data>
+  <data name="Groups-&gt;Table" xml:space="preserve">
+    <value>Gruplar-&gt;Tablo</value>
   </data>
   <data name="HomePage.Title" xml:space="preserve">
     <value>Ana Sayfa</value>
@@ -269,6 +305,9 @@
   </data>
   <data name="Model.Toastr.NoGrant" xml:space="preserve">
     <value>Yetkiniz yok.</value>
+  </data>
+  <data name="Model.Toastr.SameUser" xml:space="preserve">
+    <value>Kendi kullanıcınızı silemezsiniz.</value>
   </data>
   <data name="Model.User" xml:space="preserve">
     <value>Kullanıcı</value>
@@ -357,11 +396,32 @@
   <data name="Title.OrganizationID" xml:space="preserve">
     <value>Kurum</value>
   </data>
+  <data name="Titles-&gt;All" xml:space="preserve">
+    <value>Ünvanlar-&gt;Tüm</value>
+  </data>
+  <data name="Titles-&gt;Create" xml:space="preserve">
+    <value>Ünvanlar-&gt;Oluştur</value>
+  </data>
+  <data name="Titles-&gt;Delete" xml:space="preserve">
+    <value>Ünvanlar-&gt;Sil</value>
+  </data>
+  <data name="Titles-&gt;Edit" xml:space="preserve">
+    <value>Ünvanlar-&gt;Düzenle</value>
+  </data>
+  <data name="Titles-&gt;Show" xml:space="preserve">
+    <value>Ünvanlar-&gt;Göster</value>
+  </data>
+  <data name="Titles-&gt;Table" xml:space="preserve">
+    <value>Ünvanlar-&gt;Tablo</value>
+  </data>
   <data name="tr" xml:space="preserve">
     <value>Türkçe</value>
   </data>
   <data name="User.AddNew" xml:space="preserve">
     <value>Yeni Kullanıcı Ekle</value>
+  </data>
+  <data name="User.AllGrants" xml:space="preserve">
+    <value>Kullanıcı tüm yetkilere sahip.</value>
   </data>
   <data name="User.AvatarUrl" xml:space="preserve">
     <value>Avatar Resmi</value>
@@ -443,5 +503,23 @@
   </data>
   <data name="User.Validate.Username" xml:space="preserve">
     <value>Lütfen kullanıcı adı giriniz.</value>
+  </data>
+  <data name="Users-&gt;All" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Tüm</value>
+  </data>
+  <data name="Users-&gt;Create" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Oluştur</value>
+  </data>
+  <data name="Users-&gt;Delete" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Sil</value>
+  </data>
+  <data name="Users-&gt;Edit" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Düzenle</value>
+  </data>
+  <data name="Users-&gt;Show" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Göster</value>
+  </data>
+  <data name="Users-&gt;Table" xml:space="preserve">
+    <value>Kullanıcılar-&gt;Tablo</value>
   </data>
 </root>

@@ -4,9 +4,8 @@
 @using System.Web.Security;
 @{
     Layout = null;
-    bool grant = Model != null;
 }
-@if (grant)
+@if (Model != null)
 {    
     <div id="users_list">
         <div class="table-responsive" style="overflow: inherit;">
@@ -85,9 +84,22 @@
 
     <script>
         function GetPage(page) {
+            var _UserID = $("#useridFilter").val()
+            var _firstname = $("#firstnameFilter").val()
+            var _lastname = $("#lastnameFilter").val()
+            var _titleID = $("#titleidFilter").val()
+            var _departmentID = $("#departmentidFilter").val()
             $.ajax({
                 url: '/Users/Table?page=' + page,
                 method: 'GET',
+                data:
+                {
+                    UserID: _UserID,
+                    firstname: _firstname,
+                    lastname: _lastname,
+                    titleID: _titleID,
+                    departmentID: _departmentID
+                },
                 success: function (data) {
                     $('#dt-users_table').html(data)
                 },
@@ -107,29 +119,7 @@
         });
 
         $("#searchFilter").click(function () {
-            var _UserID = $("#useridFilter").val()
-            var _firstname = $("#firstnameFilter").val()
-            var _lastname = $("#lastnameFilter").val()
-            var _titleID = $("#titleidFilter").val()
-            var _departmentID = $("#departmentidFilter").val()
-            $.ajax({
-                url: '/Users/Table',
-                method: 'GET',
-                data:
-                {
-                    UserID: _UserID,
-                    firstname: _firstname,
-                    lastname: _lastname,
-                    titleID: _titleID,
-                    departmentID: _departmentID
-                },
-                success: function (data) {
-                    $('#dt-users_table').html(data)
-                },
-                error: function (data) {
-                    $('#dt-users_table').html("table error")
-                },
-            });
+            GetPage(1);
         })
     </script>
 }

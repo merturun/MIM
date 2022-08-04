@@ -27,14 +27,14 @@
                     </th>
                 </tr>
                 <tr class="text-center">
-                    <th style="width: 5%">@Html.TextBox("id", "", new { @class = "form-control" })</th>
-                    <th style="width: 40%">@Html.TextBox("name", "", new { @class = "form-control" })</th>
-                    <th style="width: 40%">@Html.TextBox("description", "", new { @class = "form-control" })</th>
+                    <th style="width: 5%">@Html.TextBox("TitleID", "", new { @class = "form-control" })</th>
+                    <th style="width: 40%">@Html.TextBox("Name", "", new { @class = "form-control" })</th>
+                    <th style="width: 40%">@Html.TextBox("Description", "", new { @class = "form-control" })</th>
                     <th style="width: 15%">
                         <div class="btn-toolbar-right" role="toolbar">
                             <div class="btn-group mr-2" role="group">
-                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-primary">@LanguageHelper.GetString("Table.SearchBar.Search")</span>
-                                <span data-controller="common" data-action="click->common#clear" class="btn btn-light-warning">@LanguageHelper.GetString("Table.SearchBar.Clear")</span>
+                                <input id="searchFilter" class="btn btn-light-primary text-uppercase" type="Submit" value="@LanguageHelper.GetString("Table.SearchBar.Search")">
+                                <input id="clrFilter" class="btn btn-light-warning text-uppercase" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
                             </div>
                         </div>
                     </th>
@@ -84,9 +84,19 @@
 
 <script>
     function GetPage(page) {
+        console.log("asd")
+        var _TitleID = $("#TitleID").val()
+        var _Name = $("#Name").val()
+        var _Description = $("#Description").val()
         $.ajax({
             url: '/Titles/Table?page=' + page,
             method: 'GET',
+            data:
+            {
+                TitleID: _TitleID,
+                Name: _Name,
+                Description: _Description,
+            },
             success: function (data) {
                 $('#dt-titles_table').html(data)
             },
@@ -94,7 +104,18 @@
                 $('#dt-titles_table').html("table error")
             },
         });
-    }
+    }   
+
+    $("#clrFilter").click(function () {
+        $("#TitleID").val('')
+        $("#Name").val('')
+        $("#Description").val('')
+        GetPage(1);
+    });
+
+    $("#searchFilter").click(function () {
+        GetPage(1);
+    })
 
 </script>
 
