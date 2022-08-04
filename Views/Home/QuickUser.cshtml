@@ -1,6 +1,8 @@
 ﻿@model MIM.Models.User
+@{
+    Layout=null;
+}
 
-<div id="kt_quick_user" class="offcanvas offcanvas-right p-10" style="height: 500px;">
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
         <h3 class="font-weight-bold m-0">
             @MIM.Models.User.current.fullname <small style="display: none;" class="text-muted font-size-sm ml-2">12 messages</small>
@@ -207,4 +209,7 @@
             </div>
         </div>
     </div>
-</div>
+<script>
+    $("#user_shortname").html('@Model.GetShortName()');
+    $("#user_symbol").html('@Model.GetShortSymbol()');
+</script>

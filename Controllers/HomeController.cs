@@ -27,11 +27,13 @@ namespace MIM.Controllers
             MvcApplication.language = language;            
         }
 
-        [ChildActionOnly]
         public ActionResult QuickUser()
         {
-            if(MIM.Models.User.current != null) return PartialView("QuickUser", MIM.Models.User.current);
-            return PartialView("QuickUser");
+            var ses_user = ((User)Session["user"]);
+            if (ses_user == null) return View();
+            var db_user = db.Users.FirstOrDefault(x => x.UserID == ses_user.UserID);
+            MIM.Models.User.current = db_user;
+            return View(MIM.Models.User.current);
         }
 
         [ChildActionOnly]

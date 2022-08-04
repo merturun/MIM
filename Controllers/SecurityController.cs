@@ -25,6 +25,7 @@ namespace MIM.Controllers
             var UserInDb = db.Users.FirstOrDefault(x => x.Username == user.Username && x.Password == user.Password);
             if (UserInDb != null)
             {
+                Session["user"] = UserInDb;
                 FormsAuthentication.SetAuthCookie(UserInDb.Username, false);
                 MIM.Models.Organization.current = UserInDb.Organization;
                 MIM.Models.User.current = UserInDb;                    

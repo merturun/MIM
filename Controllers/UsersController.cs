@@ -147,6 +147,11 @@ namespace MIM.Controllers
                 dbh.DeleteImage(user.AvatarUrl);
                 user.AvatarUrl = dbh.AddImage(fb, "AvatarImages/", true);
             }
+            else
+            {
+                dbh.DeleteImage(user.AvatarUrl);
+                user.AvatarUrl = null;
+            }
             dbh.UpdateGroups(user.UserID, GroupIDS);
 
             if (ModelState.IsValid)
