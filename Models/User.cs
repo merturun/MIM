@@ -106,16 +106,17 @@ namespace MIM.Models
             return isgranted;
         }
 
-        public string GetShortName() //Layout Kısa Ad
+        public string GetShortName()
         {
+            if (this.Firstname == " ") return "";
             return this.Firstname.Length > 15 ? this.Firstname.Substring(0, this.Firstname.Substring(0, 15)
                 .LastIndexOf(" ")) + "..." : this.Firstname + ".";
         }
 
-        public string GetShortSymbol() //Layout Kısa Sembol
+        public string GetShortSymbol()
         {
+            if (this.fullname == " ") return "";
             string[] names = this.fullname.Split(' ');
-            //return current.symbol.Length > 3 ? current.symbol.Substring(0, 3) : current.symbol;
             return names.First().Substring(0, 1) + names.Last().Substring(0, 1);
         }
         #endregion "Method + Properties"

@@ -170,7 +170,9 @@ namespace MIM.Controllers
         // GET: Users/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
+            ViewBag.owner = false;
             if (!MIM.Models.User.Current().isGranted("Delete", "Users")) return View();
+            ViewBag.owner = (id == ((int)Session["current_userID"]));
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
