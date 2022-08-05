@@ -45,6 +45,7 @@
             <div class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
                 <div class="d-flex flex-column-fluid flex-center">
                     <div class="login-form login-signin">
+                        
                         @using (Html.BeginForm("Login", "Security"))
                         {
                             <div class="pb-13 pt-lg-0 pt-5">
@@ -57,6 +58,9 @@
                             <div class="form-group">
                                 @Html.Label(@LanguageHelper.GetString("Login.Password"), htmlAttributes: new { @class = "font-size-h6 font-weight-bolder text-dark" })
                                 @Html.TextBox("password", "", htmlAttributes: new { type="password", @class = "form-control form-control-solid h-auto py-6 px-6 rounded-lg" })
+                            </div>
+                            <div>
+                                <span class="text-danger">@ViewBag.Message</span>
                             </div>
                             <div class="pb-lg-0 pb-5">
                                 <input id="Submit1" type="submit" value="@LanguageHelper.GetString("Login.Login")" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" />

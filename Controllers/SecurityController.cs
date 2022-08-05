@@ -1,4 +1,5 @@
 ﻿using MIM.Config;
+using MIM.Helper;
 using MIM.Models;
 using System;
 using System.Collections.Generic;
@@ -22,19 +23,27 @@ namespace MIM.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-            var UserInDb = db.Users.FirstOrDefault(x => x.Username == user.Username && x.Password == user.Password);
-            if (UserInDb != null)
+            var UserInDb = db.Users.FirstOrDefault(x => x.Username == user.Username);
+            bool pValid = UserInDb !=null ? UserInDb.Password == user.Password : false;
+            if (UserInDb != null && pValid) // Kullanıcı adı ve parola doğruysa
             {
-                Session["user"] = UserInDb;
                 FormsAuthentication.SetAuthCookie(UserInDb.Username, false);
-                MIM.Models.Organization.current = UserInDb.Organization;
-                MIM.Models.User.current = UserInDb;                    
+                Session["current_organizationID"] = UserInDb.OrganizationID;
+                Session["current_userID"] = UserInDb.UserID;
+
+                int userid = ((int)System.Web.HttpContext.Current.Session["current_userID"]);
                 return RedirectToAction("Index", "Home");
             }
-            else
-            {                
-                return View();
+            else if (UserInDb != null && !pValid) // Kullanıcı adı doğru ama parola yanlış
+            {
+                ViewBag.Message = LanguageHelper.GetString("Login.Error.Password");
+
             }
+            else // Kullanıcı bulunumadı
+            {
+                ViewBag.Message = LanguageHelper.GetString("Login.Error.NoUser");
+            }
+            return View();
         }
 
         public void ChangeLanguage(string language)
@@ -52,6 +61,8 @@ namespace MIM.Controllers
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
+            Session.Abandon();
+            Session.Clear();
             return RedirectToAction("Login");
         }
     }

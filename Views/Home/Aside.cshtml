@@ -34,7 +34,7 @@
                 </li>
 
 
-                @if (MIM.Models.User.current.isGranted(new string[] { "Users", "Titles", "Grants", "Departments" }))
+                @if (MIM.Models.User.Current().isGranted(new string[] { "Users", "Titles", "Grants", "Departments" }))
                 {
                     <li class="menu-section">
                         <h4 class="menu-text">Yönetim Paneli</h4>
@@ -52,7 +52,7 @@
                                 <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 </li>
 
-                                @if (MIM.Models.User.current.isGranted("Table", "Users"))
+                                @if (MIM.Models.User.Current().isGranted("Table", "Users"))
                                 {
                                     <li class="menu-item" aria-haspopup="true">
                                         <a href="@Url.Action("Index", "Users")" class="menu-link">
@@ -64,7 +64,7 @@
                                         </a>
                                     </li>
                                 }
-                                @if (MIM.Models.User.current.isGranted("Table", "Titles"))
+                                @if (MIM.Models.User.Current().isGranted("Table", "Titles"))
                                 {
                                     <li class="menu-item" aria-haspopup="true">
                                         <a href="@Url.Action("Index", "Titles")" class="menu-link">
@@ -76,7 +76,7 @@
                                         </a>
                                     </li>
                                 }
-                                @if (MIM.Models.User.current.isGranted("Table", "Groups"))
+                                @if (MIM.Models.User.Current().isGranted("Table", "Groups"))
                                 {
                                     <li class="menu-item" aria-haspopup="true">
                                         <a href="@Url.Action("Index", "Groups")" class="menu-link">
@@ -88,7 +88,7 @@
                                         </a>
                                     </li>
                                 }
-                                @if (MIM.Models.User.current.isGranted("Table", "Departments"))
+                                @if (MIM.Models.User.Current().isGranted("Table", "Departments"))
                                 {
                                     <li class="menu-item" aria-haspopup="true">
                                         <a href="@Url.Action("Index", "Departments")" class="menu-link">

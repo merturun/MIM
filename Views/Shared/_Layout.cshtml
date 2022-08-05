@@ -89,23 +89,16 @@
                             <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             </div>
                         </div>
-                        @{
-                            var ses_user = ((User)Session["user"]);
-                        }
-                        @if (@ses_user != null)
-                        {
-                            @ses_user.fullname
-                        }
                         <div class="topbar">
                             @{
-                                                Html.RenderAction("LanguageChanger", "Home");
+                                Html.RenderAction("LanguageChanger", "Home");
                             }
                             <div class="topbar-item">
                                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
                                     <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">@LanguageHelper.GetString("NavBar.Hi"),</span>
-                                    <span id="user_shortname" class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">@MIM.Models.User.current.GetShortName()</span>
+                                    <span id="user_shortname" name="user_shortname" class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">@MIM.Models.User.Current().GetShortName()</span>
                                     <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
-                                        <span id="user_symbol" class="symbol-label font-size-h5 font-weight-bold">@MIM.Models.User.current.GetShortSymbol()</span>
+                                        <span id="user_symbol" name="user_symbol" class="symbol-label font-size-h5 font-weight-bold">@MIM.Models.User.Current().GetShortSymbol()</span>
                                     </span>
                                 </div>
                             </div>
@@ -1356,7 +1349,10 @@
 
             $("#kt_quick_user_toggle").click(function () {
             GetQuickUser()
+
             })
+
+            setInterval(GetQuickUser, 30000);
 
             function GetQuickUser()
             {

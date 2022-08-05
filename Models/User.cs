@@ -13,18 +13,28 @@ namespace MIM.Models
 {
     public class User
     {
-        public static User current = new User(true);
-
+        public static User Current()
+        {
+            int userid = 0;
+            if (HttpContext.Current.Session["current_userID"] != null)
+                userid = ((int)HttpContext.Current.Session["current_userID"]);
+            else
+                return new User(true);
+            
+            MIMDBContext db = new MIMDBContext();
+            return db.Users.Where(x => x.UserID == userid).First();
+        }
         public User()
         {
             Groups = new List<Group>();
         }
+
         public User(bool isDefault=true)
         {
-            Firstname = Lastname = Nickname = Username = Password = "Default";
-            Email = "Default@default.com";
+            Firstname = Lastname = Nickname = Username = Password = "";
+            Email = "";
            
-            Title = new Title() { Name = "Default" };
+            Title = new Title() { Name = "" };
            
         }
 
@@ -98,13 +108,13 @@ namespace MIM.Models
 
         public string GetShortName() //Layout Kısa Ad
         {
-            return current.Firstname.Length > 15 ? current.Firstname.Substring(0, current.Firstname.Substring(0, 15)
-                .LastIndexOf(" ")) + "..." : current.Firstname + ".";
+            return this.Firstname.Length > 15 ? this.Firstname.Substring(0, this.Firstname.Substring(0, 15)
+                .LastIndexOf(" ")) + "..." : this.Firstname + ".";
         }
 
         public string GetShortSymbol() //Layout Kısa Sembol
         {
-            string[] names = current.fullname.Split(' ');
+            string[] names = this.fullname.Split(' ');
             //return current.symbol.Length > 3 ? current.symbol.Substring(0, 3) : current.symbol;
             return names.First().Substring(0, 1) + names.Last().Substring(0, 1);
         }

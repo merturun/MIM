@@ -222,6 +222,12 @@
   <data name="Label.ChooseFile" xml:space="preserve">
     <value>Choose File</value>
   </data>
+  <data name="Login.Error.NoUser" xml:space="preserve">
+    <value>Wrong Username</value>
+  </data>
+  <data name="Login.Error.Password" xml:space="preserve">
+    <value>Wrong Password</value>
+  </data>
   <data name="Login.Login" xml:space="preserve">
     <value>Login</value>
   </data>

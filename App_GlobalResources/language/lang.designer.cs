@@ -412,6 +412,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yanlış Kullanıcı Adı.
+        /// </summary>
+        internal static string Login_Error_NoUser {
+            get {
+                return ResourceManager.GetString("Login.Error.NoUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yanlış Parola.
+        /// </summary>
+        internal static string Login_Error_Password {
+            get {
+                return ResourceManager.GetString("Login.Error.Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giriş Yap.
         /// </summary>
         internal static string Login_Login {

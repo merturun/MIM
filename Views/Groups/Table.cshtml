@@ -5,7 +5,6 @@
 @{
     Layout = null;
 }
-
 <div id="groups_list">
     <div class="table-responsive" style="overflow: inherit;">
         <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
@@ -49,25 +48,25 @@
                 {
                     foreach (var item in Model)
                     {
-                <tr class="text-center">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.GroupID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @item.Grants.Count()
-                    </td>
-                    <td style="width: 15%">
-                        @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                        @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                        @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
-                    </td>
-                </tr>
+                        <tr class="text-center">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GroupID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @item.Grants.Count()
+                            </td>
+                            <td style="width: 15%">
+                                @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                                @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                                @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Groups", new { id = item.GroupID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#group-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
+                            </td>
+                        </tr>
                     }
                 }
                 else

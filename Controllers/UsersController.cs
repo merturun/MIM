@@ -33,18 +33,18 @@ namespace MIM.Controllers
             var _page = page ?? 1;
             var users = db.Users.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID);
             IPagedList<User> filtering_user = users.ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.UserID > 0) filtering_user = users.Where(x => x.UserID == user.UserID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.Firstname !=null) filtering_user = users.Where(x => x.Firstname.Contains(user.Firstname)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.Lastname != null) filtering_user = users.Where(x => x.Lastname.Contains(user.Lastname)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.TitleID != null) filtering_user = users.Where(x => x.TitleID == user.TitleID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.DepartmentID != null) filtering_user = users.Where(x => x.DepartmentID == user.DepartmentID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (user.UserID > 0) filtering_user = filtering_user.Where(x => x.UserID == user.UserID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (user.Firstname !=null) filtering_user = filtering_user.Where(x => x.Firstname.Contains(user.Firstname)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (user.Lastname != null) filtering_user = filtering_user.Where(x => x.Lastname.Contains(user.Lastname)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (user.TitleID != null) filtering_user = filtering_user.Where(x => x.TitleID == user.TitleID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (user.DepartmentID != null) filtering_user = filtering_user.Where(x => x.DepartmentID == user.DepartmentID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
             return filtering_user;
         }
 
         // GET: /Users/Table
         public ActionResult Table(User user, int? page)
         {
-            if (!MIM.Models.User.current.isGranted("Table", "Users")) return View();
+            if (!MIM.Models.User.Current().isGranted("Table", "Users")) return View();
             var users = GetUserList(user, page);
             ViewBag.TitleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
@@ -54,7 +54,7 @@ namespace MIM.Controllers
         // GET: /Users/Show/5
         public async Task<ActionResult> Show(int? id)
         {
-            if (!MIM.Models.User.current.isGranted("Show", "Users")) return View();
+            if (!MIM.Models.User.Current().isGranted("Show", "Users")) return View();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -70,7 +70,7 @@ namespace MIM.Controllers
         // GET: /Users/Create
         public ActionResult Create()
         {
-            if (!MIM.Models.User.current.isGranted("Create", "Users")) return View("");
+            if (!MIM.Models.User.Current().isGranted("Create", "Users")) return View("");
             ViewBag.Groups = GetSelectedGroups(new Group[0]);
             ViewBag.titleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
@@ -116,7 +116,7 @@ namespace MIM.Controllers
         // GET: Users/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
-            if (!MIM.Models.User.current.isGranted("Edit", "Users")) return View();
+            if (!MIM.Models.User.Current().isGranted("Edit", "Users")) return View();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -139,7 +139,7 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups,AvatarUrl")] User user, int[] GroupIDS, HttpPostedFileBase fb)
         {
-            if (!MIM.Models.User.current.isGranted("Edit", "Users")) return View();
+            if (!MIM.Models.User.Current().isGranted("Edit", "Users")) return View();
 
             user.OrganizationID = Organization.current.OrganizationID;
             if (fb != null)
@@ -170,7 +170,7 @@ namespace MIM.Controllers
         // GET: Users/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
-            if (!MIM.Models.User.current.isGranted("Delete", "Users")) return View();
+            if (!MIM.Models.User.Current().isGranted("Delete", "Users")) return View();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

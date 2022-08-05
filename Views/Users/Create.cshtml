@@ -99,7 +99,7 @@
                                           </label>
                                       </span>
                                   </div>
-                                  @if (MIM.Models.User.current.SuperAdmin == true)
+                                  @if (MIM.Models.User.Current().SuperAdmin == true)
                                   {
                                       @Html.LabelFor(model => model.SuperAdmin, @LanguageHelper.GetStringForModal("User.SuperAdmin"), htmlAttributes: new { @class = "col-3 col-form-label my-auto" })
                                       <div class="col-3">

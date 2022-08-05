@@ -4,7 +4,7 @@
     ViewBag.Title = LanguageHelper.GetString("Model.Users");
     string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
     bool grant = Model != null;
-    bool whichUser = Model.UserID == MIM.Models.User.current.UserID;
+    bool whichUser = Model.UserID == MIM.Models.User.Current().UserID;
 
 }
 @if (grant && !whichUser)
