@@ -27,12 +27,12 @@ namespace MIM.Controllers
         {
             var _page = page ?? 1;
             var groups = db.Groups.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID);
-            IPagedList<Group> filtering_group = groups.ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (group.GroupID > 0) filtering_group = filtering_group.Where(x => x.GroupID == group.GroupID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (group.Name != null) filtering_group = filtering_group.Where(x => x.Name.Contains(group.Name)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (group.Description != null) filtering_group = filtering_group.Where(x => x.Description.Contains(group.Description)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (Count> 0) filtering_group = filtering_group.Where(x => x.Grants.Count() >= Count).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            return filtering_group;
+            IEnumerable<Group> filtering_group = groups.ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            if (group.GroupID > 0) filtering_group = filtering_group.Where(x => x.GroupID == group.GroupID).ToList();
+            if (group.Name != null) filtering_group = filtering_group.Where(x => x.Name.Contains(group.Name)).ToList();
+            if (group.Description != null) filtering_group = filtering_group.Where(x => x.Description.Contains(group.Description)).ToList();
+            if (Count > 0) filtering_group = filtering_group.Where(x => x.Grants.Count() >= Count).ToList();
+            return filtering_group.ToPagedList(_page, MvcApplication.ListPerPage);
         }
 
         // GET: /Groups/Table

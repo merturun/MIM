@@ -30,11 +30,11 @@ namespace MIM.Controllers
         {
             var _page = page ?? 1;
             var titles = db.Titles.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID);
-            IPagedList<Title> filtering_title = titles.ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (title.TitleID > 0) filtering_title = filtering_title.Where(x => x.TitleID == title.TitleID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (title.Name != null) filtering_title = filtering_title.Where(x => x.Name.Contains(title.Name)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (title.Description != null) filtering_title = filtering_title.Where(x => x.Description.Contains(title.Description)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            return filtering_title;
+            IEnumerable<Title> filtering_title = titles.ToList();
+            if (title.TitleID > 0) filtering_title = filtering_title.Where(x => x.TitleID == title.TitleID).ToList();
+            if (title.Name != null) filtering_title = filtering_title.Where(x => x.Name.Contains(title.Name)).ToList();
+            if (title.Description != null) filtering_title = filtering_title.Where(x => x.Description.Contains(title.Description)).ToList();
+            return filtering_title.ToPagedList(_page, MvcApplication.ListPerPage);
         }
 
         // GET: /Titles/Table

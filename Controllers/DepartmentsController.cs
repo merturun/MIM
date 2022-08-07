@@ -29,12 +29,12 @@ namespace MIM.Controllers
         {
             var _page = page ?? 1;
             var departments = db.Departments.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID);
-            IPagedList<Department> filtering_department = departments.ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (department.DepartmentID > 0) filtering_department = filtering_department.Where(x => x.DepartmentID == department.DepartmentID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
+            IEnumerable<Department> filtering_department = departments.ToList();
+            if (department.DepartmentID > 0) filtering_department = filtering_department.Where(x => x.DepartmentID == department.DepartmentID).ToList();
             if (department.Name != null) filtering_department = filtering_department.Where(x => x.Name.Contains(department.Name)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (department.Description != null) filtering_department = filtering_department.Where(x => x.Description.Contains(department.Description)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (department.UserID != null) filtering_department = filtering_department.Where(x => x.UserID == department.UserID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            return filtering_department;
+            if (department.Description != null) filtering_department = filtering_department.Where(x => x.Description.Contains(department.Description)).ToList();
+            if (department.UserID != null) filtering_department = filtering_department.Where(x => x.UserID == department.UserID).ToList();
+            return filtering_department.ToPagedList(_page, MvcApplication.ListPerPage);
         }
 
         // GET: /Departments/Table
