@@ -37,7 +37,7 @@
                 @if (MIM.Models.User.Current().isGranted(new string[] { "Users", "Titles", "Groups", "Departments" }))
                 {
                     <li class="menu-section">
-                        <h4 class="menu-text">Yönetim Paneli</h4>
+                        <h4 class="menu-text">@LanguageHelper.GetString("HomePage.ManagementSystem")</h4>
                         <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                     </li>
                     <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">

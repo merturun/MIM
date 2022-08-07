@@ -228,6 +228,9 @@
   <data name="Groups-&gt;Table" xml:space="preserve">
     <value>Gruplar-&gt;Tablo</value>
   </data>
+  <data name="HomePage.ManagementSystem" xml:space="preserve">
+    <value>Yönetim Paneli</value>
+  </data>
   <data name="HomePage.Title" xml:space="preserve">
     <value>Ana Sayfa</value>
   </data>

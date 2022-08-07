@@ -394,6 +394,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yönetim Paneli.
+        /// </summary>
+        internal static string HomePage_ManagementSystem {
+            get {
+                return ResourceManager.GetString("HomePage.ManagementSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ana Sayfa.
         /// </summary>
         internal static string HomePage_Title {
