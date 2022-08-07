@@ -40,6 +40,8 @@ namespace MIM.Controllers
         // GET: /Departments/Table
         public ActionResult Table(Department department, int? page)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Table", "Departments");
+            if (!grant) return View("");
             var _page = page ?? 1;
             var departments = GetDepartmentList(department, page);            
             ViewBag.UserID = new SelectList(db.Users.Where(x => x.OrganizationID == Organization.current.OrganizationID), "UserID", "fullname");
@@ -49,6 +51,8 @@ namespace MIM.Controllers
         // GET: Departments/Details/5
         public async Task<ActionResult> Show(int? id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Show", "Departments");
+            if (!grant) return View("");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -64,6 +68,8 @@ namespace MIM.Controllers
         // GET: Departments/Create
         public ActionResult Create()
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Create", "Departments");
+            if (!grant) return View("");
             ViewBag.UserID = new SelectList(db.Users.Where(x => x.OrganizationID == Organization.current.OrganizationID), "UserID", "fullname");
             return View();
         }
@@ -75,6 +81,8 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "DepartmentID,Name,Description,UserID")] Department department)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Create", "Departments");
+            if (!grant) return View("");
             department.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -89,6 +97,8 @@ namespace MIM.Controllers
         // GET: Departments/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Edit", "Departments");
+            if (!grant) return View("");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,6 +119,8 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "DepartmentID,Name,Description,UserID")] Department department)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Edit", "Departments");
+            if (!grant) return View("");
             department.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -123,6 +135,8 @@ namespace MIM.Controllers
         // GET: Departments/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Delete", "Departments");
+            if (!grant) return View("");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -140,6 +154,8 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Delete", "Departments");
+            if (!grant) return View("");
             Department department = await db.Departments.FindAsync(id);
             db.Departments.Remove(department);
             await db.SaveChangesAsync();

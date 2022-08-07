@@ -22,7 +22,8 @@ namespace MIM.Models
             
         public bool UpdateGroups(int user_id,int[] group_ids)
         {
-            if (user_id == 0 || group_ids == null) return false;
+            if (user_id == 0) return false;
+            if (group_ids == null) group_ids = new int[0];
             User user = db.Users.FirstOrDefault(u => u.UserID == user_id);
             List<Group> lastgroups = (from x in db.Groups where group_ids.Contains(x.GroupID) select x).ToList();
             user.Groups.Clear(); // Mevcut grupları sil
@@ -37,7 +38,8 @@ namespace MIM.Models
 
         public bool UpdateGrants(int group_id, int[] grant_ids)
         {
-            if (group_id == 0 || grant_ids == null) return false;
+            if (group_id == 0) return false;
+            if (grant_ids == null) grant_ids = new int[0];
             Group group = db.Groups.FirstOrDefault(g => g.GroupID == group_id);
             List<Grant> lastgrants = (from x in db.Grants where grant_ids.Contains(x.GrantID) select x).ToList();
             group.Grants.Clear();

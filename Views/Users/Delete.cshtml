@@ -3,11 +3,8 @@
     Layout = null;
     ViewBag.Title = LanguageHelper.GetString("Model.Users");
     string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
-    bool grant = Model != null;
-    bool whichUser = (bool)ViewBag.owner;
-
 }
-@if (grant && !whichUser)
+@if (ViewBag.grant && !ViewBag.owner)
 {
     <div class="modal" id="user-modal">
         <div class="modal-dialog modal-dialog-centered @modal_size">
@@ -125,7 +122,7 @@
 }
 else
 {
-    if (whichUser)
+    if (ViewBag.owner)
     {
         <script>
         toastr.error('@LanguageHelper.GetString("Model.Toastr.SameUser")', '@LanguageHelper.GetString("Model.User")')

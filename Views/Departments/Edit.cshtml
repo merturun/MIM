@@ -1,11 +1,10 @@
 ﻿@model MIM.Models.Department
 @{ Layout = null;
     string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
-    bool grant = Model != null;
-
 }
 
-@if(grant) { 
+@if(ViewBag.grant) 
+{ 
 <div class="modal" id="department-modal">
     <div class="modal-dialog modal-dialog-centered @modal_size">
         <div class="modal-content">

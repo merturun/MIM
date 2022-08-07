@@ -5,125 +5,133 @@
 @{
     Layout = null;
 }
-
-<div id="departments_list">
-    <div class="table-responsive" style="overflow: inherit;">
-        <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
-            <thead>
-                <tr class="text-center">
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        @LanguageHelper.GetString("Department.Name")
-                    </th>
-                    <th>
-                        @LanguageHelper.GetString("Department.Description")
-                    </th>
-                    <th>
-                        @LanguageHelper.GetString("Department.Manager")
-                    </th>
-                    <th>
-                        <div class="btn-toolbar-right mr-2" role="toolbar">
-                            @LanguageHelper.GetString("Table.Action")
-                        </div>
-                    </th>
-                </tr>
-                <tr class="text-center">
-                    <th style="width: 5%">@Html.TextBox("DepartmentID", "", new { @class = "form-control" })</th>
-                    <th style="width: 30%">@Html.TextBox("Name", "", new { @class = "form-control" })</th>
-                    <th style="width: 30%">@Html.TextBox("Description", "", new { @class = "form-control" })</th>
-                    <th style="width: 20%">@Html.DropDownList("UserID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
-                    <th style="width: 15%">
-                        <div class="btn-toolbar-right" role="toolbar">
-                            <div class="btn-group mr-2" role="group">
-                                <input id="searchFilter" class="btn btn-light-primary text-uppercase" type="Submit" value="@LanguageHelper.GetString("Table.SearchBar.Search")">
-                                <input id="clearFilter" class="btn btn-light-warning text-uppercase" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
+@if (ViewBag.grant)
+{
+    <div id="departments_list">
+        <div class="table-responsive" style="overflow: inherit;">
+            <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                <thead>
+                    <tr class="text-center">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            @LanguageHelper.GetString("Department.Name")
+                        </th>
+                        <th>
+                            @LanguageHelper.GetString("Department.Description")
+                        </th>
+                        <th>
+                            @LanguageHelper.GetString("Department.Manager")
+                        </th>
+                        <th>
+                            <div class="btn-toolbar-right mr-2" role="toolbar">
+                                @LanguageHelper.GetString("Table.Action")
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class="text-center">
+                        <th style="width: 5%">@Html.TextBox("DepartmentID", "", new { @class = "form-control" })</th>
+                        <th style="width: 30%">@Html.TextBox("Name", "", new { @class = "form-control" })</th>
+                        <th style="width: 30%">@Html.TextBox("Description", "", new { @class = "form-control" })</th>
+                        <th style="width: 20%">@Html.DropDownList("UserID", null, @LanguageHelper.GetString("Dropdown.First"), htmlAttributes: new { @class = "form-control" })</th>
+                        <th style="width: 15%">
+                            <div class="btn-toolbar-right" role="toolbar">
+                                <div class="btn-group mr-2" role="group">
+                                    <input id="searchFilter" class="btn btn-light-primary text-uppercase" type="Submit" value="@LanguageHelper.GetString("Table.SearchBar.Search")">
+                                    <input id="clearFilter" class="btn btn-light-warning text-uppercase" type="reset" value="@LanguageHelper.GetString("Table.SearchBar.Clear")">
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DepartmentID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.fullname)
+                                </td>
+                                <td style="width: 15%">
+                                    @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                                    @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
+                                    @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-center alert alert-custom alert-outline-2x alert-outline-danger fade show mb-5" role="alert">
+                            <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                            <div class="alert-text">@LanguageHelper.GetString("Table.NoRecord")</div>
+                            <div class="alert-close">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                </button>
                             </div>
                         </div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model.Count > 0)
-                {
-                    foreach (var item in Model)
-                    {
-                        <tr class="text-center">
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DepartmentID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.User.fullname)
-                            </td>
-                            <td style="width: 15%">
-                                @Ajax.RawActionLink("<span><i class='flaticon2-expand'></i></span>", "Show", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                                @Ajax.RawActionLink("<span><i class='flaticon2-edit'></i></span>", "Edit", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon" })
-                                @Ajax.RawActionLink("<span><i class='flaticon2-rubbish-bin'></i></span>", "Delete", "Departments", new { id = item.DepartmentID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "modal-area", OnSuccess = "$('#department-modal').modal('show')" }, new { @class = "btn btn-outline-secondary btn-icon delRow" })
-                            </td>
-                        </tr>
                     }
-                }
-                else
-                {
-                    <div class="text-center alert alert-custom alert-outline-2x alert-outline-danger fade show mb-5" role="alert">
-                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
-                        <div class="alert-text">@LanguageHelper.GetString("Table.NoRecord")</div>
-                        <div class="alert-close">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
-                            </button>
-                        </div>
-                    </div>
-                }
-            </tbody>
-        </table>
-        @{ if (Model.PageCount > 1) { Html.RenderPartial("Pagination", Model); } }
+                </tbody>
+            </table>
+            @{ if (Model.PageCount > 1) { Html.RenderPartial("Pagination", Model); } }
 
+        </div>
     </div>
-</div>
 
-<script>
-    function GetPage(page) {
-        var _DepartmentID = $("#DepartmentID").val()
-        var _Name = $("#Name").val()
-        var _Description = $("#Description").val()
-        var _UserID = $("#UserID").val()
-        $.ajax({
-            url: '/Departments/Table?page=' + page,
-            method: 'GET',
-            data:
-            {
-                DepartmentID: _DepartmentID,
-                Name: _Name,
-                Description: _Description,
-                UserID: _UserID,
-            },
-            success: function (data) {
-                $('#dt-departments_table').html(data)
-            },
-            error: function (data) {
-                $('#dt-departments_table').html("table error")
-            },
+    <script>
+        function GetPage(page) {
+            var _DepartmentID = $("#DepartmentID").val()
+            var _Name = $("#Name").val()
+            var _Description = $("#Description").val()
+            var _UserID = $("#UserID").val()
+            $.ajax({
+                url: '/Departments/Table?page=' + page,
+                method: 'GET',
+                data:
+                {
+                    DepartmentID: _DepartmentID,
+                    Name: _Name,
+                    Description: _Description,
+                    UserID: _UserID,
+                },
+                success: function (data) {
+                    $('#dt-departments_table').html(data)
+                },
+                error: function (data) {
+                    $('#dt-departments_table').html("table error")
+                },
+            });
+        }
+
+        $("#clearFilter").click(function () {
+            $("#DepartmentID").val('')
+            $("#Name").val('')
+            $("#Description").val('')
+            $("#UserID").val('')
+            GetPage(1);
         });
-    }
 
-    $("#clearFilter").click(function () {
-        $("#DepartmentID").val('')
-        $("#Name").val('')
-        $("#Description").val('')
-        $("#UserID").val('')
-        GetPage(1);
-    });
-
-    $("#searchFilter").click(function () {
-        GetPage(1);
-    })
-</script>
-
+        $("#searchFilter").click(function () {
+            GetPage(1);
+        })
+    </script>
+}
+else
+{
+    <script>
+    toastr.error('@LanguageHelper.GetString("Model.Toastr.NoGrant")', '@LanguageHelper.GetString("Model.Department")')
+    window.location.href = "@Url.Action("Index", "Home")"
+    </script>
+}

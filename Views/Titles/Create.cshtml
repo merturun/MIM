@@ -2,7 +2,7 @@
 @{
     Layout = null;
     string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
-    bool grant = Model == null;
+    bool grant = ViewBag.grant;
 }
 
 @if (grant)

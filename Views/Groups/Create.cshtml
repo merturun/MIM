@@ -2,10 +2,9 @@
 @{
     Layout = null;
     string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
-    bool grant = Model == null;
 }
 
-@if (grant)
+@if (ViewBag.grant)
 {
     <link href="~/assets/css/chosen.css" rel="stylesheet" />
     <script src="~/assets/js/chosen.jquery.js"></script>
@@ -76,6 +75,6 @@
 else
 {
     <script>
-    toastr.error('@LanguageHelper.GetString("Model.Toastr.NoGrant")', '@LanguageHelper.GetString("Model.Grant")')
+    toastr.error('@LanguageHelper.GetString("Model.Toastr.NoGrant")', '@LanguageHelper.GetString("Model.Group")')
     </script>
 }

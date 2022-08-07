@@ -31,10 +31,10 @@ namespace MIM.Models
 
         public User(bool isDefault=true)
         {
-            Firstname = Lastname = Nickname = Username = Password = "";
+            Firstname = Lastname = Nickname = Username = Password = "Default";
             Email = "";
            
-            Title = new Title() { Name = "" };
+            Title = new Title() { Name = "Default" };
            
         }
 
@@ -88,6 +88,7 @@ namespace MIM.Models
         public string hasAvatar() { return ((AvatarUrl == null) || (AvatarUrl == "")) ? "noavatar.png" : AvatarUrl; }
         public bool isGranted(string[] controller) // Gelen controller'lardan herhangi bir metoda yetki varsa yetki ver
         {
+            string[] wanted_grants = new string[] { "All", "Table" };
             bool isgranted = false;
             MIMDBContext db = new MIMDBContext();
             User user = db.Users.Find(UserID);
@@ -100,7 +101,7 @@ namespace MIM.Models
                     grants.Add(grt);
 
             
-            isgranted = grants.Find(x => controller.Contains(x.Controller)) != null;
+            isgranted = grants.Find(x => wanted_grants.Contains(x.Action)) != null;
             if (isgranted) return true; // Kullanıcı Belirtilen controller üzerinde All yetkisine sahipse yetki ver
             isgranted = grants.Find(x => controller.Contains(x.Controller)) != null;
             return isgranted;
@@ -120,5 +121,13 @@ namespace MIM.Models
             return names.First().Substring(0, 1) + names.Last().Substring(0, 1);
         }
         #endregion "Method + Properties"
+    }
+
+    public class UserValidator : AbstractValidator<MIM.Models.User>
+    {
+        public UserValidator()
+        {
+            RuleFor(x => x.Firstname).NotEmpty().WithMessage("İsim Boş olamaz");
+        }
     }
 }

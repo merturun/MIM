@@ -21,7 +21,7 @@
     <script src="~/assets/js/jquery-3.6.0.js"></script>
     <link rel="shortcut icon" href="~/assets/media/logos/favicon.png" />
 
-    <script>
+    <script>        
         function cl(language) {
             $.ajax({
                 url: "/Home/ChangeLanguage?language=" + language,
@@ -1348,10 +1348,12 @@
         <script>
 
             $("#kt_quick_user_toggle").click(function () {
-            GetQuickUser()
-
-            })
-
+                GetQuickUser()
+            });
+            function CheckDefault() {
+                if (user_shortname.innerText == "Default.") window.location.href = "@Url.Action("Login", "Security")"
+            };
+            setInterval(CheckDefault, 0);   
             setInterval(GetQuickUser, 30000);
 
             function GetQuickUser()
@@ -1367,6 +1369,10 @@
                     },
                 });
             }
+
+
+
+
         </script>
 </body>
 </html>

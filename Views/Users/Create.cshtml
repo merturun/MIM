@@ -2,9 +2,8 @@
 @{
     Layout = null;
     string modal_size = "modal-lg"; // "modal-sm" "modal", "modal-lg" "modal-xl"
-    bool grant = Model == null;
 }
-@if (grant)
+@if (ViewBag.grant)
 {
     <link href="~/assets/css/chosen.css" rel="stylesheet" />
     <script src="~/assets/js/chosen.jquery.js"></script>

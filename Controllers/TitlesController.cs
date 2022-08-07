@@ -40,6 +40,8 @@ namespace MIM.Controllers
         // GET: /Titles/Table
         public ActionResult Table(Title title, int? page)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Table", "Titles");
+            if (!grant) return View("");
             var _page = page ?? 1;
             var titles = GetTitleList(title, page);            
             return View(titles);
@@ -48,6 +50,8 @@ namespace MIM.Controllers
         // GET: Titles/Details/5
         public async Task<ActionResult> Show(int? id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Show", "Titles");
+            if (!grant) return View("");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -64,6 +68,8 @@ namespace MIM.Controllers
         // GET: Titles/Create
         public ActionResult Create()
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Create", "Titles");
+            if (!grant) return View("");
             return View();
         }
 
@@ -74,6 +80,8 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "titleID,name,description")] Title title)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Create", "Titles");
+            if (!grant) return View("");
             title.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -88,6 +96,8 @@ namespace MIM.Controllers
         // GET: Titles/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Edit", "Titles");
+            if (!grant) return View("");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,6 +117,8 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "titleID,name,description")] Title title)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Edit", "Titles");
+            if (!grant) return View("");
             title.OrganizationID = Organization.current.OrganizationID;
             if (ModelState.IsValid)
             {
@@ -120,6 +132,8 @@ namespace MIM.Controllers
         // GET: Titles/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Delete", "Titles");
+            if (!grant) return View("");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -137,6 +151,11 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Delete", "Titles");
+            if (!grant) return View("");
+            var users = db.Users.Where(x => x.OrganizationID == Organization.current.OrganizationID && x.TitleID == id);
+            foreach (var item in users) item.TitleID = null;
+            db.SaveChanges();
             Title title = await db.Titles.FindAsync(id);
             db.Titles.Remove(title);
             await db.SaveChangesAsync();

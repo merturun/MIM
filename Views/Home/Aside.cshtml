@@ -34,7 +34,7 @@
                 </li>
 
 
-                @if (MIM.Models.User.Current().isGranted(new string[] { "Users", "Titles", "Grants", "Departments" }))
+                @if (MIM.Models.User.Current().isGranted(new string[] { "Users", "Titles", "Groups", "Departments" }))
                 {
                     <li class="menu-section">
                         <h4 class="menu-text">Yönetim Paneli</h4>

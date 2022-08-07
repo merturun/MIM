@@ -44,7 +44,8 @@ namespace MIM.Controllers
         // GET: /Users/Table
         public ActionResult Table(User user, int? page)
         {
-            if (!MIM.Models.User.Current().isGranted("Table", "Users")) return View();
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Table", "Users");
+            if (!grant) return View("");
             var users = GetUserList(user, page);
             ViewBag.TitleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
@@ -54,7 +55,8 @@ namespace MIM.Controllers
         // GET: /Users/Show/5
         public async Task<ActionResult> Show(int? id)
         {
-            if (!MIM.Models.User.Current().isGranted("Show", "Users")) return View();
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Show", "Users");
+            if (!grant) return View("");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -70,7 +72,8 @@ namespace MIM.Controllers
         // GET: /Users/Create
         public ActionResult Create()
         {
-            if (!MIM.Models.User.Current().isGranted("Create", "Users")) return View("");
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Create", "Users");
+            if (!grant) return View("");
             ViewBag.Groups = GetSelectedGroups(new Group[0]);
             ViewBag.titleID = new SelectList(db.Titles.Where(x => x.OrganizationID == Organization.current.OrganizationID), "TitleID", "Name");
             ViewBag.DepartmentID = new SelectList(db.Departments.Where(x => x.OrganizationID == Organization.current.OrganizationID), "DepartmentID", "Name");
@@ -80,7 +83,10 @@ namespace MIM.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,AvatarUrl,DepartmentID,Groups")] User user,int[] GroupIDS,HttpPostedFileBase fb)
-        {   
+        {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Create", "Users");
+            if (!grant) return View("");
+
             if (GroupIDS != null)            
                 foreach (var item in GroupIDS)                
                     user.Groups.Add(db.Groups.FirstOrDefault(x => x.GroupID == item)); 
@@ -116,7 +122,8 @@ namespace MIM.Controllers
         // GET: Users/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
-            if (!MIM.Models.User.Current().isGranted("Edit", "Users")) return View();
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Edit", "Users");
+            if (!grant) return View("");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -139,7 +146,8 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "UserID,TitleID,Firstname,Lastname,Nickname,Username,Password,Email,IsActive,BornDate,SuperAdmin,DepartmentID,Groups,AvatarUrl")] User user, int[] GroupIDS, HttpPostedFileBase fb)
         {
-            if (!MIM.Models.User.Current().isGranted("Edit", "Users")) return View();
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Edit", "Users");
+            if (!grant) return View("");
 
             user.OrganizationID = Organization.current.OrganizationID;
             if (fb != null)
@@ -171,7 +179,8 @@ namespace MIM.Controllers
         public async Task<ActionResult> Delete(int? id)
         {
             ViewBag.owner = false;
-            if (!MIM.Models.User.Current().isGranted("Delete", "Users")) return View();
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Delete", "Users");
+            if (!grant) return View("");
             ViewBag.owner = (id == ((int)Session["current_userID"]));
             if (id == null)
             {
@@ -190,6 +199,8 @@ namespace MIM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
+            bool grant = ViewBag.grant = MIM.Models.User.Current().isGranted("Delete", "Users");
+            if (!grant) return View("");
             User user = await db.Users.FindAsync(id);
 
             foreach (var group in user.Groups.ToList())
