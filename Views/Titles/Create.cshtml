@@ -2,10 +2,9 @@
 @{
     Layout = null;
     string modal_size = "modal"; // "modal-sm" "modal", "modal-lg" "modal-xl"
-    bool grant = ViewBag.grant;
 }
 
-@if (grant)
+@if (ViewBag.grant)
 {
     <div class="modal" id="title-modal">
         <div class="modal-dialog modal-dialog-centered @modal_size">
