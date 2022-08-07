@@ -276,6 +276,24 @@
   <data name="Model.Titles" xml:space="preserve">
     <value>Titles</value>
   </data>
+  <data name="Model.Toastr.AddError" xml:space="preserve">
+    <value>Create failed.</value>
+  </data>
+  <data name="Model.Toastr.AddSuccess" xml:space="preserve">
+    <value>Successfully created.</value>
+  </data>
+  <data name="Model.Toastr.DeleteError" xml:space="preserve">
+    <value>Delete failed.</value>
+  </data>
+  <data name="Model.Toastr.DeleteSuccess" xml:space="preserve">
+    <value>Successfully deleted.</value>
+  </data>
+  <data name="Model.Toastr.EditError" xml:space="preserve">
+    <value>Edit failed.</value>
+  </data>
+  <data name="Model.Toastr.EditSuccess" xml:space="preserve">
+    <value>Successfully edited.</value>
+  </data>
   <data name="Model.Toastr.SameUser" xml:space="preserve">
     <value>You can't delete own user.</value>
   </data>

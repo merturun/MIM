@@ -180,7 +180,7 @@
         });
         function GetTable() {
             $("#user-modal").modal('hide');
-            toastr.success("Ekleme Başarılı", "Kullanıcı")
+            toastr.success("@LanguageHelper.GetString("Model.Toastr.AddSuccess")", "@LanguageHelper.GetString("Model.User")")
             $.ajax({
                 url: '/Users/Table',
                 method: 'GET',
