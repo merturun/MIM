@@ -32,13 +32,13 @@ namespace MIM.Controllers
         {
             var _page = page ?? 1;
             var users = db.Users.Include(u => u.Organization).Where(x => x.OrganizationID == Organization.current.OrganizationID);
-            IPagedList<User> filtering_user = users.ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.UserID > 0) filtering_user = filtering_user.Where(x => x.UserID == user.UserID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.Firstname !=null) filtering_user = filtering_user.Where(x => x.Firstname.Contains(user.Firstname)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.Lastname != null) filtering_user = filtering_user.Where(x => x.Lastname.Contains(user.Lastname)).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.TitleID != null) filtering_user = filtering_user.Where(x => x.TitleID == user.TitleID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            if (user.DepartmentID != null) filtering_user = filtering_user.Where(x => x.DepartmentID == user.DepartmentID).ToList().ToPagedList(_page, MvcApplication.ListPerPage);
-            return filtering_user;
+            IEnumerable<User> filtering_user = users.ToList();
+            if (user.UserID > 0) filtering_user = filtering_user.Where(x => x.UserID == user.UserID).ToList();
+            if (user.Firstname != null) filtering_user = filtering_user.Where(x => x.Firstname.Contains(user.Firstname)).ToList();
+            if (user.Lastname != null) filtering_user = filtering_user.Where(x => x.Lastname.Contains(user.Lastname)).ToList();
+            if (user.TitleID != null) filtering_user = filtering_user.Where(x => x.TitleID == user.TitleID).ToList();
+            if (user.DepartmentID != null) filtering_user = filtering_user.Where(x => x.DepartmentID == user.DepartmentID).ToList();
+            return filtering_user.ToPagedList(_page, MvcApplication.ListPerPage);
         }
 
         // GET: /Users/Table
@@ -207,6 +207,9 @@ namespace MIM.Controllers
             {
                 user.Groups.Remove(group);
             }
+
+            if (user.Department !=null) user.Department.UserID = null;
+
             dbh.DeleteImage(user.AvatarUrl);
             db.Users.Remove(user);
             await db.SaveChangesAsync();
